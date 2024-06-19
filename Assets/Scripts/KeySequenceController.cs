@@ -12,7 +12,7 @@ public class KeySequenceController : MonoBehaviour {
     private int SequenceMatch;
 
     void Start() {
-        LoadKeyCodesFromJson("Assets/Scripts/keyCodes.json");
+        LoadKeyCodesFromJson("Assets/Scripts/jsons/keyCodes.json");
         CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1);
         Manager.UpdateSequence(CurrentSequence);
     }

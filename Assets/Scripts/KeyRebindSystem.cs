@@ -11,7 +11,7 @@ public class KeyRebindSystem : MonoBehaviour {
     public KeyCode[] KeyCodesP2 = new KeyCode[4] { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.RightArrow, KeyCode.LeftArrow };
 
     private void Start() {
-        LoadKeyCodesFromJson("Assets/Scripts/keyCodes.json");
+        LoadKeyCodesFromJson("Assets/Scripts/jsons/keyCodes.json");
         UpdateTextValues();
     }
 
@@ -23,11 +23,11 @@ public class KeyRebindSystem : MonoBehaviour {
     }
 
     public void SaveKeyCodesToJson(string filePath) {
-        KeyCodeData data = new KeyCodeData();
-        data.KeyCodesP1 = KeyCodesP1;
-        data.KeyCodesP2 = KeyCodesP2;
+        KeyCodeData Data = new KeyCodeData();
+        Data.KeyCodesP1 = KeyCodesP1;
+        Data.KeyCodesP2 = KeyCodesP2;
 
-        string json = JsonUtility.ToJson(data);
+        string json = JsonUtility.ToJson(Data);
 
         File.WriteAllText(filePath, json);
     }
@@ -36,10 +36,10 @@ public class KeyRebindSystem : MonoBehaviour {
         if (File.Exists(filePath)) {
             string json = File.ReadAllText(filePath);
 
-            KeyCodeData data = JsonUtility.FromJson<KeyCodeData>(json);
+            KeyCodeData Data = JsonUtility.FromJson<KeyCodeData>(json);
 
-            KeyCodesP1 = data.KeyCodesP1;
-            KeyCodesP2 = data.KeyCodesP2;
+            KeyCodesP1 = Data.KeyCodesP1;
+            KeyCodesP2 = Data.KeyCodesP2;
         }
         else {
             Debug.LogError("O arquivo JSON não existe: " + filePath);
@@ -66,7 +66,7 @@ public class KeyRebindSystem : MonoBehaviour {
                         TextP2[index - 4].text = KeyCodesP2[index - 4].ToString();
                     }
 
-                    SaveKeyCodesToJson("Assets/Scripts/keyCodes.json");
+                    SaveKeyCodesToJson("Assets/Scripts/jsons/keyCodes.json");
                 }
 
                 break;

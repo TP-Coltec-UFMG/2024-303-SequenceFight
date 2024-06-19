@@ -8,6 +8,8 @@ public class Menu : MonoBehaviour {
     [SerializeField] private GameObject Settings;
     [SerializeField] private GameObject Modes;
     [SerializeField] private GameObject Keys;
+    [SerializeField] private GameObject P1;
+    [SerializeField] private GameObject P2;
 
     public void openModes() {
         MenuPrincipal.SetActive(false);
@@ -37,6 +39,26 @@ public class Menu : MonoBehaviour {
     public void closeKeys() {
        Settings.SetActive(true); 
        Keys.SetActive(false);
+    }
+
+    public void openP1() {
+       MenuPrincipal.SetActive(false); 
+       P1.SetActive(true);
+    }
+
+    public void closeP1() {
+       MenuPrincipal.SetActive(true); 
+       P1.SetActive(false);
+    }
+
+    public void openP2() {
+       MenuPrincipal.SetActive(false); 
+       P2.SetActive(true);
+    }
+
+    public void closeP2() {
+       MenuPrincipal.SetActive(true); 
+       P2.SetActive(false);
     }
 
     public void closeGame() {
