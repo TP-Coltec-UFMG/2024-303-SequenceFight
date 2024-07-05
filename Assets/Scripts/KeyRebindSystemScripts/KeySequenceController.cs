@@ -12,7 +12,7 @@ public class KeySequenceController : MonoBehaviour {
     private int SequenceMatch;
 
     void Start() {
-        LoadKeyCodesFromJson("Assets/Scripts/jsons/keyCodes.json");
+        LoadKeyCodes();
         CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1);
         Manager.UpdateSequence(CurrentSequence);
     }
@@ -66,18 +66,13 @@ public class KeySequenceController : MonoBehaviour {
         }
     }
 
-    public void LoadKeyCodesFromJson(string filePath) {
-        if (File.Exists(filePath)) {
-            string json = File.ReadAllText(filePath);
-
-            KeyCodeData data = JsonUtility.FromJson<KeyCodeData>(json);
-
-            KeyCodesP1 = data.KeyCodesP1;
-            KeyCodesP2 = data.KeyCodesP2;
+   public void LoadKeyCodes() {
+        for (int i = 0; i < KeyCodesP1.Length; i++) {
+            KeyCodesP1[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP1_" + i, (int)KeyCode.None);
         }
 
-        else {
-            Debug.LogError("O arquivo JSON não existe: " + filePath);
+        for (int i = 0; i < KeyCodesP2.Length; i++) {
+            KeyCodesP2[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP2_" + i, (int)KeyCode.None);
         }
     }
 }

@@ -7,11 +7,23 @@ public class KeyRebindSystem : MonoBehaviour {
     public TextMeshProUGUI[] TextP1 = new TextMeshProUGUI[4];
     public TextMeshProUGUI[] TextP2 = new TextMeshProUGUI[4];
 
-    public KeyCode[] KeyCodesP1 = new KeyCode[4] { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
-    public KeyCode[] KeyCodesP2 = new KeyCode[4] { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.RightArrow, KeyCode.LeftArrow };
+    public KeyCode[] KeyCodesP1 = new KeyCode[4];
+    public KeyCode[] KeyCodesP2 = new KeyCode[4];
 
     private void Start() {
-        LoadKeyCodesFromJson("Assets/Scripts/jsons/keyCodes.json");
+        if (!PlayerPrefs.HasKey("KeyCodeP1_0") || !PlayerPrefs.HasKey("KeyCodeP2_0")) {
+            PlayerPrefs.SetInt("KeyCodeP1_0", (int)KeyCode.W);
+            PlayerPrefs.SetInt("KeyCodeP1_1", (int)KeyCode.A);
+            PlayerPrefs.SetInt("KeyCodeP1_2", (int)KeyCode.S);
+            PlayerPrefs.SetInt("KeyCodeP1_3", (int)KeyCode.D);
+
+            PlayerPrefs.SetInt("KeyCodeP2_0", (int)KeyCode.UpArrow);
+            PlayerPrefs.SetInt("KeyCodeP2_1", (int)KeyCode.DownArrow);
+            PlayerPrefs.SetInt("KeyCodeP2_2", (int)KeyCode.LeftArrow);
+            PlayerPrefs.SetInt("KeyCodeP2_3", (int)KeyCode.RightArrow);
+        }
+
+        LoadKeyCodes();
         UpdateTextValues();
     }
 
@@ -22,27 +34,23 @@ public class KeyRebindSystem : MonoBehaviour {
         }
     }
 
-    public void SaveKeyCodesToJson(string filePath) {
-        KeyCodeData Data = new KeyCodeData();
-        Data.KeyCodesP1 = KeyCodesP1;
-        Data.KeyCodesP2 = KeyCodesP2;
+    public void SaveKeyCodes() {
+        for (int i = 0; i < KeyCodesP1.Length; i++) {
+            PlayerPrefs.SetInt("KeyCodeP1_" + i, (int)KeyCodesP1[i]);
+        }
 
-        string json = JsonUtility.ToJson(Data);
-
-        File.WriteAllText(filePath, json);
+        for (int i = 0; i < KeyCodesP2.Length; i++) {
+            PlayerPrefs.SetInt("KeyCodeP2_" + i, (int)KeyCodesP2[i]);
+        }
     }
 
-    public void LoadKeyCodesFromJson(string filePath) {
-        if (File.Exists(filePath)) {
-            string json = File.ReadAllText(filePath);
-
-            KeyCodeData Data = JsonUtility.FromJson<KeyCodeData>(json);
-
-            KeyCodesP1 = Data.KeyCodesP1;
-            KeyCodesP2 = Data.KeyCodesP2;
+    public void LoadKeyCodes() {
+        for (int i = 0; i < KeyCodesP1.Length; i++) {
+            KeyCodesP1[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP1_" + i, (int)KeyCode.None);
         }
-        else {
-            Debug.LogError("O arquivo JSON não existe: " + filePath);
+
+        for (int i = 0; i < KeyCodesP2.Length; i++) {
+            KeyCodesP2[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP2_" + i, (int)KeyCode.None);
         }
     }
 
@@ -66,7 +74,7 @@ public class KeyRebindSystem : MonoBehaviour {
                         TextP2[index - 4].text = KeyCodesP2[index - 4].ToString();
                     }
 
-                    SaveKeyCodesToJson("Assets/Scripts/jsons/keyCodes.json");
+                    SaveKeyCodes();
                 }
 
                 break;
