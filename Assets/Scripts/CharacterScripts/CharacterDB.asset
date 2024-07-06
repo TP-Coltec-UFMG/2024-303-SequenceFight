@@ -15,7 +15,7 @@ MonoBehaviour:
   Characters:
   - CharacterName: Dragon
     CharacterSprite: {fileID: 21300000, guid: 2898dff0608a9df42abef4942caf7add, type: 3}
-    SequenceLength: 10
+    SequenceLength: 20
     Health: 200
     Damage: 25
   - CharacterName: Human

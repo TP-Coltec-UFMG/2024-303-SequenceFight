@@ -4,18 +4,26 @@ using UnityEngine;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
-    private float PlayerLife = 100f;
-    private float EnemyLife = 100f;
-    [SerializeField] private TextMeshProUGUI PlayerLifeUI;
-    [SerializeField] private TextMeshProUGUI EnemyLifeUI;
+    private float PlayerHealth;
+    private float EnemyHealth = 100f;
+    [SerializeField] private TextMeshProUGUI PlayerHealthUI;
+    [SerializeField] private TextMeshProUGUI EnemyHealthUI;
     [SerializeField] private TextMeshProUGUI CurrentSequence;
     private AudioSource HitSoundEffect;
     [SerializeField] private GameObject PlayerHit;
     [SerializeField] private GameObject EnemyHit;
     [SerializeField] private float HitDuration;
 
+    public int SelectedCharacterP1;
+    public CharacterDatabase CharacterDB;
+    public Character Player1Character;
+
     void Start() {
-        UpdateLifes();
+        LoadCharacter();
+        UpdateCharacter(SelectedCharacterP1);
+        PlayerHealth = Player1Character.Health;
+
+        UpdatePlayerHealth();
         HitSoundEffect = FindSoundEffect();
     }
 
@@ -33,38 +41,38 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerAttack() {
-        EnemyLife -= 10f;
+        EnemyHealth -= Player1Character.Damage;
         HitSoundEffect.Play();
         StartCoroutine(HitIndicator(PlayerHit));
 
-        if (EnemyLife == 0) {
+        if (EnemyHealth == 0) {
             Debug.Log("Player win");
             RestartGame();
         }
 
         else {
-            UpdateLifes();
+            UpdatePlayerHealth();
         }
     }
 
     public void EnemyAttack() {
-        PlayerLife -= 10f;
+        PlayerHealth -= 10f;
         HitSoundEffect.Play();
         StartCoroutine(HitIndicator(EnemyHit));
 
-        if (PlayerLife == 0) {
+        if (PlayerHealth == 0) {
             Debug.Log("Enemy win");
             RestartGame();
         }
 
         else {
-            UpdateLifes();
+            UpdatePlayerHealth();
         }
     }
 
-    void UpdateLifes() {
-        PlayerLifeUI.text = " " + PlayerLife + " ";
-        EnemyLifeUI.text = " " + EnemyLife + " ";
+    void UpdatePlayerHealth() {
+        PlayerHealthUI.text = "" + PlayerHealth + "";
+        EnemyHealthUI.text = "" + EnemyHealth + "";
     }
 
     public void UpdateSequence(KeyCode[] sequence) {
@@ -78,10 +86,10 @@ public class GameManager : MonoBehaviour {
     }
 
     void RestartGame() {
-        PlayerLife = 100f;
-        EnemyLife = 100f;
+        PlayerHealth = Player1Character.Health;
+        EnemyHealth = 100f;
 
-        UpdateLifes();
+        UpdatePlayerHealth();
     }
 
     IEnumerator HitIndicator(GameObject Object) {
@@ -90,5 +98,13 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(HitDuration);
 
         Object.SetActive(false);
+    }
+
+    private void LoadCharacter() {
+        SelectedCharacterP1 = PlayerPrefs.GetInt("SelectedCharacterP1");
+    }
+
+    private void UpdateCharacter(int SelectedCharacterP1) {
+        Player1Character = CharacterDB.GetCharacter(SelectedCharacterP1);
     }
 }

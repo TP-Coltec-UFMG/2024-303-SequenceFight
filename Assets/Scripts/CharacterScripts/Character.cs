@@ -6,7 +6,7 @@ using UnityEngine;
 public class Character {
     public string CharacterName;
     public Sprite CharacterSprite;
-    public float SequenceLength;
+    public int SequenceLength;
     public float Health;
     public float Damage;
 }
