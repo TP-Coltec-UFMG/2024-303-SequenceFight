@@ -45,6 +45,6 @@ public class Menu : MonoBehaviour {
     }
 
     public void infinite() {
-        SceneManager.LoadScene("Jogo");
+        SceneManager.LoadScene("Infinite");
     }
 }
