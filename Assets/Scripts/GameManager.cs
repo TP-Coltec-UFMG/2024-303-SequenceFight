@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour {
     private float PlayerHealth;
-    private float EnemyHealth = 100f;
+    private float EnemyHealth;
     [SerializeField] private TextMeshProUGUI PlayerHealthUI;
     [SerializeField] private TextMeshProUGUI EnemyHealthUI;
     [SerializeField] private TextMeshProUGUI CurrentSequence;
@@ -14,14 +15,19 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject EnemyHit;
     [SerializeField] private float HitDuration;
 
-    public int SelectedCharacterP1;
     public CharacterDatabase CharacterDB;
+    public int SelectedCharacterP1;
     public Character Player1Character;
+    public Character Player2Character;
+    public SpriteRenderer Player1Sprite;
+    public SpriteRenderer Player2Sprite;
 
     void Start() {
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
         PlayerHealth = Player1Character.Health;
+
+        SelectEnemy();
 
         UpdatePlayerHealth();
         HitSoundEffect = FindSoundEffect();
@@ -45,18 +51,16 @@ public class GameManager : MonoBehaviour {
         HitSoundEffect.Play();
         StartCoroutine(HitIndicator(PlayerHit));
 
-        if (EnemyHealth == 0) {
+        if (EnemyHealth <= 0) {
             Debug.Log("Player win");
-            RestartGame();
+            SelectEnemy();
         }
 
-        else {
-            UpdatePlayerHealth();
-        }
+        UpdatePlayerHealth();
     }
 
     public void EnemyAttack() {
-        PlayerHealth -= 10f;
+        PlayerHealth -= Player2Character.Damage;
         HitSoundEffect.Play();
         StartCoroutine(HitIndicator(EnemyHit));
 
@@ -65,9 +69,8 @@ public class GameManager : MonoBehaviour {
             RestartGame();
         }
 
-        else {
-            UpdatePlayerHealth();
-        }
+        UpdatePlayerHealth();
+        
     }
 
     void UpdatePlayerHealth() {
@@ -86,10 +89,10 @@ public class GameManager : MonoBehaviour {
     }
 
     void RestartGame() {
-        PlayerHealth = Player1Character.Health;
-        EnemyHealth = 100f;
+        SelectEnemy();
 
-        UpdatePlayerHealth();
+        PlayerHealth = Player1Character.Health;
+        EnemyHealth = Player2Character.Health;
     }
 
     IEnumerator HitIndicator(GameObject Object) {
@@ -100,11 +103,25 @@ public class GameManager : MonoBehaviour {
         Object.SetActive(false);
     }
 
+    public void SelectEnemy() {
+        Player2Character = CharacterDB.GetCharacter(GetRandomIndex(0, CharacterDB.CharacterCount - 1));
+        Player2Sprite.sprite = Player2Character.CharacterSprite;
+        EnemyHealth = Player2Character.Health;
+    }
+
+    public static int GetRandomIndex(int min, int max) {
+        System.Random random = new System.Random();
+        return random.Next(min, max + 1);
+    }
+
     private void LoadCharacter() {
         SelectedCharacterP1 = PlayerPrefs.GetInt("SelectedCharacterP1");
     }
 
     private void UpdateCharacter(int SelectedCharacterP1) {
         Player1Character = CharacterDB.GetCharacter(SelectedCharacterP1);
+        Player1Sprite.sprite = Player1Character.CharacterSprite;
     }
+
+    
 }

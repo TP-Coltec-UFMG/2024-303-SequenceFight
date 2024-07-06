@@ -1167,14 +1167,22 @@ MonoBehaviour:
   PlayerHit: {fileID: 864390742}
   EnemyHit: {fileID: 817021559}
   HitDuration: 0.25
-  SelectedCharacterP1: 0
   CharacterDB: {fileID: 11400000, guid: 394caf3b0d7ff214a9416e9f82a01f12, type: 2}
+  SelectedCharacterP1: 0
   Player1Character:
     CharacterName: 
     CharacterSprite: {fileID: 0}
     SequenceLength: 0
     Health: 0
     Damage: 0
+  Player2Character:
+    CharacterName: 
+    CharacterSprite: {fileID: 0}
+    SequenceLength: 0
+    Health: 0
+    Damage: 0
+  Player1Sprite: {fileID: 1055137044}
+  Player2Sprite: {fileID: 1386246271}
 --- !u!114 &933763590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,7 +1207,7 @@ GameObject:
   - component: {fileID: 1055137044}
   - component: {fileID: 1055137043}
   m_Layer: 0
-  m_Name: SelectedCharacterP1
+  m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1217,8 +1225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2f07fef8b27c247a78ddcc91f8c620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterDB: {fileID: 11400000, guid: 394caf3b0d7ff214a9416e9f82a01f12, type: 2}
-  SpriteArt: {fileID: 1055137044}
 --- !u!212 &1055137044
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1373,7 +1379,7 @@ GameObject:
   - component: {fileID: 1386246272}
   - component: {fileID: 1386246271}
   m_Layer: 0
-  m_Name: Warrior
+  m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

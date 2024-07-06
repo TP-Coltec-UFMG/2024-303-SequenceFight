@@ -13,6 +13,7 @@ public class CharacterManagerP1 : MonoBehaviour {
     void Start() {
         if (!PlayerPrefs.HasKey("SelectedCharacterP1")) {
             SelectedCharacterP1 = 0;
+            SaveCharacter();
         }
 
         else {
