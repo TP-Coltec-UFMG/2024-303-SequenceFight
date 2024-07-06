@@ -4,11 +4,11 @@ using TMPro;
 using System.IO;
 
 public class KeyRebindSystem : MonoBehaviour {
-    public TextMeshProUGUI[] TextP1 = new TextMeshProUGUI[4];
-    public TextMeshProUGUI[] TextP2 = new TextMeshProUGUI[4];
+    [SerializeField] private TextMeshProUGUI[] TextP1 = new TextMeshProUGUI[4];
+    [SerializeField] private TextMeshProUGUI[] TextP2 = new TextMeshProUGUI[4];
 
-    public KeyCode[] KeyCodesP1 = new KeyCode[4];
-    public KeyCode[] KeyCodesP2 = new KeyCode[4];
+    private KeyCode[] KeyCodesP1 = new KeyCode[4];
+    private KeyCode[] KeyCodesP2 = new KeyCode[4];
 
     private void Start() {
         if (!PlayerPrefs.HasKey("KeyCodeP1_0") || !PlayerPrefs.HasKey("KeyCodeP2_0")) {

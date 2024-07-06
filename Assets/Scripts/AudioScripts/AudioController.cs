@@ -7,12 +7,11 @@ using System.IO;
 public class AudioController : MonoBehaviour {
     [SerializeField] private Slider SliderMusic;
     [SerializeField] private Slider SliderSoundEffects;
-    private AudioSource BackgroundMusic;
-    private AudioSource SoundEffects;
+    [SerializeField] private AudioSource BackgroundMusic;
+    private float SoundEffectsVolume;
 
     void Start() {
         BackgroundMusic = FindObjectOfType<AudioSource>();
-        SoundEffects = FindObjectsOfType<AudioSource>()[1];
 
         if (!PlayerPrefs.HasKey("BackgroundMusicVolume")) {
             PlayerPrefs.SetFloat("BackgroundMusicVolume", (float)0.5);
@@ -33,7 +32,7 @@ public class AudioController : MonoBehaviour {
     }
 
     public void SoundEffectsController(float value) {
-        SoundEffects.volume = value;
+        SoundEffectsVolume = value;
         SliderSoundEffects.value = value;
 
         SaveAudioSettings();
@@ -41,14 +40,14 @@ public class AudioController : MonoBehaviour {
 
     public void SaveAudioSettings() {
         PlayerPrefs.SetFloat("BackgroundMusicVolume", BackgroundMusic.volume);
-        PlayerPrefs.SetFloat("SoundEffectsVolume", SoundEffects.volume);
+        PlayerPrefs.SetFloat("SoundEffectsVolume", SoundEffectsVolume);
     }
 
     public void LoadAudioSettings() {
         BackgroundMusic.volume = PlayerPrefs.GetFloat("BackgroundMusicVolume");
-        SoundEffects.volume = PlayerPrefs.GetFloat("SoundEffectsVolume");
+        SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume");
 
         SliderMusic.value = BackgroundMusic.volume;
-        SliderSoundEffects.value = SoundEffects.volume;
+        SliderSoundEffects.value = SoundEffectsVolume;
     }
 }

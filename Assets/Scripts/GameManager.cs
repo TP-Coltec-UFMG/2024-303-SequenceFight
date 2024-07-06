@@ -5,22 +5,34 @@ using UnityEngine;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
-    private float PlayerHealth;
-    private float EnemyHealth;
     [SerializeField] private TextMeshProUGUI PlayerHealthUI;
     [SerializeField] private TextMeshProUGUI EnemyHealthUI;
+    private float PlayerHealth;
+    private float EnemyHealth;
+    [SerializeField] private TextMeshProUGUI RecordUI;
+    [SerializeField] private TextMeshProUGUI StreakUI;
+    private int RecordInt = 0;
+    private int StreakInt = 0;
     [SerializeField] private TextMeshProUGUI CurrentSequence;
-    private AudioSource HitSoundEffect;
+
     [SerializeField] private GameObject PlayerHit;
     [SerializeField] private GameObject EnemyHit;
     [SerializeField] private float HitDuration;
 
-    public CharacterDatabase CharacterDB;
-    public int SelectedCharacterP1;
-    public Character Player1Character;
-    public Character Player2Character;
-    public SpriteRenderer Player1Sprite;
-    public SpriteRenderer Player2Sprite;
+    [SerializeField] private CharacterDatabase CharacterDB;
+    private int SelectedCharacterP1;
+    private Character Player1Character;
+    private Character Player2Character;
+    [SerializeField] private SpriteRenderer Player1Sprite;
+    [SerializeField] private SpriteRenderer Player2Sprite;
+
+    [SerializeField] private TextMeshProUGUI NewRecordText;
+    [SerializeField] private GameObject RestartGameUI;
+    private bool RestartGameBool = false;
+    [SerializeField] private GameObject GameUI;
+    [SerializeField] private GameObject NewRecordUI;
+
+    [SerializeField] private GameAudioController AudioController;
 
     void Start() {
         LoadCharacter();
@@ -30,52 +42,67 @@ public class GameManager : MonoBehaviour {
         SelectEnemy();
 
         UpdatePlayerHealth();
-        HitSoundEffect = FindSoundEffect();
-    }
 
-    private AudioSource FindSoundEffect() {
-        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
-
-        foreach (AudioSource source in audioSources) {
-            if (source.gameObject.name == "HitSoundEffect") {
-                return source;
-            }
+        if (!PlayerPrefs.HasKey("Record")) {
+            PlayerPrefs.SetInt("Record", RecordInt);
         }
 
-        Debug.LogWarning("HitSoundEffect AudioSource not found.");
-        return null;
+        else {
+            RecordInt = PlayerPrefs.GetInt("Record");
+        }
+
+        UpdateRecord();
+
+        AudioController.PlayCombatMusic();
     }
 
     public void PlayerAttack() {
-        EnemyHealth -= Player1Character.Damage;
-        HitSoundEffect.Play();
-        StartCoroutine(HitIndicator(PlayerHit));
+        if (!RestartGameBool) {
+            EnemyHealth -= Player1Character.Damage;
+            AudioController.PlayHitSoundEffect();
+            StartCoroutine(HitIndicator(PlayerHit));
 
-        if (EnemyHealth <= 0) {
-            Debug.Log("Player win");
-            SelectEnemy();
+            if (EnemyHealth <= 0) {
+                Debug.Log("Player win");
+                PlayerHealth += 20;
+                SelectEnemy();
+
+                StreakInt++;
+                UpdateRecord();
+            }
+
+            UpdatePlayerHealth();
         }
-
-        UpdatePlayerHealth();
     }
 
     public void EnemyAttack() {
-        PlayerHealth -= Player2Character.Damage;
-        HitSoundEffect.Play();
-        StartCoroutine(HitIndicator(EnemyHit));
+        if (!RestartGameBool) {
+            PlayerHealth -= Player2Character.Damage;
+            AudioController.PlayHitSoundEffect();
+            StartCoroutine(HitIndicator(EnemyHit));
 
-        if (PlayerHealth == 0) {
-            Debug.Log("Enemy win");
-            RestartGame();
+            if (PlayerHealth <= 0) {
+                Debug.Log("Enemy win");
+                ActivateRestartGameUI();
+            }
+
+            UpdatePlayerHealth();
         }
-
-        UpdatePlayerHealth();
-        
     }
 
-    void UpdatePlayerHealth() {
+    public void UpdatePlayerHealth() {
         PlayerHealthUI.text = "" + PlayerHealth + "";
         EnemyHealthUI.text = "" + EnemyHealth + "";
+    }
+
+    public void UpdateRecord() {
+        if (StreakInt >= RecordInt) {
+            RecordInt = StreakInt;
+            PlayerPrefs.SetInt("Record", StreakInt);
+        }
+
+        StreakUI.text = "" + StreakInt + "";
+        RecordUI.text = "" + RecordInt + "";
     }
 
     public void UpdateSequence(KeyCode[] sequence) {
@@ -88,25 +115,49 @@ public class GameManager : MonoBehaviour {
         CurrentSequence.text = sequenceString;
     }
 
-    void RestartGame() {
+    public void RestartGame() {
+        AudioController.PlayCombatMusic();
+
+        RestartGameBool = !RestartGameBool;
+        GameUI.SetActive(true);
+        RestartGameUI.SetActive(false);
+        NewRecordUI.SetActive(false);
+
         SelectEnemy();
 
         PlayerHealth = Player1Character.Health;
-        EnemyHealth = Player2Character.Health;
+        UpdatePlayerHealth();
+
+        UpdateRecord();
     }
 
+    public void ActivateRestartGameUI() {
+        AudioController.PlayYouDiedMusic();
+
+        RestartGameBool = !RestartGameBool;
+        GameUI.SetActive(false);
+        RestartGameUI.SetActive(true);
+
+        if (StreakInt == RecordInt) {
+            NewRecordText.text = RecordUI.text;
+            NewRecordUI.SetActive(true);
+        }
+
+        StreakInt = 0;
+    }
+   
+    public void SelectEnemy() {
+        Player2Character = CharacterDB.GetCharacter(GetRandomIndex(0, CharacterDB.CharacterCount - 1));
+        Player2Sprite.sprite = Player2Character.CharacterSprite;
+        EnemyHealth = Player2Character.Health;
+    }
+    
     IEnumerator HitIndicator(GameObject Object) {
         Object.SetActive(true);
 
         yield return new WaitForSeconds(HitDuration);
 
         Object.SetActive(false);
-    }
-
-    public void SelectEnemy() {
-        Player2Character = CharacterDB.GetCharacter(GetRandomIndex(0, CharacterDB.CharacterCount - 1));
-        Player2Sprite.sprite = Player2Character.CharacterSprite;
-        EnemyHealth = Player2Character.Health;
     }
 
     public static int GetRandomIndex(int min, int max) {
@@ -122,6 +173,4 @@ public class GameManager : MonoBehaviour {
         Player1Character = CharacterDB.GetCharacter(SelectedCharacterP1);
         Player1Sprite.sprite = Player1Character.CharacterSprite;
     }
-
-    
 }
