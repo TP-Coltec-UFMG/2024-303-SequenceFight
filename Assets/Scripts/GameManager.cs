@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour {
     private int SelectedCharacterP1;
     private Character Player1Character;
     private Character Player2Character;
-    [SerializeField] private SpriteRenderer Player1Sprite;
-    [SerializeField] private SpriteRenderer Player2Sprite;
 
     [SerializeField] private TextMeshProUGUI NewRecordText;
     [SerializeField] private GameObject RestartGameUI;
@@ -34,9 +32,20 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private GameAudioController AudioController;
 
+    public GameObject PlayerInstance;
+    public GameObject EnemyInstance;
+    public Animator PlayerAnimator;
+    public Animator EnemyAnimator;
+
     void Start() {
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
+
+        Vector3 PlayerSpawn = new Vector3(-5.93f, -3.277f, 0);
+
+        PlayerInstance = Instantiate(Player1Character.CharacterPrefab, PlayerSpawn, Quaternion.identity);
+        PlayerAnimator = PlayerInstance.GetComponent<Animator>();
+
         PlayerHealth = Player1Character.Health;
 
         SelectEnemy();
@@ -59,6 +68,10 @@ public class GameManager : MonoBehaviour {
     public void PlayerAttack() {
         if (!RestartGameBool) {
             EnemyHealth -= Player1Character.Damage;
+
+            PlayerAnimator.Play("Attack");
+            EnemyAnimator.Play("Hit");
+
             AudioController.PlayHitSoundEffect();
             StartCoroutine(HitIndicator(PlayerHit));
 
@@ -78,10 +91,16 @@ public class GameManager : MonoBehaviour {
     public void EnemyAttack() {
         if (!RestartGameBool) {
             PlayerHealth -= Player2Character.Damage;
+
+            PlayerAnimator.Play("Hit");
+            EnemyAnimator.Play("Attack");
+
             AudioController.PlayHitSoundEffect();
             StartCoroutine(HitIndicator(EnemyHit));
 
             if (PlayerHealth <= 0) {
+                PlayerAnimator.Play("Die");
+
                 Debug.Log("Enemy win");
                 ActivateRestartGameUI();
             }
@@ -147,8 +166,16 @@ public class GameManager : MonoBehaviour {
     }
    
     public void SelectEnemy() {
+        if (EnemyInstance != null) {
+            Destroy(EnemyInstance);
+        }
+
         Player2Character = CharacterDB.GetCharacter(GetRandomIndex(0, CharacterDB.CharacterCount - 1));
-        Player2Sprite.sprite = Player2Character.CharacterSprite;
+        
+        Vector3 EnemySpawn = new Vector3(5.93f, -3.277f, 0);
+        EnemyInstance = Instantiate(Player2Character.CharacterPrefab, EnemySpawn, Quaternion.Euler(0, 180, 0));
+        EnemyAnimator = EnemyInstance.GetComponent<Animator>();
+
         EnemyHealth = Player2Character.Health;
     }
     
@@ -171,6 +198,5 @@ public class GameManager : MonoBehaviour {
 
     private void UpdateCharacter(int SelectedCharacterP1) {
         Player1Character = CharacterDB.GetCharacter(SelectedCharacterP1);
-        Player1Sprite.sprite = Player1Character.CharacterSprite;
     }
 }

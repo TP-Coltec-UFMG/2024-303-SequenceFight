@@ -9,4 +9,5 @@ public class Character {
     public int SequenceLength;
     public float Health;
     public float Damage;
+    public GameObject CharacterPrefab;
 }
