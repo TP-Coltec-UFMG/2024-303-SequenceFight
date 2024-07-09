@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ad172dc10edac54e8615ba13be03b11
+guid: 2788d1090233e364d9840f188d3a64af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Human_0
+      name: cavaleiro_0
       rect:
         serializedVersion: 2
-        x: 373
-        y: 743
-        width: 724
-        height: 1167
+        x: 532
+        y: 372
+        width: 984
+        height: 1272
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beca89ce2121f0447ab5eb84b4f267f5
-      internalID: 1105568813
+      spriteID: abddae0836cde5849963f591b1c21bf1
+      internalID: -916941585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Human_1
+      name: cavaleiro_1
       rect:
         serializedVersion: 2
-        x: 1621
-        y: 750
-        width: 564
-        height: 1168
+        x: 2708
+        y: 436
+        width: 952
+        height: 1176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab198fc352cdb144f85a7d8850a8f5a3
-      internalID: 1049309969
+      spriteID: b12ff64f0b688244cb19891c28060777
+      internalID: -555093487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Human_2
+      name: cavaleiro_2
       rect:
         serializedVersion: 2
-        x: 2577
-        y: 735
-        width: 561
-        height: 1167
+        x: 4756
+        y: 436
+        width: 952
+        height: 1176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12fcb82f62774ea4fb2036798e04bcfb
-      internalID: -493978600
+      spriteID: c0a396b68e62ae244880e6557800f3d3
+      internalID: -290835097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Human_3
+      name: cavaleiro_3
       rect:
         serializedVersion: 2
-        x: 3703
-        y: 735
-        width: 594
-        height: 1167
+        x: 6804
+        y: 436
+        width: 1400
+        height: 1176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e163563e52f90d341bf1fbf4c3b1ef27
-      internalID: -1330607678
+      spriteID: e704f4f17b3392c479cde511fc4146af
+      internalID: -1974400307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Human_4
+      name: cavaleiro_4
       rect:
         serializedVersion: 2
-        x: 4946
-        y: 718
-        width: 814
-        height: 1167
+        x: 8852
+        y: 436
+        width: 952
+        height: 1176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e58ca4258687394c9a5263a56946272
-      internalID: 686338041
+      spriteID: fe76cea0ccb95474698f9befab44228d
+      internalID: -227654133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Human_5
+      name: cavaleiro_5
       rect:
         serializedVersion: 2
-        x: 6064
-        y: 575
-        width: 880
-        height: 1327
+        x: 10644
+        y: 340
+        width: 1272
+        height: 1400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fdb14d583a5b554584524085a8f664a
-      internalID: 126366539
+      spriteID: c6248dabc3e4ca04db5356ab97f07883
+      internalID: 1701556256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Human_6
+      name: cavaleiro_6
       rect:
         serializedVersion: 2
-        x: 7130
-        y: 975
-        width: 1201
-        height: 495
+        x: 12596
+        y: 340
+        width: 1272
+        height: 1400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,8 +250,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c61722e12ba7544b89a65259e46fc53
-      internalID: -36160351
+      spriteID: 8d86198428ffae84dab51503e2fa080d
+      internalID: 1222182077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cavaleiro_7
+      rect:
+        serializedVersion: 2
+        x: 14708
+        y: 596
+        width: 1528
+        height: 824
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84c689a926786404f991d0e93eef09af
+      internalID: 1987898458
       vertices: []
       indices: 
       edges: []
@@ -267,13 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Human_0: 1105568813
-      Human_1: 1049309969
-      Human_2: -493978600
-      Human_3: -1330607678
-      Human_4: 686338041
-      Human_5: 126366539
-      Human_6: -36160351
+      cavaleiro_0: -916941585
+      cavaleiro_1: -555093487
+      cavaleiro_2: -290835097
+      cavaleiro_3: -1974400307
+      cavaleiro_4: -227654133
+      cavaleiro_5: 1701556256
+      cavaleiro_6: 1222182077
+      cavaleiro_7: 1987898458
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

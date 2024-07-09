@@ -13,18 +13,13 @@ MonoBehaviour:
   m_Name: CharacterDB
   m_EditorClassIdentifier: 
   Characters:
-  - CharacterName: Dragon
-    CharacterSprite: {fileID: 21300000, guid: 2898dff0608a9df42abef4942caf7add, type: 3}
-    SequenceLength: 20
-    Health: 200
-    Damage: 25
   - CharacterName: Human
-    CharacterSprite: {fileID: 21300000, guid: 844671175c9114842b8f442c074ec644, type: 3}
+    CharacterSprite: {fileID: 1105568813, guid: 5ad172dc10edac54e8615ba13be03b11, type: 3}
     SequenceLength: 5
     Health: 100
     Damage: 15
   - CharacterName: Warrior
-    CharacterSprite: {fileID: 21300000, guid: 744762df84f121a458903f65a2945a94, type: 3}
+    CharacterSprite: {fileID: -916941585, guid: 2788d1090233e364d9840f188d3a64af, type: 3}
     SequenceLength: 7
     Health: 150
     Damage: 20
