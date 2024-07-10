@@ -5,7 +5,7 @@ using System.IO;
 public class KeySequenceController : MonoBehaviour {
     [SerializeField] private KeySequenceGenerator SequenceGenerator;
     [SerializeField] private GameManager Manager;
-    public List<KeyCode> PlayerSequence = new List<KeyCode>();
+    public List<KeyCode> Player1Sequence = new List<KeyCode>();
     public KeyCode[] CurrentSequence;
     public KeyCode[] KeyCodesP1 = new KeyCode[4];
     public KeyCode[] KeyCodesP2 = new KeyCode[4];
@@ -29,7 +29,7 @@ public class KeySequenceController : MonoBehaviour {
         if (Input.anyKeyDown) {
             foreach (KeyCode key in KeyCodesP1) {
                 if (Input.GetKeyDown(key)) {
-                    PlayerSequence.Add(key);
+                    Player1Sequence.Add(key);
                     CheckSequence();
                     break;
                 }
@@ -40,9 +40,9 @@ public class KeySequenceController : MonoBehaviour {
     void CheckSequence() {
         SequenceMatch = 1; 
 
-        if (PlayerSequence.Count <= CurrentSequence.Length) {
-            for (int i = 0; i < PlayerSequence.Count; i++) {
-                if (PlayerSequence[i] != CurrentSequence[i]) {
+        if (Player1Sequence.Count <= CurrentSequence.Length) {
+            for (int i = 0; i < Player1Sequence.Count; i++) {
+                if (Player1Sequence[i] != CurrentSequence[i]) {
                     SequenceMatch = 0;
                     break;
                 }
@@ -54,21 +54,21 @@ public class KeySequenceController : MonoBehaviour {
 
             if (SequenceMatch == Player1Character.SequenceLength + 1) {
                 Debug.Log("Sequência correta!");
-                Manager.PlayerAttack();
+                Manager.Player1Attack();
             }
             
             if (SequenceMatch == 0) {
                 Debug.Log("Sequência incorreta!");
-                Manager.EnemyAttack();
+                Manager.Player2Attack();
 
-                PlayerSequence.Clear();
+                Player1Sequence.Clear();
                 CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
                 Manager.UpdateSequence(CurrentSequence);
             }
         }
 
-        if (PlayerSequence.Count == CurrentSequence.Length) {
-            PlayerSequence.Clear();
+        if (Player1Sequence.Count == CurrentSequence.Length) {
+            Player1Sequence.Clear();
             CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
             Manager.UpdateSequence(CurrentSequence);
         }
