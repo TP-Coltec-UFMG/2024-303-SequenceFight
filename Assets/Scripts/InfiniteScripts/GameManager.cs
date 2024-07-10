@@ -41,10 +41,7 @@ public class GameManager : MonoBehaviour {
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
 
-        Vector3 PlayerSpawn = new Vector3(-5.93f, -3.277f, 0);
-
-        PlayerInstance = Instantiate(Player1Character.CharacterPrefab, PlayerSpawn, Quaternion.identity);
-        PlayerAnimator = PlayerInstance.GetComponent<Animator>();
+        InstantiatePlayer();
 
         PlayerHealth = Player1Character.Health;
 
@@ -146,6 +143,7 @@ public class GameManager : MonoBehaviour {
 
         PlayerHealth = Player1Character.Health;
         UpdatePlayerHealth();
+        PlayerAnimator.Play("Idle");
 
         UpdateRecord();
     }
@@ -172,9 +170,7 @@ public class GameManager : MonoBehaviour {
 
         Player2Character = CharacterDB.GetCharacter(GetRandomIndex(0, CharacterDB.CharacterCount - 1));
         
-        Vector3 EnemySpawn = new Vector3(5.93f, -3.277f, 0);
-        EnemyInstance = Instantiate(Player2Character.CharacterPrefab, EnemySpawn, Quaternion.Euler(0, 180, 0));
-        EnemyAnimator = EnemyInstance.GetComponent<Animator>();
+        InstantiateEnemy();
 
         EnemyHealth = Player2Character.Health;
     }
@@ -198,5 +194,19 @@ public class GameManager : MonoBehaviour {
 
     private void UpdateCharacter(int SelectedCharacterP1) {
         Player1Character = CharacterDB.GetCharacter(SelectedCharacterP1);
+    }
+
+    public void InstantiatePlayer() {
+        Vector3 PlayerSpawn = new Vector3(-5.93f, -3.277f, 0);
+
+        PlayerInstance = Instantiate(Player1Character.CharacterPrefab, PlayerSpawn, Quaternion.identity);
+        PlayerAnimator = PlayerInstance.GetComponent<Animator>();
+    }
+
+    public void InstantiateEnemy() {
+        Vector3 EnemySpawn = new Vector3(5.93f, -3.277f, 0);
+
+        EnemyInstance = Instantiate(Player2Character.CharacterPrefab, EnemySpawn, Quaternion.Euler(0, 180, 0));
+        EnemyAnimator = EnemyInstance.GetComponent<Animator>();
     }
 }

@@ -176,9 +176,9 @@ TextureImporter:
       name: Human_3
       rect:
         serializedVersion: 2
-        x: 3703
-        y: 735
-        width: 594
+        x: 3527
+        y: 734
+        width: 778
         height: 1167
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -197,9 +197,9 @@ TextureImporter:
       name: Human_4
       rect:
         serializedVersion: 2
-        x: 4946
+        x: 4690
         y: 718
-        width: 814
+        width: 1070
         height: 1167
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
