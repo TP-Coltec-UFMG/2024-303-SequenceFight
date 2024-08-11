@@ -47,4 +47,8 @@ public class Menu : MonoBehaviour {
     public void infinite() {
         SceneManager.LoadScene("Infinite");
     }
+
+    public void onevsone() {
+        SceneManager.LoadScene("1vs1");
+    }
 }
