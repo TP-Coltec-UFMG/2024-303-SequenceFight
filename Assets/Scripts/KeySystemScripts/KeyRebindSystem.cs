@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
@@ -55,6 +56,19 @@ public class KeyRebindSystem : MonoBehaviour {
     }
 
     private System.Collections.IEnumerator CaptureKeyPress(int index) {
+        GameObject previousSelectedObject = EventSystem.current.currentSelectedGameObject;
+
+        Image ButtonImage = previousSelectedObject.GetComponent<Image>();
+        
+        Color NewButtomColor = RGBToColor(130, 130, 130);
+        Color OldButtomColor = ButtonImage.color;
+
+        ButtonImage.color = NewButtomColor;
+
+        EventSystem.current.SetSelectedGameObject(null);
+
+        yield return null;
+
         while (!Input.anyKeyDown) {
             yield return null;
         }
@@ -69,7 +83,9 @@ public class KeyRebindSystem : MonoBehaviour {
                     if (index < 4) {
                         KeyCodesP1[index] = key;
                         TextP1[index].text = KeyCodesP1[index].ToString();
-                    } else {
+                    } 
+                    
+                    else {
                         KeyCodesP2[index - 4] = key;
                         TextP2[index - 4].text = KeyCodesP2[index - 4].ToString();
                     }
@@ -80,6 +96,9 @@ public class KeyRebindSystem : MonoBehaviour {
                 break;
             }
         }
+
+        ButtonImage.color = OldButtomColor;
+        EventSystem.current.SetSelectedGameObject(previousSelectedObject);
     }
 
     private bool VerifyKey(KeyCode key) {
@@ -128,5 +147,9 @@ public class KeyRebindSystem : MonoBehaviour {
 
     public void Key4P2() {
         StartCoroutine(CaptureKeyPress(7));
+    }
+
+    Color RGBToColor(int r, int g, int b, int a = 255) {
+        return new Color(r / 255f, g / 255f, b / 255f, a / 255f);
     }
 }
