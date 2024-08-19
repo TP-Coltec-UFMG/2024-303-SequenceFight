@@ -24,7 +24,7 @@ public class UIController : MonoBehaviour {
         EnemyHealthUI.text = "" + EnemyHealth + "";
     }
 
-    public void UpdateRecord(int StreakInt, int RecordInt) {
+    public int UpdateRecord(int StreakInt, int RecordInt) {
         if (StreakInt >= RecordInt) {
             RecordInt = StreakInt;
             PlayerPrefs.SetInt("Record", StreakInt);
@@ -32,6 +32,8 @@ public class UIController : MonoBehaviour {
 
         StreakUI.text = "" + StreakInt + "";
         RecordUI.text = "" + RecordInt + "";
+
+        return RecordInt;
     }
 
     public void UpdateSequence(string SequenceString) {

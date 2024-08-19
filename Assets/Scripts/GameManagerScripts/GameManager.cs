@@ -5,25 +5,25 @@ using UnityEngine;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
-    private float Player1Health;
-    private float Player2Health;
-    private int RecordInt = 0;
-    private int StreakInt = 0;
+    public float Player1Health;
+    public float Player2Health;
+    public int RecordInt = 0;
+    public int StreakInt = 0;
 
 
-    private bool RestartGameBool = false;
+    public bool RestartGameBool = false;
 
-    private int SelectedCharacterP1;
-    private Character Player1Character;
-    private Character Player2Character;
+    public int SelectedCharacterP1;
+    public Character Player1Character;
+    public Character Player2Character;
     public GameObject Player1Instance;
     public GameObject Player2Instance;
     public Animator Player1Animator;
     public Animator Player2Animator;
-    [SerializeField] private CharacterDatabase CharacterDB;
+    [SerializeField] public CharacterDatabase CharacterDB;
 
     public UIController UIManager;
-    [SerializeField] private GameAudioController AudioController;
+    [SerializeField] public GameAudioController AudioController;
 
     void Start() {
         LoadCharacter();
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour {
 
                 StreakInt++;
 
-                UIManager.UpdateRecord(StreakInt, RecordInt);
+                RecordInt = UIManager.UpdateRecord(StreakInt, RecordInt);
             }
 
             UIManager.UpdateHealth(Player1Health, Player2Health);
