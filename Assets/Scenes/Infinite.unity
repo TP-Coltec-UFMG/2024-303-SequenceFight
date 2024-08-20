@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 54619534}
   - component: {fileID: 54619533}
   m_Layer: 5
-  m_Name: PlayerHealth
+  m_Name: PlayerHealth_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 88d211c6c8804264bae9c5ee365297b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1edc5cb03d2e8994b9f194b7d3f8ab2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 95258868}
   m_Layer: 5
-  m_Name: RestartGameUI
+  m_Name: RestartGame_ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 199152063}
   m_Layer: 5
-  m_Name: NewRecordUI
+  m_Name: NewRecord_ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245278770}
   m_Layer: 0
-  m_Name: Game
+  m_Name: Game_scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 389887915}
   - component: {fileID: 389887914}
   m_Layer: 5
-  m_Name: Backgroung
+  m_Name: Backgroung_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 465767144}
   - component: {fileID: 465767143}
   m_Layer: 5
-  m_Name: RecordStreak
+  m_Name: RecordStreak_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1113,7 +1113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 662935269}
   m_Layer: 5
-  m_Name: GameUI
+  m_Name: Game_ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 748599616}
   - component: {fileID: 748599615}
   m_Layer: 0
-  m_Name: YouDied
+  m_Name: YouDied_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1364,7 +1364,7 @@ GameObject:
   - component: {fileID: 759601008}
   - component: {fileID: 759601007}
   m_Layer: 0
-  m_Name: KeySequenceController
+  m_Name: KeySequenceController_script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1424,7 +1424,7 @@ GameObject:
   - component: {fileID: 817021562}
   - component: {fileID: 817021561}
   m_Layer: 5
-  m_Name: EnemyHit
+  m_Name: EnemyHit_panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 864390745}
   - component: {fileID: 864390744}
   m_Layer: 5
-  m_Name: PlayerHit
+  m_Name: PlayerHit_panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31a26d3bb953daf4a8366d05168b734d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f54adc6315e34c4fa6303b528886984, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1706,7 +1706,7 @@ GameObject:
   - component: {fileID: 933763589}
   - component: {fileID: 933763590}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManager_script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1739,6 +1739,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8a9b2fdeae28844a5b159b2e6d6322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player1Health: 0
+  Player2Health: 0
+  RecordInt: 0
+  StreakInt: 0
+  RestartGameBool: 0
+  SelectedCharacterP1: 0
+  Player1Character:
+    CharacterName: 
+    CharacterSprite: {fileID: 0}
+    SequenceLength: 0
+    Health: 0
+    Damage: 0
+    CharacterPrefab: {fileID: 0}
+  Player2Character:
+    CharacterName: 
+    CharacterSprite: {fileID: 0}
+    SequenceLength: 0
+    Health: 0
+    Damage: 0
+    CharacterPrefab: {fileID: 0}
   Player1Instance: {fileID: 0}
   Player2Instance: {fileID: 0}
   Player1Animator: {fileID: 0}
@@ -1769,7 +1789,7 @@ GameObject:
   - component: {fileID: 1053200514}
   - component: {fileID: 1053200513}
   m_Layer: 0
-  m_Name: CombatMusic
+  m_Name: CombatMusic_audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1897,7 +1917,7 @@ GameObject:
   - component: {fileID: 1107823248}
   - component: {fileID: 1107823247}
   m_Layer: 0
-  m_Name: YouDiedMusic
+  m_Name: YouDiedMusic_audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,7 +2045,7 @@ GameObject:
   - component: {fileID: 1137316360}
   - component: {fileID: 1137316361}
   m_Layer: 0
-  m_Name: UIController
+  m_Name: UIController_script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2081,7 +2101,7 @@ GameObject:
   - component: {fileID: 1240644131}
   - component: {fileID: 1240644132}
   m_Layer: 0
-  m_Name: HitSoundEffect
+  m_Name: HitSoundEffect_audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2210,7 +2230,7 @@ GameObject:
   - component: {fileID: 1289433936}
   - component: {fileID: 1289433935}
   m_Layer: 5
-  m_Name: EnemyHealth
+  m_Name: EnemyHealth_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2420,7 +2440,7 @@ GameObject:
   - component: {fileID: 1453792162}
   - component: {fileID: 1453792161}
   m_Layer: 5
-  m_Name: Streak
+  m_Name: Streak_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2554,7 +2574,7 @@ GameObject:
   - component: {fileID: 1471473434}
   - component: {fileID: 1471473433}
   m_Layer: 5
-  m_Name: CurrentSequence
+  m_Name: CurrentSequence_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2650,7 @@ GameObject:
   - component: {fileID: 1493386230}
   - component: {fileID: 1493386229}
   m_Layer: 5
-  m_Name: Record
+  m_Name: Record_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2763,7 +2783,7 @@ GameObject:
   - component: {fileID: 1500941250}
   - component: {fileID: 1500941251}
   m_Layer: 0
-  m_Name: GameAudioController
+  m_Name: GameAudioController_script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2814,7 +2834,7 @@ GameObject:
   - component: {fileID: 1523108995}
   - component: {fileID: 1523108994}
   m_Layer: 0
-  m_Name: RecordCrown
+  m_Name: RecordCrown_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2889,7 +2909,7 @@ GameObject:
   - component: {fileID: 1525359094}
   - component: {fileID: 1525359093}
   m_Layer: 0
-  m_Name: Background
+  m_Name: Background_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2936,12 +2956,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 2a3c0d95f9411ec49bc376af0e2ad8fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f53cc578e6887b42ad06e0564c6a29d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.22, y: 4.9}
+  m_Size: {x: 9.28, y: 7.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2973,7 +2993,7 @@ GameObject:
   - component: {fileID: 1539433694}
   - component: {fileID: 1539433693}
   m_Layer: 0
-  m_Name: KeySequenceGenerator
+  m_Name: KeySequenceGenerator_script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3086,7 +3106,7 @@ GameObject:
   - component: {fileID: 1855558323}
   - component: {fileID: 1855558322}
   m_Layer: 0
-  m_Name: NewRecord
+  m_Name: NewRecord_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

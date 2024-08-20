@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b173f8586d50424682eaaa9674aed11, type: 3}
+  m_Name: CharacterDB
+  m_EditorClassIdentifier: 
+  Characters:
+  - CharacterName: Human
+    CharacterSprite: {fileID: 1719502134, guid: c0d5b9f34dc14aa42bd0b8be9bcd4cc1, type: 3}
+    SequenceLength: 5
+    Health: 100
+    Damage: 150000
+    CharacterPrefab: {fileID: 3145592029851764490, guid: 6b849921269186a4ebc255ee3df252e9, type: 3}
+  - CharacterName: Warrior
+    CharacterSprite: {fileID: 788283938, guid: 036abe14bd181ee469e8d5c558a4e063, type: 3}
+    SequenceLength: 7
+    Health: 150
+    Damage: 20
+    CharacterPrefab: {fileID: 5956311496711103065, guid: 2732a4ed1e8926a7f8e12833bfcd6422, type: 3}
+  - CharacterName: Mage
+    CharacterSprite: {fileID: 1629455139, guid: 28c7a055bba8dfe4cba535641da4a261, type: 3}
+    SequenceLength: 9
+    Health: 75
+    Damage: 40
+    CharacterPrefab: {fileID: 5956311496711103065, guid: 058c3f0243b0dd14a8970dbab3b600ea, type: 3}
