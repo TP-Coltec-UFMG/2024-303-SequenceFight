@@ -11,7 +11,7 @@ public class AudioController : MonoBehaviour {
     private float SoundEffectsVolume;
 
     void Start() {
-        BackgroundMusic = FindObjectOfType<AudioSource>();
+        BackgroundMusic = GameObject.Find("MenuMusic_audioSource").GetComponent<AudioSource>();
 
         if (!PlayerPrefs.HasKey("BackgroundMusicVolume")) {
             PlayerPrefs.SetFloat("BackgroundMusicVolume", (float)0.5);
