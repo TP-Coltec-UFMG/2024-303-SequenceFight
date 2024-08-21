@@ -15,6 +15,8 @@ public class KeySequenceControllerBlind : MonoBehaviour {
     public CharacterDatabase CharacterDB;
     public Character Player1Character;
 
+    public string Label;
+
     void Start() {
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
@@ -61,9 +63,23 @@ public class KeySequenceControllerBlind : MonoBehaviour {
                 Debug.Log("Sequência incorreta!");
                 Manager.Player2Attack();
 
-                Player1Sequence.Clear();
-                CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-                Manager.UpdateSequence(CurrentSequence);
+                if (Manager.IsPlayerAlive()) {
+                    Player1Sequence.Clear();
+                    CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
+                    Manager.UpdateSequence(CurrentSequence);
+
+                    Label = "Sequência atual eh.. ";
+
+                    foreach (KeyCode key in CurrentSequence) {
+                        Label += key.ToString() + Manager.GetRate();
+                    }
+
+                    UAP_AccessibilityManager.Say(Label, true, true);
+                }
+
+                if (!Manager.IsPlayerAlive()) {
+                    Player1Sequence.Clear();
+                }
             }
         }
 
@@ -71,6 +87,14 @@ public class KeySequenceControllerBlind : MonoBehaviour {
             Player1Sequence.Clear();
             CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
             Manager.UpdateSequence(CurrentSequence);
+
+            Label = "Sequência atual eh.. ";
+
+            foreach (KeyCode key in CurrentSequence) {
+                Label += key.ToString() + Manager.GetRate();
+            }
+
+            UAP_AccessibilityManager.Say(Label, true, true);
         }
     }
 

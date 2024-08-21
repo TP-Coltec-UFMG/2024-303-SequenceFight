@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1799759127322211942}
   - component: {fileID: 4047132008739597742}
   m_Layer: 0
-  m_Name: Human
+  m_Name: Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 3145592029851764490}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 78986d0722fc3394ebff3b419a9f5b70, type: 2}
+  m_Controller: {fileID: 9100000, guid: 572f8c81ea71970dc889485d89acc16d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -40,10 +40,8 @@ public class UIControllerBlind : MonoBehaviour {
         CurrentSequence.text = SequenceString;
     }
 
-    public void RestartGame() {
-        GameUI.SetActive(true);
-        RestartGameUI.SetActive(false);
-        NewRecordUI.SetActive(false);
+    public string GetSequence() {
+        return CurrentSequence.text;
     }
 
     public void ActivateRestartGameUI(int StreakInt, int RecordInt) {
