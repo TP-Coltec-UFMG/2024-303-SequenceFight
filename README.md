@@ -68,3 +68,12 @@ O jogo possui 4 ferramentas de acessibilidade, são elas: sistema de remapeament
 ![Achromatopsia_inGame](https://github.com/user-attachments/assets/3eb386eb-d14a-475c-9c97-1513f3295f75)
 
 <h2 align="center">👊 E aí??? Pronto pra jogar!? 👊</h2>
+
+Feito por:
+<ul>
+    <li>Ana Lívia Menezes</li>
+    <li>Davi Sena Nunes</li>
+    <li>Fred de Carvalho</li>
+    <li>João Vítor Almendra</li>
+    <li>Marco Túlio Sandes</li>
+</ul>
