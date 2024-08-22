@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.IO;
 
 public class KeySequenceControllerInfinite : MonoBehaviour {
     [SerializeField] private KeySequenceGenerator SequenceGenerator;
@@ -8,12 +7,12 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
     public List<KeyCode> Player1Sequence = new List<KeyCode>();
     public KeyCode[] CurrentSequence;
     public KeyCode[] KeyCodesP1 = new KeyCode[4];
-    public KeyCode[] KeyCodesP2 = new KeyCode[4];
     private int SequenceMatch;
-
     public int SelectedCharacterP1;
     public CharacterDatabase CharacterDB;
     public Character Player1Character;
+    private float TimeLeft;
+    private float[] TimeLimits = new float[] { 15f, 14f, 13f, 12f, 11f, 10f, 9f, 8f, 7f, 6f, 5f };
 
     void Start() {
         LoadCharacter();
@@ -21,8 +20,11 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
         CurrentSequence = new KeyCode[Player1Character.SequenceLength];
 
         LoadKeyCodes();
+
         CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
         Manager.UpdateSequence(CurrentSequence);
+
+        ResetTimeLimit();
     }
 
     void Update() {
@@ -35,10 +37,24 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
                 }
             }
         }
+
+        TimeLeft -= Time.deltaTime;
+        Manager.UIManager.UpdateTimer(TimeLeft);
+
+        if (TimeLeft <= 0) {
+            Manager.Player2Attack();
+
+            ResetTimeLimit();
+
+            Player1Sequence.Clear();
+
+            CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
+            Manager.UpdateSequence(CurrentSequence);
+        }
     }
 
     void CheckSequence() {
-        SequenceMatch = 1; 
+        SequenceMatch = 1;
 
         if (Player1Sequence.Count <= CurrentSequence.Length) {
             for (int i = 0; i < Player1Sequence.Count; i++) {
@@ -53,15 +69,17 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
             }
 
             if (SequenceMatch == Player1Character.SequenceLength + 1) {
-                Debug.Log("Sequência correta!");
                 Manager.Player1Attack();
+
+                ResetTimeLimit();
             }
             
             if (SequenceMatch == 0) {
-                Debug.Log("Sequência incorreta!");
                 Manager.Player2Attack();
+                ResetTimeLimit();
 
                 Player1Sequence.Clear();
+
                 CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
                 Manager.UpdateSequence(CurrentSequence);
             }
@@ -69,18 +87,20 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
 
         if (Player1Sequence.Count == CurrentSequence.Length) {
             Player1Sequence.Clear();
+
             CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
             Manager.UpdateSequence(CurrentSequence);
         }
     }
 
+    void ResetTimeLimit() {
+        int index = Mathf.Min(Manager.EnemyCount, TimeLimits.Length - 1);
+        TimeLeft = TimeLimits[index];
+    }
+
     public void LoadKeyCodes() {
         for (int i = 0; i < KeyCodesP1.Length; i++) {
             KeyCodesP1[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP1_" + i, (int)KeyCode.None);
-        }
-
-        for (int i = 0; i < KeyCodesP2.Length; i++) {
-            KeyCodesP2[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP2_" + i, (int)KeyCode.None);
         }
     }
 

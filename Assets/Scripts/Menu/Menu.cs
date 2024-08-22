@@ -17,6 +17,13 @@ public class Menu : MonoBehaviour {
     [SerializeField] private GameObject KeysButton;
     [SerializeField] private GameObject AcessibilityButton;
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(MainMenuButton);
+        }
+    }
+
     public void OpenModes() {
         MainMenu.SetActive(false);
         Modes.SetActive(true);

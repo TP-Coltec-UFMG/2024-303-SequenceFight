@@ -9,10 +9,7 @@ public class GameManagerInfinite : MonoBehaviour {
     public float Player2Health;
     public int RecordInt = 0;
     public int StreakInt = 0;
-
-
     public bool RestartGameBool = false;
-
     public int SelectedCharacterP1;
     public Character Player1Character;
     public Character Player2Character;
@@ -21,9 +18,9 @@ public class GameManagerInfinite : MonoBehaviour {
     public Animator Player1Animator;
     public Animator Player2Animator;
     [SerializeField] public CharacterDatabase CharacterDB;
-
     public UIControllerInfinite UIManager;
     [SerializeField] public GameAudioController AudioController;
+    public int EnemyCount = 0;
 
     void Start() {
         LoadCharacter();
@@ -62,11 +59,10 @@ public class GameManagerInfinite : MonoBehaviour {
             UIManager.ShowPlayerHit();
 
             if (Player2Health <= 0) {
-                Debug.Log("Player win");
-                Player1Health += 20;
                 SelectEnemy();
 
                 StreakInt++;
+                EnemyCount++;
 
                 RecordInt = UIManager.UpdateRecord(StreakInt, RecordInt);
             }
@@ -89,7 +85,6 @@ public class GameManagerInfinite : MonoBehaviour {
             if (Player1Health <= 0) {
                 Player1Animator.Play("Die");
 
-                Debug.Log("Enemy win");
                 ActivateRestartGameUI();
             }
 
@@ -133,6 +128,7 @@ public class GameManagerInfinite : MonoBehaviour {
         UIManager.ActivateRestartGameUI(StreakInt, RecordInt);
 
         StreakInt = 0;
+        EnemyCount = 0;
     }
    
     public void SelectEnemy() {

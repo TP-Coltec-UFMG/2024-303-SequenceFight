@@ -8,14 +8,10 @@ public class KeySequenceControllerBlind : MonoBehaviour {
     public List<KeyCode> Player1Sequence = new List<KeyCode>();
     public KeyCode[] CurrentSequence;
     public KeyCode[] KeyCodesP1 = new KeyCode[4];
-    public KeyCode[] KeyCodesP2 = new KeyCode[4];
     private int SequenceMatch;
-
     public int SelectedCharacterP1;
     public CharacterDatabase CharacterDB;
     public Character Player1Character;
-
-    public string Label;
 
     void Start() {
         LoadCharacter();
@@ -24,7 +20,14 @@ public class KeySequenceControllerBlind : MonoBehaviour {
 
         LoadKeyCodes();
         CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-        Manager.UpdateSequence(CurrentSequence);
+
+        string Str = "";
+
+        foreach (KeyCode key in CurrentSequence) {
+            Str += key.ToString() + " ";
+        }
+
+        Manager.CurrentSequence = Str;
     }
 
     void Update() {
@@ -55,26 +58,28 @@ public class KeySequenceControllerBlind : MonoBehaviour {
             }
 
             if (SequenceMatch == Player1Character.SequenceLength + 1) {
-                Debug.Log("Sequência correta!");
                 Manager.Player1Attack();
             }
             
             if (SequenceMatch == 0) {
-                Debug.Log("Sequência incorreta!");
                 Manager.Player2Attack();
 
                 if (Manager.IsPlayerAlive()) {
                     Player1Sequence.Clear();
-                    CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-                    Manager.UpdateSequence(CurrentSequence);
 
-                    Label = "Sequência atual eh.. ";
+                    CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
+
+                    Manager.Speak("Secoencia atual . ");
+
+                    string Str = "";
 
                     foreach (KeyCode key in CurrentSequence) {
-                        Label += key.ToString() + Manager.GetRate();
+                        Str += key.ToString() + " ";
                     }
 
-                    UAP_AccessibilityManager.Say(Label, true, true);
+                    Manager.CurrentSequence = Str;
+
+                    Manager.Speak(Str.Replace(" ", PlayerPrefs.GetString("Rate")));
                 }
 
                 if (!Manager.IsPlayerAlive()) {
@@ -85,26 +90,26 @@ public class KeySequenceControllerBlind : MonoBehaviour {
 
         if (Player1Sequence.Count == CurrentSequence.Length) {
             Player1Sequence.Clear();
-            CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-            Manager.UpdateSequence(CurrentSequence);
 
-            Label = "Sequência atual eh.. ";
+            CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
+
+            Manager.Speak("Secoencia atual . ");
+
+            string Str = "";
 
             foreach (KeyCode key in CurrentSequence) {
-                Label += key.ToString() + Manager.GetRate();
+                Str += key.ToString() + " ";
             }
 
-            UAP_AccessibilityManager.Say(Label, true, true);
+            Manager.CurrentSequence = Str;
+
+            Manager.Speak(Str.Replace(" ", PlayerPrefs.GetString("Rate")));
         }
     }
 
     public void LoadKeyCodes() {
         for (int i = 0; i < KeyCodesP1.Length; i++) {
             KeyCodesP1[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP1_" + i, (int)KeyCode.None);
-        }
-
-        for (int i = 0; i < KeyCodesP2.Length; i++) {
-            KeyCodesP2[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP2_" + i, (int)KeyCode.None);
         }
     }
 

@@ -9,9 +9,7 @@ public class GameManagerBlind : MonoBehaviour {
     public float Player2Health;
     public int RecordInt = 0;
     public int StreakInt = 0;
-
     public bool RestartGameBool = false;
-
     public int SelectedCharacterP1;
     public Character Player1Character;
     public Character Player2Character;
@@ -20,12 +18,8 @@ public class GameManagerBlind : MonoBehaviour {
     public Animator Player1Animator;
     public Animator Player2Animator;
     [SerializeField] public CharacterDatabase CharacterDB;
-
-    public UIControllerBlind UIManager;
     [SerializeField] public GameAudioController AudioController;
-
-    public string Label;
-    public string Rate = "..";
+    public string CurrentSequence;
 
     void Start() {
         if (!PlayerPrefs.HasKey("RecordBlind")) {
@@ -36,23 +30,13 @@ public class GameManagerBlind : MonoBehaviour {
             RecordInt = PlayerPrefs.GetInt("RecordBlind");
         }
 
-        if (!PlayerPrefs.HasKey("Rate")) {
-            PlayerPrefs.SetString("Rate", Rate);
-        }
+        PlayerPrefs.SetString("Rate", "..");
 
-        else {
-            Rate = PlayerPrefs.GetString("Rate");
-        }
-
-        UIManager.UpdateRecord(StreakInt, RecordInt);
-
-        Label = "Bem vindo ao jogo. O Recorde atual eh, " + RecordInt + " .. aperte 1 para leitura lenta, 2 para leitura rapida, e 3 para repetir ";
-        UAP_AccessibilityManager.Say(Label, true, true);
-        Label = "";
+        Speak("Bem vindo ao modo blayindi. O Recorde atual eh, " + RecordInt + " .. aperte 1 para ditado lento, 2 para ditado rapido, 3 para repetir e 4 para os detalhes.");
 
         SelectEnemy();
 
-        UAP_AccessibilityManager.Say("Sequência atual eh .. " + UIManager.GetSequence().Replace(" ", Rate), true, true);
+        Speak("Secoencia atual . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
 
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
@@ -60,8 +44,6 @@ public class GameManagerBlind : MonoBehaviour {
         InstantiatePlayer();
 
         Player1Health = Player1Character.Health;
-
-        UIManager.UpdateHealth(Player1Health, Player2Health);
 
         AudioController.PlayCombatMusic();
     }
@@ -74,24 +56,27 @@ public class GameManagerBlind : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            Rate = "..";
-            PlayerPrefs.SetString("Rate", Rate);
+            PlayerPrefs.SetString("Rate", "..");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            Rate = ".";
-            PlayerPrefs.SetString("Rate", Rate);
+            PlayerPrefs.SetString("Rate", ",,,");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            UAP_AccessibilityManager.StopSpeaking();
-            UAP_AccessibilityManager.Say("Sequência atual eh .. " + UIManager.GetSequence().Replace(" ", Rate), true, true);
+            StopSpeaking();
+            Speak("Secoencia atual . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            StopSpeaking();
+            Speak("Vida atual " + Player1Health + ". Voceh tem " + Player1Character.Damage + " de poder de ataque. Inimigo estah com " + Player2Health + " de vida. E possui " + Player2Character.Damage + " de poder de ataque.");
         }
     }
 
     public void Player1Attack() {
         if (!RestartGameBool) {
-            UAP_AccessibilityManager.StopSpeaking();
+            StopSpeaking();
 
             Player2Health -= Player1Character.Damage;
 
@@ -100,30 +85,27 @@ public class GameManagerBlind : MonoBehaviour {
 
             AudioController.PlayHitSoundEffect();
 
-            Label = "Sequência Correta";
-            UAP_AccessibilityManager.Say(Label, true, true);
-
-            UIManager.ShowPlayerHit();
+            Speak("Secoencia Correta");
 
             if (Player2Health <= 0) {
-                Debug.Log("Player win");
-                Player1Health += 20;
-
-                Label = "Inimigo derrotado. ";
+                Speak("Inimigo derrotado.");
                 SelectEnemy();
 
                 StreakInt++;
 
-                RecordInt = UIManager.UpdateRecord(StreakInt, RecordInt);
-            }
+                if (StreakInt >= RecordInt) {
+                    RecordInt = StreakInt;
+                    PlayerPrefs.SetInt("RecordBlind", StreakInt);
+                }
 
-            UIManager.UpdateHealth(Player1Health, Player2Health);
+                RecordInt = StreakInt;
+            }
         }
     }
 
     public void Player2Attack() {
         if (!RestartGameBool) {
-            UAP_AccessibilityManager.StopSpeaking();
+            StopSpeaking();
 
             Player1Health -= Player2Character.Damage;
 
@@ -132,66 +114,43 @@ public class GameManagerBlind : MonoBehaviour {
 
             AudioController.PlayHitSoundEffect();
 
-            Label = "Sequência incorreta";
-            UAP_AccessibilityManager.Say(Label, true, true);
-
-            UIManager.ShowEnemyHit();
+            Speak("Secoencia incorreta");
 
             if (Player1Health <= 0) {
                 Player1Animator.Play("Die");
 
-                Label = "Voceh morreu. Aperte espaso para recomesar, Esc para sair";
+                Speak("Voceh morreu. Aperte espaso para recomessar, Esc para sair.");
                 
-                if (StreakInt > RecordInt) {
-                    Label += " Novo Recorde " + StreakInt;
+                if (StreakInt == RecordInt) {
+                    Speak("Novo Recorde " + StreakInt);
                 }
                 
-                UAP_AccessibilityManager.Say(Label, true, true);
-
-                Debug.Log("Enemy win");
                 ActivateRestartGameUI();
             }
-
-            UIManager.UpdateHealth(Player1Health, Player2Health);
         }
-    }
-
-    public void UpdateSequence(KeyCode[] Sequence) {
-        string SequenceString = "";
-
-        foreach (KeyCode key in Sequence) {
-            SequenceString += key.ToString() + " ";
-        }
-
-        UIManager.UpdateSequence(SequenceString);
     }
 
     public void RestartGame() {
         AudioController.PlayCombatMusic();
 
-        Label = "Recomesando o jogo";
-        UAP_AccessibilityManager.Say(Label, true, true);
-        Label = "";
+        RestartGameBool = !RestartGameBool;
+
+        StopSpeaking();
+        Speak("Recomessando o jogo");
 
         SelectEnemy();
 
-        UAP_AccessibilityManager.Say("Sequência atual eh .. " + UIManager.GetSequence().Replace(" ", Rate), true, true);
+        Speak("Secoencia atual . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
 
         Player1Health = Player1Character.Health;
 
-        UIManager.UpdateHealth(Player1Health, Player2Health);
-
         Player1Animator.Play("Idle");
-
-        UIManager.UpdateRecord(StreakInt, RecordInt);
     }
 
     public void ActivateRestartGameUI() {
         AudioController.PlayYouDiedMusic();
 
         RestartGameBool = !RestartGameBool;
-
-        UIManager.ActivateRestartGameUI(StreakInt, RecordInt);
 
         StreakInt = 0;
     }
@@ -205,8 +164,7 @@ public class GameManagerBlind : MonoBehaviour {
         
         InstantiateEnemy();
 
-        Label += "Prosimo inimigo eh o " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida.";
-        UAP_AccessibilityManager.Say(Label, true, true);
+        Speak("Inimigo Atual .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida.");
 
         Player2Health = Player2Character.Health;
     }
@@ -221,8 +179,12 @@ public class GameManagerBlind : MonoBehaviour {
         }
     }
 
-    public string GetRate() {
-        return Rate;
+    public void Speak(string Label) {
+        UAP_AccessibilityManager.Say(Label, true, true);
+    }
+
+    public void StopSpeaking() {
+        UAP_AccessibilityManager.StopSpeaking();
     }
 
     public static int GetRandomIndex(int Min, int Max) {

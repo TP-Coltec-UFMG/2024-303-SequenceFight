@@ -10,11 +10,10 @@ public class UIControllerInfinite : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI StreakUI;
     [SerializeField] private TextMeshProUGUI CurrentSequence;
     [SerializeField] private TextMeshProUGUI NewRecordText;
-
+    [SerializeField] private TextMeshProUGUI TimerUI; 
     [SerializeField] private GameObject PlayerHit;
     [SerializeField] private GameObject EnemyHit;
     [SerializeField] private float HitDuration;
-
     [SerializeField] private GameObject GameUI;
     [SerializeField] private GameObject NewRecordUI;
     [SerializeField] private GameObject RestartGameUI;
@@ -38,6 +37,10 @@ public class UIControllerInfinite : MonoBehaviour {
 
     public void UpdateSequence(string SequenceString) {
         CurrentSequence.text = SequenceString;
+    }
+
+    public void UpdateTimer(float TimeLeft) {
+        TimerUI.text = TimeLeft.ToString("F1") + "s";
     }
 
     public void RestartGame() {
