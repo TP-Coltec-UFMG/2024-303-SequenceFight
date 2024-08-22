@@ -1,39 +1,79 @@
-Sequence Fight é um jogo de turnos em que o jogador precisa acertar uma dada sequência de teclas que aparecerão na tela para que o mesmo cause dano ao adversário, caso contrário o jogador sofrerá dano.
+<h1 align="center">🐉 🧔 🧙 ⚔️ Sequence Fight ⚔️ 🧙 🧔 🐉</h1>
+Sequence Fight é um jogo turn based de luta 1 contra 1 com ferramentas de acessibilidade que permitem que diferentes pessoas possam se divertir enquanto jogam! O jogo é simples e a jogabilidade é baseada em uma sequência de teclas que devem ser pressionadas para que o personagem realize um ataque, caso a sequência seja incorreta, o inimigo realiza um ataque. Cada personagem posui animações, vida e dano de ataque diferentes, mudando o estilo de jogo de cada um deles e perimitindo maior imersão nas batalhas!
 
-1. Menu
-	
- 	O menu consiste de duas páginas principais, uma que engobla os modos de jogo, e outra que lida com as configurações do jogo, além dos banners laterais que são responsáveis por trocar os personagens.
-	![Menu](https://github.com/TP-Coltec-UFMG/2024-303-SequenceFight/assets/112624867/3586b9b4-89a3-4494-b78b-f1e03039313a)
+<h2 align="center">📌 Menu 📌</h2>
 
-	1.1 Modos de Jogo
-		![PlayMenu](https://github.com/TP-Coltec-UFMG/2024-303-SequenceFight/assets/112624867/89be6095-5ff7-4fd8-bcca-ccc52f48e0a6)
-		Os modos de jogo são três
+<h3 align="center">🤌 Menu principal 🤌</h3>
 
-   		- Infinte
+![MainMenu](https://github.com/user-attachments/assets/7bb37252-1ed5-43dc-b153-51354fc36ad2)
 
-   		- Blind
+<h3 align="center">🎮 Menu de modos de jogo 🎮</h3>
 
-   		- 1 vs 1
+![ModesMenu](https://github.com/user-attachments/assets/92920a7a-449e-438a-8816-e9c850a5dd38)
 
-   	O modo de jogo Infite consiste de um desafio infinito em que o jogador deve acertar o máximo de sequências que conseguir até que seja derrotado.
-   
-   	O Blind é um modo de jogo voltado para cegos ou pessoas com baixa visão, o modo tem um retorno sonoro que indica a sequência desejada.
-   
-   	1 vs 1 é um modo jogador contra jogador de turno, em que um jogador ataca enquanto o outro defende.
-   		1.1.1 Infinite
-   			![InfiniteMode](https://github.com/TP-Coltec-UFMG/2024-303-SequenceFight/assets/112624867/1ecfefdb-703c-47e8-9c34-b79a065364ec)
-			No Infinite, ao derrotar um inimigo outro aparece em seu lugar infinitamente, até que você perca.
-			![youdied](https://github.com/TP-Coltec-UFMG/2024-303-SequenceFight/assets/112624867/c11ee560-1e6f-4915-9788-7b5d6721aff0)
-   			Ao morrer, caso o jogador tenha batido o último recorde estabelecido, aparecerá na tela o novo recorde.
+<h3 align="center">⚙️ Menu de configurações ⚙️</h3>
 
-	1.2 Configurações
-		![Settings](https://github.com/TP-Coltec-UFMG/2024-303-SequenceFight/assets/112624867/4807a9e8-1c5b-4495-abb6-bd69f307a870)
-		O menu de configurações possui duas abas, uma para configuração do audio (na página principal) e uma outra página para configuração das teclas a serem utilizadas pelo usuário. Tal abordagem de configuração de teclas leva em consideração a forma como cada jogador se sente mais confortável jogando, além de possibilitar que pessoas com problemas motores possam usufluir de uma jogatina prazerosa utilizando por exemplo um teclado ou um controle adaptado.
-		![Keys](https://github.com/TP-Coltec-UFMG/2024-303-SequenceFight/assets/112624867/152215a6-a860-4054-b1fa-89fae6fd468d)
+![SettingsMenu](https://github.com/user-attachments/assets/ff50898b-9eb7-4c94-aeb8-400a739b8b23)
 
+<h3 align="center">⌨️ Menu de Teclas ⌨️</h3>
 
+![KeysMenu](https://github.com/user-attachments/assets/4ac15642-fd43-4f91-bd3f-29004866ab9b)
 
+<h3 align="center">:accessibility: Menu de acessibilidade :accessibility:</h3>
 
-   
+![AccissibilityMenu](https://github.com/user-attachments/assets/764b8ddc-54fe-4365-bc39-a4acf0fbc56c)
 
-		
+<h2 align="center">💥 Modos de jogo 💥</h2>
+
+<h3 align="center">♾️ Infinite ♾️</h3>
+
+![InfiniteGameMode](https://github.com/user-attachments/assets/a0f691b8-2889-4f2d-97dd-9923330621f7)
+O modo Infinite gera novos inimigos toda vez que você os derrota, lute para bater seu recorde a cada rodada!
+![InfiniteGameModeNewRecord](https://github.com/user-attachments/assets/ba847874-5881-4442-b092-15e7b3e4ca03)
+
+<h3 align="center">💪 1vs1 🦾</h3>
+
+![1vs1GameMode](https://github.com/user-attachments/assets/100105ca-2a5e-45eb-aa5f-d2efc9cf6131)
+O modo 1vs1 é uma batalha em que os seus erros não te comprometem, mas tome cuidado para não perder a luta!
+
+<h3 align="center">👓 Blind 👓</h3>
+
+![BlindGameMode](https://github.com/user-attachments/assets/d197d42b-4f83-4ff9-bfd9-4602aa6d2655)
+O modo Blind não possui interface, apenas comandos sonoros que irão te guiar nos confrontos!
+
+<h2 align="center">:accessibility: Acessibilidade :accessibility:</h2>
+
+O jogo possui 4 ferramentas de acessibilidade, são elas: sistema de remapeamento de teclado, mapeamento de teclado que apenas verifica o pressionamento de teclas atribuídas, filtros de cor para daltônicos, modo de jogo para pesssoas com deficiência visual.
+
+<h3 align="center">🌈 Filtros de cor em jogo 🌈</h3>
+
+<h4 align="center">⚪ Sem filtro ⚪</h4>
+
+![NoFilter_inGame](https://github.com/user-attachments/assets/03c841c2-f74e-44cf-bb03-607014878039)
+
+<h4 align="center">🟠 Protanopia 🟠</h4>
+
+![Protanopia_inGame](https://github.com/user-attachments/assets/95922ac5-375c-4ac6-852f-09caf011fcc8)
+
+<h4 align="center">🟢 Deuteranopia 🟢</h4>
+
+![Deuteranopia_inGame](https://github.com/user-attachments/assets/627aca5d-4458-4223-aa0d-d66021f68bc7)
+
+<h4 align="center">🔴 Tritanopia 🔴</h4>
+
+![Tritanopia_inGame](https://github.com/user-attachments/assets/676c44cb-4a6f-42d6-b6fe-2564b6be46ab)
+
+<h4 align="center">⚫ Achromatopsia ⚫</h4>
+
+![Achromatopsia_inGame](https://github.com/user-attachments/assets/3eb386eb-d14a-475c-9c97-1513f3295f75)
+
+<h2 align="center">👊 E aí??? Pronto pra jogar!? 👊</h2>
+
+Feito por:
+<ul>
+    <li>Ana Lívia Menezes</li>
+    <li>Davi Sena Nunes</li>
+    <li>Fred de Carvalho</li>
+    <li>João Vítor Almendra</li>
+    <li>Marco Túlio Sandes</li>
+</ul>
