@@ -5,49 +5,55 @@ using UnityEngine.UI;
 using System.IO;
 
 public class AudioController : MonoBehaviour {
-    [SerializeField] private Slider SliderMusic;
+    [SerializeField] private Slider SliderBackgroundMusic;
     [SerializeField] private Slider SliderSoundEffects;
     [SerializeField] private AudioSource BackgroundMusic;
-    private float SoundEffectsVolume;
+    [SerializeField] private AudioSource SoundEffects;
+
+    private bool SoundEffectsFeedback = false;
 
     void Start() {
-        BackgroundMusic = GameObject.Find("MenuMusic_audioSource").GetComponent<AudioSource>();
-
         if (!PlayerPrefs.HasKey("BackgroundMusicVolume")) {
-            PlayerPrefs.SetFloat("BackgroundMusicVolume", (float)0);
+            PlayerPrefs.SetFloat("BackgroundMusicVolume", 0f);
         }
 
         if (!PlayerPrefs.HasKey("SoundEffectsVolume")) {
-            PlayerPrefs.SetFloat("SoundEffectsVolume", (float)0);
+            PlayerPrefs.SetFloat("SoundEffectsVolume", 0f);
         }
 
         LoadAudioSettings();
+
+        SoundEffectsFeedback = true;
     }
 
-    public void MusicController(float value) {
-        BackgroundMusic.volume = value;
-        SliderMusic.value = value;
+    public void BackgroundMusicController(float Value) {
+        BackgroundMusic.volume = Value;
+        SliderBackgroundMusic.value = Value;
 
         SaveAudioSettings();
     }
 
-    public void SoundEffectsController(float value) {
-        SoundEffectsVolume = value;
-        SliderSoundEffects.value = value;
+    public void SoundEffectsController(float Value) {
+        SoundEffects.volume = Value;
+        SliderSoundEffects.value = Value;
+
+        if (SoundEffectsFeedback) {
+            SoundEffects.Play();
+        }
 
         SaveAudioSettings();
     }
 
     public void SaveAudioSettings() {
         PlayerPrefs.SetFloat("BackgroundMusicVolume", BackgroundMusic.volume);
-        PlayerPrefs.SetFloat("SoundEffectsVolume", SoundEffectsVolume);
+        PlayerPrefs.SetFloat("SoundEffectsVolume", SoundEffects.volume);
     }
 
     public void LoadAudioSettings() {
         BackgroundMusic.volume = PlayerPrefs.GetFloat("BackgroundMusicVolume");
-        SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume");
-
-        SliderMusic.value = BackgroundMusic.volume;
-        SliderSoundEffects.value = SoundEffectsVolume;
+        SoundEffects.volume = PlayerPrefs.GetFloat("SoundEffectsVolume");
+        
+        SliderBackgroundMusic.value = BackgroundMusic.volume;
+        SliderSoundEffects.value = SoundEffects.volume; 
     }
 }

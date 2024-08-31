@@ -44,8 +44,6 @@ public class GameManagerBlind : MonoBehaviour {
         InstantiatePlayer();
 
         Player1Health = Player1Character.Health;
-
-        AudioController.PlayCombatMusic();
     }
 
     void Update() {
@@ -133,8 +131,6 @@ public class GameManagerBlind : MonoBehaviour {
     }
 
     public void RestartGame() {
-        AudioController.PlayCombatMusic();
-
         RestartGameBool = !RestartGameBool;
 
         StopSpeaking();
@@ -150,8 +146,6 @@ public class GameManagerBlind : MonoBehaviour {
     }
 
     public void ActivateRestartGameUI() {
-        AudioController.PlayYouDiedMusic();
-
         RestartGameBool = !RestartGameBool;
 
         StreakInt = 0;

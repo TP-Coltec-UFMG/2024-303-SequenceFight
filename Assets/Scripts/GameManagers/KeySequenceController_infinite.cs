@@ -12,7 +12,7 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
     public CharacterDatabase CharacterDB;
     public Character Player1Character;
     private float TimeLeft;
-    private float[] TimeLimits = new float[] { 15f, 14f, 13f, 12f, 11f, 10f, 9f, 8f, 7f, 6f, 5f };
+    private float[] TimeLimits = new float[] { 10f, 9.5f, 9f, 8.5f, 8f, 7.5f, 7f, 6.5f, 6f, 5.5f, 5f, 4.8f, 4.6f, 4.4f, 4.2f, 4f, 3.8f, 3.6f, 3.4f, 3.2f, 3f, 2.9f, 2.8f, 2.7f, 2.6f, 2.5f };
 
     void Start() {
         LoadCharacter();
