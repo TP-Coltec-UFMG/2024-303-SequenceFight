@@ -18,6 +18,25 @@ public class UIController1vs1 : MonoBehaviour {
     [SerializeField] private GameObject P1win;
     [SerializeField] private GameObject P2win;
 
+    [SerializeField] private GameObject ActiveAbility;
+    [SerializeField] private GameObject Barrier;
+    [SerializeField] private GameObject SwapHealth;
+    [SerializeField] private GameObject DoubleDamage;
+    [SerializeField] private GameObject Vampirism;
+
+    [SerializeField] private GameObject ActiveAbilityP1;
+    [SerializeField] private GameObject BarrierP1;
+    [SerializeField] private GameObject SwapHealthP1;
+    [SerializeField] private GameObject DoubleDamageP1;
+    [SerializeField] private GameObject VampirismP1;
+
+    [SerializeField] private GameObject ActiveAbilityP2;
+    [SerializeField] private GameObject BarrierP2;
+    [SerializeField] private GameObject SwapHealthP2;
+    [SerializeField] private GameObject DoubleDamageP2;
+    [SerializeField] private GameObject VampirismP2;
+    
+
     public void UpdateHealth(float Player1Health, float Player2Health) {
         Player1HealthUI.text = "" + Player1Health + "";
         Player2HealthUI.text = "" + Player2Health + "";
@@ -46,6 +65,108 @@ public class UIController1vs1 : MonoBehaviour {
 
     public void ShowPlayerHit() {
         StartCoroutine(HitIndicator(PlayerHit));
+    }
+
+    public void ActivateAbilityUI(string Ability) {
+        DeactivateAbilityUI();
+
+        ActiveAbility.SetActive(true);
+
+        if (Ability == "Barrier") {
+            Barrier.SetActive(true);
+        }
+
+        if (Ability == "SwapHealth") {
+            SwapHealth.SetActive(true);
+        }
+
+        if (Ability == "DoubleDamage") {
+            DoubleDamage.SetActive(true);
+        }
+
+        if (Ability == "Vampirism") {
+            Vampirism.SetActive(true);
+        }
+    }
+
+    public void DeactivateAbilityUI() {
+        ActiveAbility.SetActive(false);
+
+        Barrier.SetActive(false);
+
+        SwapHealth.SetActive(false);   
+
+        DoubleDamage.SetActive(false); 
+
+        Vampirism.SetActive(false);
+    }
+
+    public void ActivateP1AbilityUI(string Ability) {
+        DeactivateP1AbilityUI();
+        
+        ActiveAbilityP1.SetActive(true);
+
+        if (Ability == "Barrier") {
+            BarrierP1.SetActive(true);
+        }
+
+        if (Ability == "SwapHealth") {
+            SwapHealthP1.SetActive(true);
+        }
+
+        if (Ability == "DoubleDamage") {
+            DoubleDamageP1.SetActive(true);
+        }
+
+        if (Ability == "Vampirism") {
+            VampirismP1.SetActive(true);
+        }
+    }
+
+    public void DeactivateP1AbilityUI() {
+        ActiveAbilityP1.SetActive(false);
+
+        BarrierP1.SetActive(false);
+
+        SwapHealthP1.SetActive(false);   
+
+        DoubleDamageP1.SetActive(false); 
+
+        VampirismP1.SetActive(false);
+    }
+
+    public void ActivateP2AbilityUI(string Ability) {
+        DeactivateP2AbilityUI();
+
+        ActiveAbilityP2.SetActive(true);
+
+        if (Ability == "Barrier") {
+            BarrierP2.SetActive(true);
+        }
+
+        if (Ability == "SwapHealth") {
+            SwapHealthP2.SetActive(true);
+        }
+
+        if (Ability == "DoubleDamage") {
+            DoubleDamageP2.SetActive(true);
+        }
+
+        if (Ability == "Vampirism") {
+            VampirismP2.SetActive(true);
+        }
+    }
+
+    public void DeactivateP2AbilityUI() {
+        ActiveAbilityP2.SetActive(false);
+
+        BarrierP2.SetActive(false);
+
+        SwapHealthP2.SetActive(false);   
+
+        DoubleDamageP2.SetActive(false); 
+
+        VampirismP2.SetActive(false);
     }
 
     IEnumerator HitIndicator(GameObject Object) {

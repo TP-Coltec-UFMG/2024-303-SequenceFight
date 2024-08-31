@@ -5,11 +5,14 @@ using TMPro;
 using System.IO;
 
 public class KeyRebindSystem : MonoBehaviour {
-    [SerializeField] private TextMeshProUGUI[] TextP1 = new TextMeshProUGUI[4];
-    [SerializeField] private TextMeshProUGUI[] TextP2 = new TextMeshProUGUI[4];
+    [SerializeField] private TextMeshProUGUI[] TextP1 = new TextMeshProUGUI[5];
+    [SerializeField] private TextMeshProUGUI[] TextP2 = new TextMeshProUGUI[5];
 
     private KeyCode[] KeyCodesP1 = new KeyCode[4];
     private KeyCode[] KeyCodesP2 = new KeyCode[4];
+
+    public KeyCode KeyCodeAbilityP1;
+    public KeyCode KeyCodeAbilityP2;
 
     private void Start() {
         if (!PlayerPrefs.HasKey("KeyCodeP1_0") || !PlayerPrefs.HasKey("KeyCodeP2_0")) {
@@ -17,11 +20,13 @@ public class KeyRebindSystem : MonoBehaviour {
             PlayerPrefs.SetInt("KeyCodeP1_1", (int)KeyCode.A);
             PlayerPrefs.SetInt("KeyCodeP1_2", (int)KeyCode.S);
             PlayerPrefs.SetInt("KeyCodeP1_3", (int)KeyCode.D);
+            PlayerPrefs.SetInt("KeyCodeP1_Ability", (int)KeyCode.Q);
 
             PlayerPrefs.SetInt("KeyCodeP2_0", (int)KeyCode.L);
             PlayerPrefs.SetInt("KeyCodeP2_1", (int)KeyCode.K);
             PlayerPrefs.SetInt("KeyCodeP2_2", (int)KeyCode.I);
             PlayerPrefs.SetInt("KeyCodeP2_3", (int)KeyCode.J);
+            PlayerPrefs.SetInt("KeyCodeP2_Ability", (int)KeyCode.U);
         }
 
         LoadKeyCodes();
@@ -33,6 +38,9 @@ public class KeyRebindSystem : MonoBehaviour {
             TextP1[i].text = KeyCodesP1[i].ToString();
             TextP2[i].text = KeyCodesP2[i].ToString();
         }
+
+        TextP1[4].text = KeyCodeAbilityP1.ToString();
+        TextP2[4].text = KeyCodeAbilityP2.ToString();
     }
 
     public void SaveKeyCodes() {
@@ -43,6 +51,9 @@ public class KeyRebindSystem : MonoBehaviour {
         for (int i = 0; i < KeyCodesP2.Length; i++) {
             PlayerPrefs.SetInt("KeyCodeP2_" + i, (int)KeyCodesP2[i]);
         }
+
+        PlayerPrefs.SetInt("KeyCodeP1_Ability", (int)KeyCodeAbilityP1);
+        PlayerPrefs.SetInt("KeyCodeP2_Ability", (int)KeyCodeAbilityP2);
     }
 
     public void LoadKeyCodes() {
@@ -53,12 +64,15 @@ public class KeyRebindSystem : MonoBehaviour {
         for (int i = 0; i < KeyCodesP2.Length; i++) {
             KeyCodesP2[i] = (KeyCode)PlayerPrefs.GetInt("KeyCodeP2_" + i, (int)KeyCode.None);
         }
+
+        KeyCodeAbilityP1 = (KeyCode)PlayerPrefs.GetInt("KeyCodeP1_Ability", (int)KeyCode.None);
+        KeyCodeAbilityP2 = (KeyCode)PlayerPrefs.GetInt("KeyCodeP2_Ability", (int)KeyCode.None);
     }
 
     private System.Collections.IEnumerator CaptureKeyPress(int index) {
-        GameObject previousSelectedObject = EventSystem.current.currentSelectedGameObject;
+        GameObject PreviousSelectedObject = EventSystem.current.currentSelectedGameObject;
 
-        Image ButtonImage = previousSelectedObject.GetComponent<Image>();
+        Image ButtonImage = PreviousSelectedObject.GetComponent<Image>();
         
         Color NewButtomColor = RGBToColor(130, 130, 130);
         Color OldButtomColor = ButtonImage.color;
@@ -73,24 +87,31 @@ public class KeyRebindSystem : MonoBehaviour {
             yield return null;
         }
 
-        foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode))) {
-            if (Input.GetKeyDown(key)) {
-                if (VerifyKey(key)) {
-                    Debug.LogError("A tecla " + key + " já foi atribuída.");
+        foreach (KeyCode Key in System.Enum.GetValues(typeof(KeyCode))) {
+            if (Input.GetKeyDown(Key)) {
+                if (VerifyKey(Key)) {
+                    Debug.LogError("A tecla " + Key + " já foi atribuída.");
                 } 
                 
                 else {
                     if (index < 4) {
-                        KeyCodesP1[index] = key;
-                        TextP1[index].text = KeyCodesP1[index].ToString();
+                        KeyCodesP1[index] = Key;
                     } 
                     
-                    else {
-                        KeyCodesP2[index - 4] = key;
-                        TextP2[index - 4].text = KeyCodesP2[index - 4].ToString();
+                    if (index >= 4 && index < 8) {
+                        KeyCodesP2[index - 4] = Key;
+                    }
+
+                    if (index == 8) {
+                        KeyCodeAbilityP1 = Key;
+                    }
+
+                    if (index == 9) {
+                        KeyCodeAbilityP2 = Key;
                     }
 
                     SaveKeyCodes();
+                    UpdateTextValues();
                 }
 
                 break;
@@ -98,20 +119,24 @@ public class KeyRebindSystem : MonoBehaviour {
         }
 
         ButtonImage.color = OldButtomColor;
-        EventSystem.current.SetSelectedGameObject(previousSelectedObject);
+        EventSystem.current.SetSelectedGameObject(PreviousSelectedObject);
     }
 
-    private bool VerifyKey(KeyCode key) {
-        foreach (KeyCode k in KeyCodesP1) {
-            if (k == key) {
+    private bool VerifyKey(KeyCode Key) {
+        foreach (KeyCode K in KeyCodesP1) {
+            if (K == Key) {
                 return true;
             }
         }
 
-        foreach (KeyCode k in KeyCodesP2) {
-            if (k == key) {
+        foreach (KeyCode K in KeyCodesP2) {
+            if (K == Key) {
                 return true;
             }
+        }
+
+        if (Key == KeyCodeAbilityP1 || Key == KeyCodeAbilityP2) {
+            return true;
         }
 
         return false;
@@ -147,6 +172,14 @@ public class KeyRebindSystem : MonoBehaviour {
 
     public void Key4P2() {
         StartCoroutine(CaptureKeyPress(7));
+    }
+
+    public void KeyAbilityP1() {
+        StartCoroutine(CaptureKeyPress(8));
+    }
+
+    public void KeyAbilityP2() {
+        StartCoroutine(CaptureKeyPress(9));
     }
 
     Color RGBToColor(int r, int g, int b, int a = 255) {

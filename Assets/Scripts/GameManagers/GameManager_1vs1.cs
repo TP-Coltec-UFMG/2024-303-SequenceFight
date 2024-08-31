@@ -25,6 +25,16 @@ public class GameManager1vs1 : MonoBehaviour {
     public bool P2winBool = false;
     [SerializeField] private GameAudioController AudioController;
 
+    public string ActiveAbilityP1;
+    public string ActiveAbilityP2;
+
+    public bool Player1Coletected = false;
+    public bool Player2Coletected = false;
+
+    private float abilityCooldown = 3f; 
+    private float abilityTimer;
+    public string RandomAbility;
+
     void Start() {
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1, SelectedCharacterP2);
@@ -38,11 +48,119 @@ public class GameManager1vs1 : MonoBehaviour {
         UIManager.UpdateHealth(Player1Health, Player2Health);
 
         AudioController.PlayCombatMusic();
+
+        abilityTimer = abilityCooldown;
+    }
+
+    void Update() {
+        if (!RestartGameBool) {
+            abilityTimer -= Time.deltaTime;
+
+            if (abilityTimer <= 0) {
+                GenerateRandomAbility();
+                abilityTimer = abilityCooldown;
+            }
+
+            if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("KeyCodeP1_Ability", (int)KeyCode.None)) && !Player2Coletected && !Player1Coletected) {
+                CollectAbility("Player1");
+            }
+
+            if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("KeyCodeP2_Ability", (int)KeyCode.None))  && !Player1Coletected && !Player2Coletected) {
+                CollectAbility("Player2");
+            }
+        }
+    }
+            
+    private void GenerateRandomAbility() {
+        string[] Abilities = { "Barrier", "Vampirism", "DoubleDamage", "SwapHealth" };
+
+        RandomAbility = Abilities[UnityEngine.Random.Range(0, Abilities.Length)];
+
+        Player1Coletected = Player2Coletected = false;
+
+        UIManager.ActivateAbilityUI(RandomAbility);
+    }
+
+    private void CollectAbility(string player) {
+        UIManager.DeactivateAbilityUI();
+
+        if (player == "Player1") {
+            ActiveAbilityP1 = RandomAbility;
+
+            Player1Coletected = !Player1Coletected;
+
+            UIManager.ActivateP1AbilityUI(RandomAbility);
+        } 
+        
+        else if (player == "Player2") {
+            ActiveAbilityP2 = RandomAbility;
+
+            Player2Coletected = !Player2Coletected;
+
+            UIManager.ActivateP2AbilityUI(RandomAbility);
+        }
+
+        RandomAbility = null;
     }
 
     public void Player1Attack() {
         if (!RestartGameBool) {
-            Player2Health -= Player1Character.Damage;
+            if (ActiveAbilityP1 == "DoubleDamage") {
+                if (ActiveAbilityP2 == "Barrier") {
+                    UIManager.DeactivateP2AbilityUI();
+                    ActiveAbilityP2 = null;
+                }
+
+                else {
+                    Player2Health -= Player1Character.Damage * 2;
+                }
+
+                UIManager.DeactivateP1AbilityUI();
+                ActiveAbilityP1 = null;
+            } 
+
+            else if (ActiveAbilityP1 == "Vampirism") {
+                if (ActiveAbilityP2 == "Barrier") {
+                    UIManager.DeactivateP2AbilityUI();
+                    ActiveAbilityP2 = null;
+                }
+
+                else {
+                    Player1Health += Player1Character.Damage * 0.5f;
+                    Player2Health -= Player1Character.Damage;
+                }
+
+                UIManager.DeactivateP1AbilityUI();
+                ActiveAbilityP1 = null;
+            }
+
+            else if (ActiveAbilityP1 == "SwapHealth") {
+                if (Player1Health < Player2Health) {
+                    float aux = Player1Health;
+                    Player1Health = Player2Health;
+                    Player2Health = aux;
+
+                    UIManager.UpdateHealth(Player1Health, Player2Health);
+                }
+
+                else {
+                    Player2Health -= Player1Character.Damage;   
+                }
+
+                UIManager.DeactivateP1AbilityUI();
+                ActiveAbilityP1 = null;
+            }
+
+            else {
+                if (ActiveAbilityP2 == "Barrier") {
+                    UIManager.DeactivateP2AbilityUI();
+                    ActiveAbilityP2 = null;
+                }
+                
+                else {
+                    Player2Health -= Player1Character.Damage;   
+                }
+            }
 
             Player1Animator.Play("Attack");
             Player2Animator.Play("Hit");
@@ -56,7 +174,6 @@ public class GameManager1vs1 : MonoBehaviour {
 
                 Player2Animator.Play("Die");
 
-                Debug.Log("Player1 win");
                 ActivateRestartGameUI();
             }
 
@@ -66,7 +183,62 @@ public class GameManager1vs1 : MonoBehaviour {
 
     public void Player2Attack() {
         if (!RestartGameBool) {
-            Player1Health -= Player2Character.Damage;
+            if (ActiveAbilityP2 == "DoubleDamage") {
+                if (ActiveAbilityP1 == "Barrier") {
+                    UIManager.DeactivateP1AbilityUI();
+                    ActiveAbilityP1 = null;
+                }
+
+                else {
+                    Player1Health -= Player2Character.Damage * 2;
+                }
+
+                UIManager.DeactivateP2AbilityUI();
+                ActiveAbilityP2 = null;
+            } 
+
+            else if (ActiveAbilityP2 == "Vampirism") {
+                if (ActiveAbilityP1 == "Barrier") {
+                    UIManager.DeactivateP1AbilityUI();
+                    ActiveAbilityP1 = null;
+                }
+
+                else {
+                    Player2Health += Player2Character.Damage * 0.5f;
+                    Player1Health -= Player2Character.Damage;
+                }
+
+                UIManager.DeactivateP2AbilityUI();
+                ActiveAbilityP2 = null;
+            }
+
+            else if (ActiveAbilityP2 == "SwapHealth") {
+                if (Player2Health < Player1Health) {
+                    float aux = Player1Health;
+                    Player1Health = Player2Health;
+                    Player2Health = aux;
+
+                    UIManager.UpdateHealth(Player1Health, Player2Health);
+                }
+
+                else {
+                    Player1Health -= Player2Character.Damage;   
+                }
+
+                UIManager.DeactivateP2AbilityUI();
+                ActiveAbilityP2 = null;
+            }
+
+            else {
+                if (ActiveAbilityP1 == "Barrier") {
+                    UIManager.DeactivateP1AbilityUI();
+                    ActiveAbilityP1 = null;
+                }
+                
+                else {
+                    Player1Health -= Player2Character.Damage;   
+                }
+            }
 
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
@@ -80,7 +252,6 @@ public class GameManager1vs1 : MonoBehaviour {
 
                 Player1Animator.Play("Die");
 
-                Debug.Log("Player2 win");
                 ActivateRestartGameUI();
             }
 
@@ -125,6 +296,15 @@ public class GameManager1vs1 : MonoBehaviour {
 
         Player1Animator.Play("Idle");
         Player2Animator.Play("Idle");
+
+        abilityTimer = abilityCooldown;
+        UIManager.DeactivateAbilityUI();
+        UIManager.DeactivateP1AbilityUI();
+        UIManager.DeactivateP2AbilityUI();
+
+        RandomAbility = null;
+        ActiveAbilityP1 = null;
+        ActiveAbilityP2 = null;
     }
 
     public void ActivateRestartGameUI() {

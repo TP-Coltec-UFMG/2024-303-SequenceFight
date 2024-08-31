@@ -83,7 +83,6 @@ public class KeySequenceController1vs1 : MonoBehaviour {
             
             if (SequenceMatchP1 == 0) {
                 Debug.Log("Sequência incorreta!");
-                // Manager.Player2Attack();
 
                 Player1Sequence.Clear();
                 CurrentSequenceP1 = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
@@ -120,7 +119,6 @@ public class KeySequenceController1vs1 : MonoBehaviour {
             
             if (SequenceMatchP2 == 0) {
                 Debug.Log("Sequência incorreta!");
-                // Manager.Player1Attack();
 
                 Player2Sequence.Clear();
                 CurrentSequenceP2 = SequenceGenerator.GenerateSequence(KeyCodesP2, Player2Character.SequenceLength);
