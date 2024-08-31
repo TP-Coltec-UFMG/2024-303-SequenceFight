@@ -18,10 +18,10 @@ public class KeyRebindSystem : MonoBehaviour {
             PlayerPrefs.SetInt("KeyCodeP1_2", (int)KeyCode.S);
             PlayerPrefs.SetInt("KeyCodeP1_3", (int)KeyCode.D);
 
-            PlayerPrefs.SetInt("KeyCodeP2_0", (int)KeyCode.UpArrow);
-            PlayerPrefs.SetInt("KeyCodeP2_1", (int)KeyCode.DownArrow);
-            PlayerPrefs.SetInt("KeyCodeP2_2", (int)KeyCode.LeftArrow);
-            PlayerPrefs.SetInt("KeyCodeP2_3", (int)KeyCode.RightArrow);
+            PlayerPrefs.SetInt("KeyCodeP2_0", (int)KeyCode.L);
+            PlayerPrefs.SetInt("KeyCodeP2_1", (int)KeyCode.K);
+            PlayerPrefs.SetInt("KeyCodeP2_2", (int)KeyCode.I);
+            PlayerPrefs.SetInt("KeyCodeP2_3", (int)KeyCode.J);
         }
 
         LoadKeyCodes();

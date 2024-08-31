@@ -1,4 +1,4 @@
-LANGUAGE	English	German	French	Spanish
+LANGUAGE	English	German	French	Spanish 
 EnabledAccessibility	Enabled Accessibility	Barrierefreiheit eingeschaltet	Activé Accessibilité	Accesibilidad habilitado
 DisabledAccessibility	Accessibility turned off. Tap three times with three fingers to turn back on.	Barrierefreiheit ausgeschaltet. Zum Einschalten mit drei Fingern dreimal schnell auf den Bildschirm tippen.	L'accessibilité est éteint. Appuyez trois fois avec trois doigts pour revenir en arrière sur.	Accesibilidad apagado. Toque tres veces con tres dedos para volver a encender.
 TalkBack_PleaseSuspend	Please suspend TalkBack during play.	Bitte TalkBack während des Spielens pausieren.	S'il vous plaît suspendre TalkBack pendant le jeu.	Por favor, suspender TalkBack durante el juego.

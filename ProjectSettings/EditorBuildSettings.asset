@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Blind.unity
     guid: 0cbb448d950b7d2459288ffa55abbbb7
+  - enabled: 0
+    path: Assets/ColorblindFilter/Demo/Demo.unity
+    guid: d5b6b076f5babf44e9808d2d8323f091
   m_configObjects: {}

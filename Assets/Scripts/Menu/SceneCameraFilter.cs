@@ -1,47 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ColorblindFilter.Scripts;
 
 public class SceneCameraFilter : MonoBehaviour {
-    public CameraFilter Cam;
+    public ColorblindFilter.Scripts.ColorblindFilter Cam;
 
     void Start() {
-        Cam = Camera.main.GetComponent<CameraFilter>();
+        Cam = Camera.main.GetComponent<ColorblindFilter.Scripts.ColorblindFilter>();
 
-        if (PlayerPrefs.GetInt("ToggleBool") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Normal;
-        }
+        if (Cam != null) {
+            if (PlayerPrefs.GetInt("ToggleBool") == -1) {
+                Cam.SetUseFilter(false);
+            }
 
-        else if (PlayerPrefs.GetInt("ToggleBool2") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Protanopia;
-        }
+            else {
+                Cam.SetUseFilter(true);
 
-        else if (PlayerPrefs.GetInt("ToggleBool3") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Protanomaly;
-        }
+                if (PlayerPrefs.GetInt("ToggleBool") == 0) {
+                    Cam.ChangeBlindType((BlindnessType) 0);
+                }
 
-        else if (PlayerPrefs.GetInt("ToggleBool4") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Deuteranopia;
-        }
+                else if (PlayerPrefs.GetInt("ToggleBool") == 1) {
+                    Cam.ChangeBlindType((BlindnessType) 1);
+                }
 
-        else if (PlayerPrefs.GetInt("ToggleBool5") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Deuteranomaly;
-        }
+                else if (PlayerPrefs.GetInt("ToggleBool") == 2) {
+                    Cam.ChangeBlindType((BlindnessType) 2);
+                }
 
-        else if (PlayerPrefs.GetInt("ToggleBool6") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Tritanopia;
-        }
+                else if (PlayerPrefs.GetInt("ToggleBool") == 3) {
+                    Cam.ChangeBlindType((BlindnessType) 3);
+                }
 
-        else if (PlayerPrefs.GetInt("ToggleBool7") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Tritanomaly;
-        }
+                else if (PlayerPrefs.GetInt("ToggleBool") == 4) {
+                    Cam.ChangeBlindType((BlindnessType) 4);
+                }
 
-        else if (PlayerPrefs.GetInt("ToggleBool8") == 1) {
-            Cam.Filter.mode = ColorBlindMode.Achromatopsia;
-        }
+                else if (PlayerPrefs.GetInt("ToggleBool") == 5) {
+                    Cam.ChangeBlindType((BlindnessType) 5);
+                }
 
-        else {
-            Cam.Filter.mode = ColorBlindMode.Achromatomaly;
+                else if (PlayerPrefs.GetInt("ToggleBool") == 6) {
+                    Cam.ChangeBlindType((BlindnessType) 6);
+                }
+
+                else if (PlayerPrefs.GetInt("ToggleBool") == 7) {
+                    Cam.ChangeBlindType((BlindnessType) 7);
+                }
+            }
         }
     }
 }

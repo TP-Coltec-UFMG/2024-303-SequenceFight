@@ -12,7 +12,7 @@ public class CharacterManagerP2 : MonoBehaviour {
 
     void Start() {
         if (!PlayerPrefs.HasKey("SelectedCharacterP2")) {
-            SelectedCharacterP2 = 0;
+            SelectedCharacterP2 = 2;
             SaveCharacter();
         }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ColorblindFilter.Scripts;
 
 public class ColorblindFilters : MonoBehaviour {
     public Toggle ToggleNone;
@@ -13,12 +14,16 @@ public class ColorblindFilters : MonoBehaviour {
     public Toggle ToggleTritanomaly;
     public Toggle ToggleAchromatopsia;
     public Toggle ToggleAchromatomaly;
-    public CameraFilter Cam;
+    public ColorblindFilter.Scripts.ColorblindFilter Cam;
 
     void Start() {
-        Cam = Camera.main.GetComponent<CameraFilter>();
+        if(!PlayerPrefs.HasKey("ToggleBool")) {
+            PlayerPrefs.SetInt("ToggleBool", -1);
+        }
 
-        if (PlayerPrefs.GetInt("ToggleBool") == 1) {
+        Cam = Camera.main.GetComponent<ColorblindFilter.Scripts.ColorblindFilter>();
+
+        if (PlayerPrefs.GetInt("ToggleBool") == -1) {
             ToggleNone.isOn = true;
         }
 
@@ -26,7 +31,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleNone.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool2") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 0) {
             ToggleProtanopia.isOn = true;
         }
 
@@ -34,7 +39,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleProtanopia.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool3") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 1) {
             ToggleProtanomaly.isOn = true;
         }
 
@@ -42,7 +47,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleProtanomaly.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool4") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 2) {
             ToggleDeuteranopia.isOn = true;
         }
 
@@ -50,7 +55,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleDeuteranopia.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool5") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 3) {
             ToggleDeuteranomaly.isOn = true;
         }
 
@@ -58,7 +63,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleDeuteranomaly.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool6") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 4) {
             ToggleTritanopia.isOn = true;
         }
 
@@ -66,7 +71,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleTritanopia.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool7") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 5) {
             ToggleTritanomaly.isOn = true;
         }
 
@@ -74,7 +79,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleTritanomaly.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool8") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 6) {
             ToggleAchromatopsia.isOn = true;
         }
 
@@ -82,7 +87,7 @@ public class ColorblindFilters : MonoBehaviour {
             ToggleAchromatopsia.isOn = false;
         }
 
-        if (PlayerPrefs.GetInt("ToggleBool9") == 1) {
+        if (PlayerPrefs.GetInt("ToggleBool") == 7) {
             ToggleAchromatomaly.isOn = true;
         }
 
@@ -93,84 +98,53 @@ public class ColorblindFilters : MonoBehaviour {
 
     void Update() {
         if (ToggleNone.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool", 1);
-            Cam.Filter.mode = ColorBlindMode.Normal;
+            PlayerPrefs.SetInt("ToggleBool", -1);
+            Cam.SetUseFilter(false);
         }
 
         else {
-            PlayerPrefs.SetInt("ToggleBool", 0);
-        }
+            Cam.SetUseFilter(true);
 
-        if (ToggleProtanopia.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool2", 1);
-            Cam.Filter.mode = ColorBlindMode.Protanopia;
-        }
+            if (ToggleProtanopia.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 0);
+                Cam.ChangeBlindType((BlindnessType) 0);
+            }
 
-        else {
-            PlayerPrefs.SetInt("ToggleBool2", 0);
-        }
+            if (ToggleProtanomaly.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 1);
+                Cam.ChangeBlindType((BlindnessType) 1);
 
-        if (ToggleProtanomaly.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool3", 1);
-            Cam.Filter.mode = ColorBlindMode.Protanomaly;
-        }
+            }
 
-        else {
-            PlayerPrefs.SetInt("ToggleBool3", 0);
-        }
+            if (ToggleDeuteranopia.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 2);
+                Cam.ChangeBlindType((BlindnessType) 2);
+            }
 
-        if (ToggleDeuteranopia.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool4", 1);
-            Cam.Filter.mode = ColorBlindMode.Deuteranopia;
-        }
+            if (ToggleDeuteranomaly.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 3);
+                Cam.ChangeBlindType((BlindnessType) 3);
+            }
 
-        else {
-            PlayerPrefs.SetInt("ToggleBool4", 0);
-        }
+            if (ToggleTritanopia.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 4);
+                Cam.ChangeBlindType((BlindnessType) 4);
+            }
 
-        if (ToggleDeuteranomaly.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool5", 1);
-            Cam.Filter.mode = ColorBlindMode.Deuteranomaly;
-        }
+            if (ToggleTritanomaly.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 5);
+                Cam.ChangeBlindType((BlindnessType) 5);
+            }
 
-        else {
-            PlayerPrefs.SetInt("ToggleBool5", 0);
-        }
+            if (ToggleAchromatopsia.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 6);
+                Cam.ChangeBlindType((BlindnessType) 6);
+            }
 
-        if (ToggleTritanopia.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool6", 1);
-            Cam.Filter.mode = ColorBlindMode.Tritanopia;
-        }
-
-        else {
-            PlayerPrefs.SetInt("ToggleBool6", 0);
-        }
-
-        if (ToggleTritanomaly.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool7", 1);
-            Cam.Filter.mode = ColorBlindMode.Tritanomaly;
-        }
-
-        else {
-            PlayerPrefs.SetInt("ToggleBool7", 0);
-        }
-
-        if (ToggleAchromatopsia.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool8", 1);
-            Cam.Filter.mode = ColorBlindMode.Achromatopsia;
-        }
-
-        else {
-            PlayerPrefs.SetInt("ToggleBool8", 0);
-        }
-
-        if (ToggleAchromatomaly.isOn == true) {
-            PlayerPrefs.SetInt("ToggleBool9", 1);
-            Cam.Filter.mode = ColorBlindMode.Achromatomaly;
-        }
-
-        else {
-            PlayerPrefs.SetInt("ToggleBool9", 0);
-        }
+            if (ToggleAchromatomaly.isOn == true) {
+                PlayerPrefs.SetInt("ToggleBool", 7);
+                Cam.ChangeBlindType((BlindnessType) 7);
+            }
+        }        
     }
 }

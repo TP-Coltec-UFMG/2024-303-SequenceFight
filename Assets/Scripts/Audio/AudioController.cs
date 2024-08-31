@@ -14,11 +14,11 @@ public class AudioController : MonoBehaviour {
         BackgroundMusic = GameObject.Find("MenuMusic_audioSource").GetComponent<AudioSource>();
 
         if (!PlayerPrefs.HasKey("BackgroundMusicVolume")) {
-            PlayerPrefs.SetFloat("BackgroundMusicVolume", (float)0.5);
+            PlayerPrefs.SetFloat("BackgroundMusicVolume", (float)0);
         }
 
         if (!PlayerPrefs.HasKey("SoundEffectsVolume")) {
-            PlayerPrefs.SetFloat("SoundEffectsVolume", (float)0.5);
+            PlayerPrefs.SetFloat("SoundEffectsVolume", (float)0);
         }
 
         LoadAudioSettings();

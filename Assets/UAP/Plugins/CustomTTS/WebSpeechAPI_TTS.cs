@@ -67,7 +67,7 @@ public class WebSpeechAPI_TTS : UAP_CustomTTS
 		//float speakingRate = speakRate;
 
 		// #WebSpeechAPI Support different languages
-		string languageCode = "en-US";
+		string languageCode = "pt-BR";
 
 		SpeakWeb(textToSay, languageCode/*, speakingRate*/);
 #endif

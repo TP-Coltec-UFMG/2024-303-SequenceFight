@@ -16,11 +16,16 @@ public class Menu : MonoBehaviour {
     [SerializeField] private GameObject ModesButton;
     [SerializeField] private GameObject KeysButton;
     [SerializeField] private GameObject AcessibilityButton;
+    private GameObject LastSelected;
 
     void Update() {
+        if (!Input.GetKey(KeyCode.Mouse0)) {
+            LastSelected = EventSystem.current.currentSelectedGameObject;
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
             EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(MainMenuButton);
+            EventSystem.current.SetSelectedGameObject(LastSelected);
         }
     }
 

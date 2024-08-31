@@ -57,10 +57,12 @@ public class GameManagerBlind : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             PlayerPrefs.SetString("Rate", "..");
+            Speak("Ditado lento ativado. Aperte 3 para repetir a secoencia.");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             PlayerPrefs.SetString("Rate", ",,,");
+            Speak("Ditado rapido ativado. Aperte 3 para repetir a secoencia.");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
