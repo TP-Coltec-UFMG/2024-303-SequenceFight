@@ -15,7 +15,6 @@ namespace ColorblindFilter.Scripts
 
         public void ChangeBlindType()
         {
-            Debug.Log(dropdown.value);
             colorblindFilter.ChangeBlindType((BlindnessType) dropdown.value);
         }
     }

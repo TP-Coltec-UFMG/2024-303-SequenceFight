@@ -94,7 +94,6 @@ public class Menu : MonoBehaviour {
     }
 
     public void CloseGame() {
-        Debug.Log("Saiu");
         Application.Quit();
     }
 

@@ -90,8 +90,6 @@ public class KeyRebindSystem : MonoBehaviour {
         foreach (KeyCode Key in System.Enum.GetValues(typeof(KeyCode))) {
             if (Input.GetKeyDown(Key)) {
                 if (VerifyKey(Key)) {
-                    Debug.LogError("A tecla " + Key + " já foi atribuída.");
-
                     if (PlayerPrefs.GetInt("ScreenReader") == 1) {
                         UAP_AccessibilityManager.StopSpeaking();
                         UAP_AccessibilityManager.Say("A tecla " + Key.ToString() + " jah foi atribuida", true, true);

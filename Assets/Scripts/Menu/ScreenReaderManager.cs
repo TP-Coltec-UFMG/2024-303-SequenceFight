@@ -5,19 +5,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ScreenReaderManager : MonoBehaviour {
-    private int IsScreenReaderEnabled;
     private GameObject LastSelectedObject;
 
     private void Start() {
         if (!PlayerPrefs.HasKey("ScreenReader")) {
-            PlayerPrefs.SetInt("ScreenReader", 1);
+            PlayerPrefs.SetInt("ScreenReader", 0);
         }
-
-        IsScreenReaderEnabled = PlayerPrefs.GetInt("ScreenReader");
     }
 
     private void Update() {
-        if (IsScreenReaderEnabled == 1) {
+        if (PlayerPrefs.GetInt("ScreenReader") == 1) {
             GameObject CurrentSelectedObject = EventSystem.current.currentSelectedGameObject;
 
             if (CurrentSelectedObject != null && CurrentSelectedObject != LastSelectedObject) {
