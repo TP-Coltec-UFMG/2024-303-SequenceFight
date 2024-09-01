@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class UIControllerInfinite : MonoBehaviour {
@@ -17,6 +18,8 @@ public class UIControllerInfinite : MonoBehaviour {
     [SerializeField] private GameObject GameUI;
     [SerializeField] private GameObject NewRecordUI;
     [SerializeField] private GameObject RestartGameUI;
+    [SerializeField] private GameObject RestartGameButton;
+    [SerializeField] private GameObject NonLabelObject;
 
     public void UpdateHealth(float PlayerHealth, float EnemyHealth) {
         PlayerHealthUI.text = "" + PlayerHealth + "";
@@ -47,11 +50,15 @@ public class UIControllerInfinite : MonoBehaviour {
         GameUI.SetActive(true);
         RestartGameUI.SetActive(false);
         NewRecordUI.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(NonLabelObject);
     }
 
     public void ActivateRestartGameUI(int StreakInt, int RecordInt) {
         GameUI.SetActive(false);
         RestartGameUI.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(RestartGameButton);
 
         if (StreakInt == RecordInt) {
             NewRecordText.text = RecordUI.text;

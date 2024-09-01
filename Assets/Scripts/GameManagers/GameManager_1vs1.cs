@@ -31,7 +31,7 @@ public class GameManager1vs1 : MonoBehaviour {
     public bool Player1Coletected = false;
     public bool Player2Coletected = false;
 
-    private float abilityCooldown = 3f; 
+    private float abilityCooldown = 5f; 
     private float abilityTimer;
     public string RandomAbility;
 

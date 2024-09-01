@@ -38,6 +38,11 @@ public class CharacterManagerP2 : MonoBehaviour {
         Character CharacterClone = CharacterDB.GetCharacter(SelectedCharacterP2);
         SpriteArt.sprite = CharacterClone.CharacterSprite;
         NameText.text = CharacterClone.CharacterName;
+
+        if (PlayerPrefs.GetInt("ScreenReader") == 1) {
+            UAP_AccessibilityManager.StopSpeaking();
+            UAP_AccessibilityManager.Say(CharacterClone.CharacterName + " selecionado.", true, true);
+        }
     }
 
     private void LoadCharacter() {

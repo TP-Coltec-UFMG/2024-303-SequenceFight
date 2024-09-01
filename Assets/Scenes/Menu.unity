@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 134872037}
   - component: {fileID: 134872036}
   - component: {fileID: 134872035}
+  - component: {fileID: 134872038}
   m_Layer: 5
   m_Name: Player2B2_button
   m_TagString: Untagged
@@ -651,6 +652,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134872033}
   m_CullTransparentMesh: 1
+--- !u!114 &134872038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134872033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador dois tecla dois
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &179300011
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +678,7 @@ GameObject:
   - component: {fileID: 179300015}
   - component: {fileID: 179300014}
   - component: {fileID: 179300013}
+  - component: {fileID: 179300016}
   m_Layer: 5
   m_Name: Settings_button
   m_TagString: Untagged
@@ -783,6 +799,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179300011}
   m_CullTransparentMesh: 1
+--- !u!114 &179300016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179300011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Menu de Ajustes
+  OnClickLabel: 
 --- !u!1 &181725895
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +825,7 @@ GameObject:
   - component: {fileID: 181725899}
   - component: {fileID: 181725898}
   - component: {fileID: 181725897}
+  - component: {fileID: 181725900}
   m_Layer: 5
   m_Name: Player1B3_button
   m_TagString: Untagged
@@ -916,6 +947,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181725895}
   m_CullTransparentMesh: 1
+--- !u!114 &181725900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181725895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador um tecla 3
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &201298901
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201298902}
   - component: {fileID: 201298903}
+  - component: {fileID: 201298904}
   m_Layer: 5
   m_Name: SoundEffects_slider
   m_TagString: Untagged
@@ -1018,6 +1064,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &201298904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201298901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Volume dos efeitos sonoros
+  OnClickLabel: 
 --- !u!1 &214851393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224658169}
   - component: {fileID: 224658170}
+  - component: {fileID: 224658171}
   m_Layer: 5
   m_Name: Deuteranopia_toggle
   m_TagString: Untagged
@@ -1179,6 +1240,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &224658171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224658168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Deuteranopia
+  OnClickLabel: Deuteranopia ativado
 --- !u!1 &248710692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261355291}
   - component: {fileID: 261355292}
+  - component: {fileID: 261355293}
   m_Layer: 5
   m_Name: Protanopia_toggle
   m_TagString: Untagged
@@ -1581,6 +1657,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &261355293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261355290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Protanopia
+  OnClickLabel: Protanopia ativado
 --- !u!1 &271334142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1783,7 @@ GameObject:
   - component: {fileID: 275107819}
   - component: {fileID: 275107818}
   - component: {fileID: 275107817}
+  - component: {fileID: 275107820}
   m_Layer: 5
   m_Name: Quit_button
   m_TagString: Untagged
@@ -1813,6 +1904,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275107815}
   m_CullTransparentMesh: 1
+--- !u!114 &275107820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275107815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Sair
+  OnClickLabel: Ateh mais
 --- !u!1 &317977893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2214,7 @@ GameObject:
   - component: {fileID: 353880391}
   - component: {fileID: 353880390}
   - component: {fileID: 353880389}
+  - component: {fileID: 353880392}
   m_Layer: 5
   m_Name: Keys_button
   m_TagString: Untagged
@@ -2229,6 +2335,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353880387}
   m_CullTransparentMesh: 1
+--- !u!114 &353880392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353880387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Menu de teclas
+  OnClickLabel: 
 --- !u!1 &412167196
 GameObject:
   m_ObjectHideFlags: 0
@@ -3398,6 +3518,7 @@ GameObject:
   - component: {fileID: 551955635}
   - component: {fileID: 551955634}
   - component: {fileID: 551955633}
+  - component: {fileID: 551955636}
   m_Layer: 5
   m_Name: Player2B1_button
   m_TagString: Untagged
@@ -3519,6 +3640,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551955631}
   m_CullTransparentMesh: 1
+--- !u!114 &551955636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551955631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador dois tecla um
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &562297918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,6 +3664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 562297919}
   - component: {fileID: 562297920}
+  - component: {fileID: 562297921}
   m_Layer: 5
   m_Name: BackgroundMusic_slider
   m_TagString: Untagged
@@ -3621,6 +3757,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &562297921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562297918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Volume da musica
+  OnClickLabel: 
 --- !u!1 &563192489
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,6 +3781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563192490}
   - component: {fileID: 563192491}
+  - component: {fileID: 563192492}
   m_Layer: 5
   m_Name: Achromatomaly_toggle
   m_TagString: Untagged
@@ -3707,6 +3858,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &563192492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563192489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Acromatomalia
+  OnClickLabel: Acromatomalia ativado
 --- !u!1 &575492713
 GameObject:
   m_ObjectHideFlags: 0
@@ -3969,7 +4134,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Achromatopsia
+  m_Text: Acromatopsia
 --- !u!222 &639150627
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4100,6 +4265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 693569116}
   - component: {fileID: 693569117}
+  - component: {fileID: 693569118}
   m_Layer: 5
   m_Name: Deuteranomaly_toggle
   m_TagString: Untagged
@@ -4176,6 +4342,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &693569118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693569115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Deuteranomalia
+  OnClickLabel: Deuteranomalia ativado
 --- !u!1 &699611012
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,6 +4368,7 @@ GameObject:
   - component: {fileID: 699611016}
   - component: {fileID: 699611015}
   - component: {fileID: 699611014}
+  - component: {fileID: 699611017}
   m_Layer: 5
   m_Name: Blind_button
   m_TagString: Untagged
@@ -4308,6 +4489,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699611012}
   m_CullTransparentMesh: 1
+--- !u!114 &699611017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699611012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Cego
+  OnClickLabel: 
 --- !u!1 &714545169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,6 +4725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760646130}
   - component: {fileID: 760646131}
+  - component: {fileID: 760646132}
   m_Layer: 5
   m_Name: Achromatopsia_toggle
   m_TagString: Untagged
@@ -4606,6 +4802,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &760646132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760646129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Acromatopsia
+  OnClickLabel: Acromatopsia ativado
 --- !u!1 &769891918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4694,6 +4904,7 @@ GameObject:
   - component: {fileID: 784507694}
   - component: {fileID: 784507693}
   - component: {fileID: 784507692}
+  - component: {fileID: 784507696}
   m_Layer: 5
   m_Name: Player1Ability_button
   m_TagString: Untagged
@@ -4815,6 +5026,20 @@ RectTransform:
   m_AnchoredPosition: {x: 23.999996, y: -210}
   m_SizeDelta: {x: 3291.7566, y: 2509}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &784507696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784507691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador um tecla de habilidade
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &801168155
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,6 +5127,7 @@ GameObject:
   - component: {fileID: 824937546}
   - component: {fileID: 824937545}
   - component: {fileID: 824937544}
+  - component: {fileID: 824937547}
   m_Layer: 5
   m_Name: Infinite_button
   m_TagString: Untagged
@@ -5022,6 +5248,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824937542}
   m_CullTransparentMesh: 1
+--- !u!114 &824937547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824937542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Infinito
+  OnClickLabel: 
 --- !u!1 &834842108
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,6 +5560,7 @@ GameObject:
   - component: {fileID: 931955075}
   - component: {fileID: 931955074}
   - component: {fileID: 931955073}
+  - component: {fileID: 931955076}
   m_Layer: 5
   m_Name: Player1Banner_button
   m_TagString: Untagged
@@ -5442,6 +5683,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931955071}
   m_CullTransparentMesh: 1
+--- !u!114 &931955076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931955071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Trocar Jogador um
+  OnClickLabel: 
 --- !u!1 &940806137
 GameObject:
   m_ObjectHideFlags: 0
@@ -5512,7 +5767,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Protanomaly
+  m_Text: Protanomalia
 --- !u!222 &940806140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5859,6 +6114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114110887}
   - component: {fileID: 1114110888}
+  - component: {fileID: 1114110889}
   m_Layer: 5
   m_Name: Protanomaly_toggle
   m_TagString: Untagged
@@ -5935,6 +6191,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1114110889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114110886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Protanomalia
+  OnClickLabel: Protanomalia ativado
 --- !u!1 &1115123529
 GameObject:
   m_ObjectHideFlags: 0
@@ -5947,6 +6217,7 @@ GameObject:
   - component: {fileID: 1115123533}
   - component: {fileID: 1115123532}
   - component: {fileID: 1115123531}
+  - component: {fileID: 1115123534}
   m_Layer: 5
   m_Name: Esc_button
   m_TagString: Untagged
@@ -6067,6 +6338,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115123529}
   m_CullTransparentMesh: 1
+--- !u!114 &1115123534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115123529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Voltar para menu de ajustes
+  OnClickLabel: 
 --- !u!1 &1125127635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6079,6 +6364,7 @@ GameObject:
   - component: {fileID: 1125127639}
   - component: {fileID: 1125127638}
   - component: {fileID: 1125127637}
+  - component: {fileID: 1125127640}
   m_Layer: 5
   m_Name: Esc_button
   m_TagString: Untagged
@@ -6199,6 +6485,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125127635}
   m_CullTransparentMesh: 1
+--- !u!114 &1125127640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125127635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Voltar para menu principal
+  OnClickLabel: 
 --- !u!1 &1128858985
 GameObject:
   m_ObjectHideFlags: 0
@@ -6339,6 +6639,7 @@ GameObject:
   - component: {fileID: 1136178295}
   - component: {fileID: 1136178294}
   - component: {fileID: 1136178293}
+  - component: {fileID: 1136178296}
   m_Layer: 5
   m_Name: Player1B1_button
   m_TagString: Untagged
@@ -6460,6 +6761,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136178291}
   m_CullTransparentMesh: 1
+--- !u!114 &1136178296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136178291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador um tecla um
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &1141492735
 GameObject:
   m_ObjectHideFlags: 0
@@ -6472,6 +6787,7 @@ GameObject:
   - component: {fileID: 1141492739}
   - component: {fileID: 1141492738}
   - component: {fileID: 1141492737}
+  - component: {fileID: 1141492740}
   m_Layer: 5
   m_Name: Player1B2_button
   m_TagString: Untagged
@@ -6593,6 +6909,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141492735}
   m_CullTransparentMesh: 1
+--- !u!114 &1141492740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141492735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador um tecla dois
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &1155013908
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,6 +6933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1155013909}
   - component: {fileID: 1155013910}
+  - component: {fileID: 1155013911}
   m_Layer: 5
   m_Name: Tritanopia_toggle
   m_TagString: Untagged
@@ -6679,6 +7010,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1155013911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155013908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Tritanopia
+  OnClickLabel: Tritanopia ativado
 --- !u!1 &1155041963
 GameObject:
   m_ObjectHideFlags: 0
@@ -7414,9 +7759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tritanomaly
-
-'
+  m_Text: Tritanomalia
 --- !u!222 &1316782036
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7495,7 +7838,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Deuteranomaly
+  m_Text: Deuteranomalia
 --- !u!222 &1331417556
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7649,7 +7992,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: None
+  m_Text: Desabilitado
 --- !u!222 &1368595100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7670,6 +8013,7 @@ GameObject:
   - component: {fileID: 1370184522}
   - component: {fileID: 1370184521}
   - component: {fileID: 1370184520}
+  - component: {fileID: 1370184524}
   m_Layer: 5
   m_Name: Acessibility_button
   m_TagString: Untagged
@@ -7790,6 +8134,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 190}
   m_SizeDelta: {x: 9947.429, y: 2448}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1370184524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370184519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Menu de acessibilidade
+  OnClickLabel: 
 --- !u!1 &1389331853
 GameObject:
   m_ObjectHideFlags: 0
@@ -7996,6 +8354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1415810574}
   - component: {fileID: 1415810575}
+  - component: {fileID: 1415810576}
   m_Layer: 5
   m_Name: None_toggle
   m_TagString: Untagged
@@ -8072,6 +8431,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1415810576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415810573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Filtro desabilitado
+  OnClickLabel: Sem filtro de cor ativado
 --- !u!1 &1438212754
 GameObject:
   m_ObjectHideFlags: 0
@@ -8084,6 +8457,7 @@ GameObject:
   - component: {fileID: 1438212758}
   - component: {fileID: 1438212757}
   - component: {fileID: 1438212756}
+  - component: {fileID: 1438212759}
   m_Layer: 5
   m_Name: Player2Banner_button
   m_TagString: Untagged
@@ -8206,6 +8580,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438212754}
   m_CullTransparentMesh: 1
+--- !u!114 &1438212759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438212754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Trocar jogador dois
+  OnClickLabel: 
 --- !u!1 &1440200431
 GameObject:
   m_ObjectHideFlags: 0
@@ -8619,7 +9007,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Achromatomaly
+  m_Text: Acromatomalia
 --- !u!222 &1499187900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8640,6 +9028,7 @@ GameObject:
   - component: {fileID: 1533501963}
   - component: {fileID: 1533501962}
   - component: {fileID: 1533501961}
+  - component: {fileID: 1533501965}
   m_Layer: 5
   m_Name: Play_button
   m_TagString: Untagged
@@ -8760,6 +9149,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533501959}
   m_CullTransparentMesh: 1
+--- !u!114 &1533501965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533501959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Modos de jogo
+  OnClickLabel: 
 --- !u!1 &1548561458
 GameObject:
   m_ObjectHideFlags: 0
@@ -9111,6 +9514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1623696685}
   - component: {fileID: 1623696686}
+  - component: {fileID: 1623696687}
   m_Layer: 5
   m_Name: Tritanomaly_toggle
   m_TagString: Untagged
@@ -9187,6 +9591,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1623696687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623696684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Tritanomalia
+  OnClickLabel: Tritanomalia ativado
 --- !u!1 &1647552951
 GameObject:
   m_ObjectHideFlags: 0
@@ -9274,6 +9692,7 @@ GameObject:
   - component: {fileID: 1671917941}
   - component: {fileID: 1671917940}
   - component: {fileID: 1671917939}
+  - component: {fileID: 1671917942}
   m_Layer: 5
   m_Name: Esc_button
   m_TagString: Untagged
@@ -9394,6 +9813,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671917937}
   m_CullTransparentMesh: 1
+--- !u!114 &1671917942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671917937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Voltar para menu de ajustes
+  OnClickLabel: 
 --- !u!1 &1672094332
 GameObject:
   m_ObjectHideFlags: 0
@@ -9557,6 +9990,7 @@ GameObject:
   - component: {fileID: 1792906838}
   - component: {fileID: 1792906837}
   - component: {fileID: 1792906836}
+  - component: {fileID: 1792906839}
   m_Layer: 5
   m_Name: Player2B4_button
   m_TagString: Untagged
@@ -9678,6 +10112,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792906834}
   m_CullTransparentMesh: 1
+--- !u!114 &1792906839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792906834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador dois tecla 4
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &1793690019
 GameObject:
   m_ObjectHideFlags: 0
@@ -9900,6 +10348,7 @@ GameObject:
   - component: {fileID: 1829120085}
   - component: {fileID: 1829120084}
   - component: {fileID: 1829120083}
+  - component: {fileID: 1829120086}
   m_Layer: 5
   m_Name: Player1B4_button
   m_TagString: Untagged
@@ -10021,6 +10470,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829120081}
   m_CullTransparentMesh: 1
+--- !u!114 &1829120086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829120081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador um tecla 4
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &1835463559
 GameObject:
   m_ObjectHideFlags: 0
@@ -10467,6 +10930,7 @@ GameObject:
   - component: {fileID: 1980341571}
   - component: {fileID: 1980341570}
   - component: {fileID: 1980341569}
+  - component: {fileID: 1980341572}
   m_Layer: 5
   m_Name: 1vs1_button
   m_TagString: Untagged
@@ -10587,6 +11051,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980341567}
   m_CullTransparentMesh: 1
+--- !u!114 &1980341572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980341567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Um contra um
+  OnClickLabel: 
 --- !u!1 &1993148427
 GameObject:
   m_ObjectHideFlags: 0
@@ -10674,6 +11152,7 @@ GameObject:
   - component: {fileID: 2016621507}
   - component: {fileID: 2016621506}
   - component: {fileID: 2016621505}
+  - component: {fileID: 2016621508}
   m_Layer: 5
   m_Name: Esc_button
   m_TagString: Untagged
@@ -10794,6 +11273,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016621503}
   m_CullTransparentMesh: 1
+--- !u!114 &2016621508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016621503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Voltar para menu principal
+  OnClickLabel: 
 --- !u!1 &2036502473
 GameObject:
   m_ObjectHideFlags: 0
@@ -10806,6 +11299,7 @@ GameObject:
   - component: {fileID: 2036502477}
   - component: {fileID: 2036502476}
   - component: {fileID: 2036502475}
+  - component: {fileID: 2036502478}
   m_Layer: 5
   m_Name: Player2Ability_button
   m_TagString: Untagged
@@ -10927,6 +11421,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036502473}
   m_CullTransparentMesh: 1
+--- !u!114 &2036502478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036502473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador dois tecla de habilidade
+  OnClickLabel: Pressione uma tecla
 --- !u!1 &2043130596
 GameObject:
   m_ObjectHideFlags: 0
@@ -11003,6 +11511,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043130596}
   m_CullTransparentMesh: 1
+--- !u!1 &2050137241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050137243}
+  - component: {fileID: 2050137242}
+  m_Layer: 0
+  m_Name: ScreenReader_script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2050137242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050137241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b45fec55ad6684bb8d3f15d7cd09e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2050137243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050137241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.081023686, y: 0.5379167, z: -2.5749621}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2071681075
 GameObject:
   m_ObjectHideFlags: 0
@@ -11133,6 +11685,7 @@ GameObject:
   - component: {fileID: 2147175636}
   - component: {fileID: 2147175635}
   - component: {fileID: 2147175634}
+  - component: {fileID: 2147175637}
   m_Layer: 5
   m_Name: Player2B3_button
   m_TagString: Untagged
@@ -11254,6 +11807,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147175632}
   m_CullTransparentMesh: 1
+--- !u!114 &2147175637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147175632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179c6d249d796b40a8968def59ae55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectionLabel: Jogador dois tecla 3
+  OnClickLabel: Pressione uma tecla
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -11261,6 +11828,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 248710696}
   - {fileID: 1053890075}
+  - {fileID: 2050137243}
   - {fileID: 1608477197}
   - {fileID: 417115026}
   - {fileID: 1567277689}

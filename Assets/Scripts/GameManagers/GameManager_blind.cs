@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameManagerBlind : MonoBehaviour {
     public float Player1Health;
@@ -32,7 +31,7 @@ public class GameManagerBlind : MonoBehaviour {
 
         PlayerPrefs.SetString("Rate", "..");
 
-        Speak("Bem vindo ao modo blayindi. O Recorde atual eh, " + RecordInt + " .. aperte 1 para ditado lento, 2 para ditado rapido, 3 para repetir e 4 para os detalhes.");
+        Speak("Bem vindo ao modo cego. O Recorde atual eh, " + RecordInt + " .. aperte 1 para ditado lento, 2 para ditado rapido, 3 para repetir e 4 para os detalhes.");
 
         SelectEnemy();
 

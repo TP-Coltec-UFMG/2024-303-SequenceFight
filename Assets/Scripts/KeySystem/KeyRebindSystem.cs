@@ -91,6 +91,11 @@ public class KeyRebindSystem : MonoBehaviour {
             if (Input.GetKeyDown(Key)) {
                 if (VerifyKey(Key)) {
                     Debug.LogError("A tecla " + Key + " já foi atribuída.");
+
+                    if (PlayerPrefs.GetInt("ScreenReader") == 1) {
+                        UAP_AccessibilityManager.StopSpeaking();
+                        UAP_AccessibilityManager.Say("A tecla " + Key.ToString() + " jah foi atribuida", true, true);
+                    }
                 } 
                 
                 else {
@@ -98,16 +103,21 @@ public class KeyRebindSystem : MonoBehaviour {
                         KeyCodesP1[index] = Key;
                     } 
                     
-                    if (index >= 4 && index < 8) {
+                    else if (index >= 4 && index < 8) {
                         KeyCodesP2[index - 4] = Key;
                     }
 
-                    if (index == 8) {
+                    else if (index == 8) {
                         KeyCodeAbilityP1 = Key;
                     }
 
-                    if (index == 9) {
+                    else if (index == 9) {
                         KeyCodeAbilityP2 = Key;
+                    }
+
+                    if (PlayerPrefs.GetInt("ScreenReader") == 1) {
+                        UAP_AccessibilityManager.StopSpeaking();
+                        UAP_AccessibilityManager.Say("A tecla " + Key.ToString() + " foi atribuida", true, true);
                     }
 
                     SaveKeyCodes();
@@ -124,7 +134,7 @@ public class KeyRebindSystem : MonoBehaviour {
 
     private bool VerifyKey(KeyCode Key) {
         foreach (KeyCode K in KeyCodesP1) {
-            if (K == Key) {
+            if (K == Key) {               
                 return true;
             }
         }

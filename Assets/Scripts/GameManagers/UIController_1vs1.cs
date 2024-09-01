@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class UIController1vs1 : MonoBehaviour {
@@ -35,8 +36,10 @@ public class UIController1vs1 : MonoBehaviour {
     [SerializeField] private GameObject SwapHealthP2;
     [SerializeField] private GameObject DoubleDamageP2;
     [SerializeField] private GameObject VampirismP2;
-    
 
+    [SerializeField] private GameObject RestartGameButton;
+    [SerializeField] private GameObject NonLabelObject;
+    
     public void UpdateHealth(float Player1Health, float Player2Health) {
         Player1HealthUI.text = "" + Player1Health + "";
         Player2HealthUI.text = "" + Player2Health + "";
@@ -53,11 +56,15 @@ public class UIController1vs1 : MonoBehaviour {
     public void RestartGame() {
         GameUI.SetActive(true);
         RestartGameUI.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(NonLabelObject);
     }
 
     public void ActivateRestartGameUI(bool P1winBool, bool P2winBool) {
         GameUI.SetActive(false);
         RestartGameUI.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(RestartGameButton);
 
         P1win.SetActive(P1winBool);
         P2win.SetActive(P2winBool);
