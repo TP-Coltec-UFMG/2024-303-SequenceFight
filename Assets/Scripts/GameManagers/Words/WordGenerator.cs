@@ -7,7 +7,6 @@ using UnityEngine;
 public class WordGenerator : MonoBehaviour {
     private const int WordListLength = 300;
     private List<string> WordList = new List<string>();
-    [SerializeField] public CharacterDatabase CharacterDB;
 
     public string GenerateWord(){
         System.Random Rnd = new System.Random();
