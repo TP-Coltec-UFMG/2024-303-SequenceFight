@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManagerInfinite : MonoBehaviour {
+public class GameManagerWord : MonoBehaviour {
     public float Player1Health;
     public float Player2Health;
     public int RecordInt = 0;
@@ -18,7 +18,7 @@ public class GameManagerInfinite : MonoBehaviour {
     public Animator Player1Animator;
     public Animator Player2Animator;
     [SerializeField] public CharacterDatabase CharacterDB;
-    public UIControllerInfinite UIManager;
+    public UIControllerWord UIManager;
     [SerializeField] public GameAudioController AudioController;
     public int EnemyCount = 0;
 
@@ -34,12 +34,12 @@ public class GameManagerInfinite : MonoBehaviour {
 
         UIManager.UpdateHealth(Player1Health, Player2Health);
 
-        if (!PlayerPrefs.HasKey("RecordInfinite")) {
-            PlayerPrefs.SetInt("RecordInfinite", RecordInt);
+        if (!PlayerPrefs.HasKey("RecordWord")) {
+            PlayerPrefs.SetInt("RecordWord", RecordInt);
         }
 
         else {
-            RecordInt = PlayerPrefs.GetInt("RecordInfinite");
+            RecordInt = PlayerPrefs.GetInt("RecordWord");
         }
 
         UIManager.UpdateRecord(StreakInt, RecordInt);
@@ -92,14 +92,14 @@ public class GameManagerInfinite : MonoBehaviour {
         }
     }
 
-    public void UpdateSequence(KeyCode[] sequence) {
-        string sequenceString = " ";
+    public void UpdateWord(string Sequence){
+        string SequenceString = " ";
 
-        foreach (KeyCode key in sequence) {
-            sequenceString += key.ToString() + " ";
+        foreach (char key in Sequence) {
+            SequenceString += key.ToString() + " ";
         }
 
-        UIManager.UpdateSequence(sequenceString);
+        UIManager.UpdateSequence(SequenceString);
     }
 
     public void RestartGame() {
@@ -143,9 +143,9 @@ public class GameManagerInfinite : MonoBehaviour {
         Player2Health = Player2Character.Health;
     }
 
-    public static int GetRandomIndex(int min, int max) {
+    public static int GetRandomIndex(int Min, int Max) {
         System.Random random = new System.Random();
-        return random.Next(min, max + 1);
+        return random.Next(Min, Max + 1);
     }
 
     private void LoadCharacter() {

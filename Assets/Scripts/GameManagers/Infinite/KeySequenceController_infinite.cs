@@ -29,9 +29,9 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
 
     void Update() {
         if (Input.anyKeyDown) {
-            foreach (KeyCode key in KeyCodesP1) {
-                if (Input.GetKeyDown(key)) {
-                    Player1Sequence.Add(key);
+            foreach (KeyCode Key in KeyCodesP1) {
+                if (Input.GetKeyDown(Key)) {
+                    Player1Sequence.Add(Key);
                     CheckSequence();
                     break;
                 }
@@ -94,8 +94,8 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
     }
 
     void ResetTimeLimit() {
-        int index = Mathf.Min(Manager.EnemyCount, TimeLimits.Length - 1);
-        TimeLeft = TimeLimits[index];
+        int Index = Mathf.Min(Manager.EnemyCount, TimeLimits.Length - 1);
+        TimeLeft = TimeLimits[Index];
     }
 
     public void LoadKeyCodes() {
