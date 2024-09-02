@@ -80,8 +80,6 @@ public class UIController1vs1 : MonoBehaviour {
     public void ActivateAbilityUI(string Ability) {
         DeactivateAbilityUI();
 
-        ActiveAbility.SetActive(true);
-
         if (Ability == "Barrier") {
             Barrier.SetActive(true);
         }
@@ -100,8 +98,6 @@ public class UIController1vs1 : MonoBehaviour {
     }
 
     public void DeactivateAbilityUI() {
-        ActiveAbility.SetActive(false);
-
         Barrier.SetActive(false);
 
         SwapHealth.SetActive(false);   
@@ -113,8 +109,6 @@ public class UIController1vs1 : MonoBehaviour {
 
     public void ActivateP1AbilityUI(string Ability) {
         DeactivateP1AbilityUI();
-        
-        ActiveAbilityP1.SetActive(true);
 
         if (Ability == "Barrier") {
             BarrierP1.SetActive(true);
@@ -134,8 +128,6 @@ public class UIController1vs1 : MonoBehaviour {
     }
 
     public void DeactivateP1AbilityUI() {
-        ActiveAbilityP1.SetActive(false);
-
         BarrierP1.SetActive(false);
 
         SwapHealthP1.SetActive(false);   
@@ -147,8 +139,6 @@ public class UIController1vs1 : MonoBehaviour {
 
     public void ActivateP2AbilityUI(string Ability) {
         DeactivateP2AbilityUI();
-
-        ActiveAbilityP2.SetActive(true);
 
         if (Ability == "Barrier") {
             BarrierP2.SetActive(true);
@@ -168,8 +158,6 @@ public class UIController1vs1 : MonoBehaviour {
     }
 
     public void DeactivateP2AbilityUI() {
-        ActiveAbilityP2.SetActive(false);
-
         BarrierP2.SetActive(false);
 
         SwapHealthP2.SetActive(false);   
