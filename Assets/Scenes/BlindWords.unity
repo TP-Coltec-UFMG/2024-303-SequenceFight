@@ -627,6 +627,7 @@ MonoBehaviour:
   Player2Health: 0
   RecordInt: 0
   StreakInt: 0
+  LastRecordInt: 0
   RestartGameBool: 0
   SelectedCharacterP1: 0
   Player1Character:
@@ -1231,6 +1232,7 @@ GameObject:
   - component: {fileID: 1578618056}
   - component: {fileID: 1578618055}
   - component: {fileID: 1578618054}
+  - component: {fileID: 1578618057}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1288,6 +1290,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578618057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578618053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9152f1b7a67d104ea4cb6473a6e1a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

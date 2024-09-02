@@ -138,6 +138,12 @@ public class GameManagerWord : MonoBehaviour {
         StreakInt = 0;
         EnemyCount = 0;
     }
+
+    public void VerifyRecord() {
+        if (StreakInt > LastRecordInt) {
+            PlayerPrefs.SetInt("RecordWord", StreakInt);
+        }
+    }
    
     public void SelectEnemy() {
         if (Player2Instance != null) {

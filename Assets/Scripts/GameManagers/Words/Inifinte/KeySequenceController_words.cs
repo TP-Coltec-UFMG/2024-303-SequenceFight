@@ -162,6 +162,7 @@ public class KeySequenceControllerWord : MonoBehaviour {
     public void TogglePause() {
         if (!Manager.RestartGameBool) {
             IsPaused = !IsPaused;
+            Manager.VerifyRecord();
             Time.timeScale = IsPaused ? 0f : 1f;
             Manager.UIManager.TogglePauseMenu(IsPaused);
             Manager.AudioController.PauseMusic(IsPaused);
