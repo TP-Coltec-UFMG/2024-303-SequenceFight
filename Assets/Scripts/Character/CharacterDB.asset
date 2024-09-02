@@ -33,7 +33,7 @@ MonoBehaviour:
     CharacterPrefab: {fileID: 5956311496711103065, guid: 058c3f0243b0dd14a8970dbab3b600ea, type: 3}
   - CharacterName: Dragao
     CharacterSprite: {fileID: -1653590959, guid: c11204f4c89e2cf40b7b39f143c09560, type: 3}
-    SequenceLength: 20
+    SequenceLength: 1
     Health: 300
     Damage: 100
     CharacterPrefab: {fileID: 3145592029851764490, guid: 3cbed3844fc36824e805b2d4ff499fba, type: 3}

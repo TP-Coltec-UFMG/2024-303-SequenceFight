@@ -56,13 +56,13 @@ public class UIControllerWord : MonoBehaviour {
         EventSystem.current.SetSelectedGameObject(NonLabelObject);
     }
 
-    public void ActivateRestartGameUI(int StreakInt, int RecordInt) {
+    public void ActivateRestartGameUI(int StreakInt, int RecordInt, int LastRecordInt) {
         GameUI.SetActive(false);
         RestartGameUI.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(RestartGameButton);
 
-        if (StreakInt == RecordInt) {
+        if (StreakInt > LastRecordInt) {
             NewRecordText.text = RecordUI.text;
             NewRecordUI.SetActive(true);
         }

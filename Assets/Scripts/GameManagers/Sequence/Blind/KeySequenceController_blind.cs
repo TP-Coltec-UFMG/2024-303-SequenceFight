@@ -34,7 +34,10 @@ public class KeySequenceControllerBlind : MonoBehaviour {
         if (Input.anyKeyDown) {
             foreach (KeyCode Key in KeyCodesP1) {
                 if (Input.GetKeyDown(Key)) {
-                    Player1Sequence.Add(Key);
+                    if (!Manager.RestartGameBool) {
+                        Player1Sequence.Add(Key);
+                    }
+
                     CheckSequence();
                     break;
                 }

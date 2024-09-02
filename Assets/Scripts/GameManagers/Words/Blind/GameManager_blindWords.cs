@@ -9,6 +9,7 @@ public class GameManagerBlindWord : MonoBehaviour {
     public float Player2Health;
     public int RecordInt = 0;
     public int StreakInt = 0;
+    public int LastRecordInt = 0;
     public bool RestartGameBool = false;
     public int SelectedCharacterP1;
     public Character Player1Character;
@@ -28,6 +29,7 @@ public class GameManagerBlindWord : MonoBehaviour {
 
         else {
             RecordInt = PlayerPrefs.GetInt("RecordBlindWord");
+            LastRecordInt = RecordInt;
         }
 
         Speak("Bem vindo ao modo palavras cegas. Recorde atual " + RecordInt + " .. aperte 1 para repetir e 2 para os detalhes.");
@@ -87,8 +89,6 @@ public class GameManagerBlindWord : MonoBehaviour {
                     RecordInt = StreakInt;
                     PlayerPrefs.SetInt("RecordBlindWord", StreakInt);
                 }
-
-                RecordInt = StreakInt;
             }
         }
     }
@@ -111,7 +111,7 @@ public class GameManagerBlindWord : MonoBehaviour {
 
                 Speak("Voceh morreu. Aperte espaso para recomessar, Esc para sair.");
                 
-                if (StreakInt == RecordInt) {
+                if (StreakInt > LastRecordInt) {
                     Speak("Novo Recorde " + StreakInt);
                 }
                 
@@ -132,11 +132,13 @@ public class GameManagerBlindWord : MonoBehaviour {
 
         SelectEnemy();
 
-        Speak("Palavra . " + CurrentWord);
+        Speak(CurrentWord);
 
         Player1Health = Player1Character.Health;
 
         Player1Animator.Play("Idle");
+
+        LastRecordInt = RecordInt;
     }
 
     public void ActivateRestartGame() {
@@ -154,7 +156,7 @@ public class GameManagerBlindWord : MonoBehaviour {
         
         InstantiateEnemy();
 
-        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida e " + Player2Character.Damage + " de poder de ataque.");
+        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida e " + Player2Character.Damage + " de poder de ataque. Palavra");
 
         Player2Health = Player2Character.Health;
     }

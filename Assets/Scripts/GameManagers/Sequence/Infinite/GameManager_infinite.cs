@@ -9,6 +9,7 @@ public class GameManagerInfinite : MonoBehaviour {
     public float Player2Health;
     public int RecordInt = 0;
     public int StreakInt = 0;
+    public int LastRecordInt = 0;
     public bool RestartGameBool = false;
     public int SelectedCharacterP1;
     public Character Player1Character;
@@ -40,6 +41,7 @@ public class GameManagerInfinite : MonoBehaviour {
 
         else {
             RecordInt = PlayerPrefs.GetInt("RecordInfinite");
+            LastRecordInt = RecordInt;
         }
 
         UIManager.UpdateRecord(StreakInt, RecordInt);
@@ -120,6 +122,8 @@ public class GameManagerInfinite : MonoBehaviour {
         Player1Animator.Play("Idle");
 
         UIManager.UpdateRecord(StreakInt, RecordInt);
+
+        LastRecordInt = RecordInt;
     }
 
     public void ActivateRestartGameUI() {
@@ -129,7 +133,7 @@ public class GameManagerInfinite : MonoBehaviour {
 
         Time.timeScale = RestartGameBool ? 0f : 1f;
 
-        UIManager.ActivateRestartGameUI(StreakInt, RecordInt);
+        UIManager.ActivateRestartGameUI(StreakInt, RecordInt, LastRecordInt);
 
         StreakInt = 0;
         EnemyCount = 0;

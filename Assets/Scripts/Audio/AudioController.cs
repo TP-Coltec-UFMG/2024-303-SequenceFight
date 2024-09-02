@@ -17,11 +17,11 @@ public class AudioController : MonoBehaviour {
 
     void Start() {
         if (!PlayerPrefs.HasKey("BackgroundMusicVolume")) {
-            PlayerPrefs.SetFloat("BackgroundMusicVolume", 0f);
+            PlayerPrefs.SetFloat("BackgroundMusicVolume", 0.1f);
         }
 
         if (!PlayerPrefs.HasKey("SoundEffectsVolume")) {
-            PlayerPrefs.SetFloat("SoundEffectsVolume", 0f);
+            PlayerPrefs.SetFloat("SoundEffectsVolume", 0.2f);
         }
 
         LoadAudioSettings();

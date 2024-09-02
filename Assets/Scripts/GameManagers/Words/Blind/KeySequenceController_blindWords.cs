@@ -48,7 +48,10 @@ public class KeySequenceControllerBlindWord : MonoBehaviour {
             var Key = E.keyCode;
 
             if ((Key >= KeyCode.A) && (Key <= KeyCode.Z)) {
-                Player1Sequence.Add((char)Key);
+                if (!Manager.RestartGameBool) {
+                    Player1Sequence.Add((char)Key);
+                }
+                
                 CheckSequence();
             }
         }

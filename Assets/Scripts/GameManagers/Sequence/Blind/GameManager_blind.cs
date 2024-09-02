@@ -8,6 +8,7 @@ public class GameManagerBlind : MonoBehaviour {
     public float Player2Health;
     public int RecordInt = 0;
     public int StreakInt = 0;
+    public int LastRecordInt = 0;
     public bool RestartGameBool = false;
     public int SelectedCharacterP1;
     public Character Player1Character;
@@ -27,6 +28,7 @@ public class GameManagerBlind : MonoBehaviour {
 
         else {
             RecordInt = PlayerPrefs.GetInt("RecordBlind");
+            LastRecordInt = RecordInt;
         }
 
         Speak("Bem vindo ao modo cego. Recorde atual " + RecordInt + " .. aperte 1 para repetir, 2 para os detalhes, 3 para ditado lento e 4 para ditado rapido.");
@@ -98,8 +100,6 @@ public class GameManagerBlind : MonoBehaviour {
                     RecordInt = StreakInt;
                     PlayerPrefs.SetInt("RecordBlind", StreakInt);
                 }
-
-                RecordInt = StreakInt;
             }
         }
     }
@@ -122,7 +122,7 @@ public class GameManagerBlind : MonoBehaviour {
 
                 Speak("Voceh morreu. Aperte espaso para recomessar, Esc para sair.");
                 
-                if (StreakInt == RecordInt) {
+                if (StreakInt > LastRecordInt) {
                     Speak("Novo Recorde " + StreakInt);
                 }
                 
@@ -139,11 +139,13 @@ public class GameManagerBlind : MonoBehaviour {
 
         SelectEnemy();
 
-        Speak("Secoencia . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
+        Speak(CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
 
         Player1Health = Player1Character.Health;
 
         Player1Animator.Play("Idle");
+
+        LastRecordInt = RecordInt;
     }
 
     public void ActivateRestartGame() {
