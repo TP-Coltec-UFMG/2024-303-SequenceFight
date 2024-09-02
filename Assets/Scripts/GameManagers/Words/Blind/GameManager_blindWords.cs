@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManagerWord : MonoBehaviour {
+public class GameManagerBlindWord : MonoBehaviour {
     public float Player1Health;
     public float Player2Health;
     public int RecordInt = 0;
@@ -18,117 +18,131 @@ public class GameManagerWord : MonoBehaviour {
     public Animator Player1Animator;
     public Animator Player2Animator;
     [SerializeField] public CharacterDatabase CharacterDB;
-    public UIControllerWord UIManager;
     [SerializeField] public GameAudioController AudioController;
-    public int EnemyCount = 0;
+    public string CurrentWord;
 
     void Start() {
+        if (!PlayerPrefs.HasKey("RecordBlindWord")) {
+            PlayerPrefs.SetInt("RecordBlindWord", RecordInt);
+        }
+
+        else {
+            RecordInt = PlayerPrefs.GetInt("RecordBlindWord");
+        }
+
+        Speak("Bem vindo ao modo palavras cegas. Recorde atual " + RecordInt + " .. aperte 1 para repetir e 2 para os detalhes.");
+
+        SelectEnemy();
+
+        Speak("Palavra . " + CurrentWord);
+
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
 
         InstantiatePlayer();
 
         Player1Health = Player1Character.Health;
+    }
 
-        SelectEnemy();
-
-        UIManager.UpdateHealth(Player1Health, Player2Health);
-
-        if (!PlayerPrefs.HasKey("RecordWord")) {
-            PlayerPrefs.SetInt("RecordWord", RecordInt);
+    void Update() {
+        if (!IsPlayerAlive()) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                RestartGame();
+            }
         }
 
-        else {
-            RecordInt = PlayerPrefs.GetInt("RecordWord");
+        if (IsPlayerAlive()) {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                StopSpeaking();
+                Speak("Palavra . " + CurrentWord);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                StopSpeaking();
+                Speak("Vida atual " + Player1Health + ". Poder de ataque " + Player1Character.Damage + " . Inimigo com " + Player2Health + " de vida. E " + Player2Character.Damage + " de poder de ataque. Palavra");
+            }
         }
-
-        UIManager.UpdateRecord(StreakInt, RecordInt);
-
-        AudioController.PlayCombatMusic();
     }
 
     public void Player1Attack() {
         if (!RestartGameBool) {
+            StopSpeaking();
+
             Player2Health -= Player1Character.Damage;
 
             Player1Animator.Play("Attack");
             Player2Animator.Play("Hit");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player1");
 
-            UIManager.ShowPlayerHit();
+            Speak("Correto");
 
             if (Player2Health <= 0) {
+                Speak("Inimigo derrotado.");
                 SelectEnemy();
 
                 StreakInt++;
-                EnemyCount++;
 
-                RecordInt = UIManager.UpdateRecord(StreakInt, RecordInt);
+                if (StreakInt >= RecordInt) {
+                    RecordInt = StreakInt;
+                    PlayerPrefs.SetInt("RecordBlindWord", StreakInt);
+                }
+
+                RecordInt = StreakInt;
             }
-
-            UIManager.UpdateHealth(Player1Health, Player2Health);
         }
     }
 
     public void Player2Attack() {
         if (!RestartGameBool) {
+            StopSpeaking();
+
             Player1Health -= Player2Character.Damage;
 
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player2");
 
-            UIManager.ShowEnemyHit();
+            Speak("Incorreto");
 
             if (Player1Health <= 0) {
                 Player1Animator.Play("Die");
 
-                ActivateRestartGameUI();
+                Speak("Voceh morreu. Aperte espaso para recomessar, Esc para sair.");
+                
+                if (StreakInt == RecordInt) {
+                    Speak("Novo Recorde " + StreakInt);
+                }
+                
+                ActivateRestartGame();
             }
-
-            UIManager.UpdateHealth(Player1Health, Player2Health);
         }
     }
 
     public void UpdateWord(string Sequence){
-        string SequenceString = " ";
-
-        foreach (char key in Sequence) {
-            SequenceString += key.ToString() + " ";
-        }
-
-        UIManager.UpdateSequence(SequenceString);
+        CurrentWord = Sequence;
     }
 
     public void RestartGame() {
-        AudioController.PlayCombatMusic();
-
         RestartGameBool = !RestartGameBool;
 
-        UIManager.RestartGame();
+        StopSpeaking();
+        Speak("Recomessando");
 
         SelectEnemy();
 
+        Speak("Palavra . " + CurrentWord);
+
         Player1Health = Player1Character.Health;
 
-        UIManager.UpdateHealth(Player1Health, Player2Health);
-
         Player1Animator.Play("Idle");
-
-        UIManager.UpdateRecord(StreakInt, RecordInt);
     }
 
-    public void ActivateRestartGameUI() {
-        AudioController.PlayYouDiedMusic();
-
+    public void ActivateRestartGame() {
         RestartGameBool = !RestartGameBool;
 
-        UIManager.ActivateRestartGameUI(StreakInt, RecordInt);
-
         StreakInt = 0;
-        EnemyCount = 0;
     }
    
     public void SelectEnemy() {
@@ -140,7 +154,27 @@ public class GameManagerWord : MonoBehaviour {
         
         InstantiateEnemy();
 
+        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida e " + Player2Character.Damage + " de poder de ataque.");
+
         Player2Health = Player2Character.Health;
+    }
+
+    public bool IsPlayerAlive() {
+        if (Player1Health <= 0) {
+            return false;
+        }
+
+        else {
+            return true;
+        }
+    }
+
+    public void Speak(string Label) {
+        UAP_AccessibilityManager.Say(Label, true, true);
+    }
+
+    public void StopSpeaking() {
+        UAP_AccessibilityManager.StopSpeaking();
     }
 
     public static int GetRandomIndex(int Min, int Max) {

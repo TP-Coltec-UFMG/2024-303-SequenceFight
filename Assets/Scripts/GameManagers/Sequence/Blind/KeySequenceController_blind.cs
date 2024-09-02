@@ -23,8 +23,8 @@ public class KeySequenceControllerBlind : MonoBehaviour {
 
         string Str = "";
 
-        foreach (KeyCode key in CurrentSequence) {
-            Str += key.ToString() + " ";
+        foreach (KeyCode Key in CurrentSequence) {
+            Str += Key.ToString() + " ";
         }
 
         Manager.CurrentSequence = Str;
@@ -32,9 +32,9 @@ public class KeySequenceControllerBlind : MonoBehaviour {
 
     void Update() {
         if (Input.anyKeyDown) {
-            foreach (KeyCode key in KeyCodesP1) {
-                if (Input.GetKeyDown(key)) {
-                    Player1Sequence.Add(key);
+            foreach (KeyCode Key in KeyCodesP1) {
+                if (Input.GetKeyDown(Key)) {
+                    Player1Sequence.Add(Key);
                     CheckSequence();
                     break;
                 }
@@ -69,12 +69,10 @@ public class KeySequenceControllerBlind : MonoBehaviour {
 
                     CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
 
-                    Manager.Speak("Secoencia atual . ");
-
                     string Str = "";
 
-                    foreach (KeyCode key in CurrentSequence) {
-                        Str += key.ToString() + " ";
+                    foreach (KeyCode Key in CurrentSequence) {
+                        Str += Key.ToString() + " ";
                     }
 
                     Manager.CurrentSequence = Str;
@@ -93,12 +91,10 @@ public class KeySequenceControllerBlind : MonoBehaviour {
 
             CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
 
-            Manager.Speak("Secoencia atual . ");
-
             string Str = "";
 
-            foreach (KeyCode key in CurrentSequence) {
-                Str += key.ToString() + " ";
+            foreach (KeyCode Key in CurrentSequence) {
+                Str += Key.ToString() + " ";
             }
 
             Manager.CurrentSequence = Str;

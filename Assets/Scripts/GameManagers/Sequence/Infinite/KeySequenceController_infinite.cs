@@ -13,6 +13,7 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
     public Character Player1Character;
     private float TimeLeft;
     private float[] TimeLimits = new float[] { 10f, 9.5f, 9f, 8.5f, 8f, 7.5f, 7f, 6.5f, 6f, 5.5f, 5f, 4.8f, 4.6f, 4.4f, 4.2f, 4f, 3.8f, 3.6f, 3.4f, 3.2f, 3f, 2.9f, 2.8f, 2.7f, 2.6f, 2.5f };
+    private bool IsPaused;
 
     void Start() {
         LoadCharacter();
@@ -28,6 +29,14 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            TogglePause();
+        }
+
+        if (IsPaused) {
+            return;
+        }
+
         if (Input.anyKeyDown) {
             foreach (KeyCode Key in KeyCodesP1) {
                 if (Input.GetKeyDown(Key)) {
@@ -61,8 +70,8 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
                 if (Player1Sequence[i] != CurrentSequence[i]) {
                     SequenceMatch = 0;
                     break;
-                }
-
+                } 
+                
                 else {
                     SequenceMatch++;
                 }
@@ -110,5 +119,14 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
 
     private void UpdateCharacter(int SelectedCharacterP1) {
         Player1Character = CharacterDB.GetCharacter(SelectedCharacterP1);
+    }
+
+    public void TogglePause() {
+        if (!Manager.RestartGameBool) {
+            IsPaused = !IsPaused;
+            Time.timeScale = IsPaused ? 0f : 1f;
+            Manager.UIManager.TogglePauseMenu(IsPaused);
+            Manager.AudioController.PauseMusic(IsPaused);
+        }
     }
 }

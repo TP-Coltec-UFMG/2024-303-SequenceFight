@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class UIControllerWord : MonoBehaviour {
+public class UIControllerInfinite : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI PlayerHealthUI;
     [SerializeField] private TextMeshProUGUI EnemyHealthUI;
     [SerializeField] private TextMeshProUGUI RecordUI;
@@ -20,6 +20,8 @@ public class UIControllerWord : MonoBehaviour {
     [SerializeField] private GameObject RestartGameUI;
     [SerializeField] private GameObject RestartGameButton;
     [SerializeField] private GameObject NonLabelObject;
+    [SerializeField] private GameObject PauseMenuUI; 
+    [SerializeField] private GameObject PauseMenuFirstButton; 
 
     public void UpdateHealth(float PlayerHealth, float EnemyHealth) {
         PlayerHealthUI.text = "" + PlayerHealth + "";
@@ -80,5 +82,17 @@ public class UIControllerWord : MonoBehaviour {
         yield return new WaitForSeconds(HitDuration);
 
         Object.SetActive(false);
+    }
+
+    public void TogglePauseMenu(bool IsPaused) {
+        PauseMenuUI.SetActive(IsPaused);
+
+        if (IsPaused) {
+            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
+        } 
+        
+        else {
+            EventSystem.current.SetSelectedGameObject(NonLabelObject);
+        }
     }
 }

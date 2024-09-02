@@ -8,7 +8,10 @@ public class AudioController : MonoBehaviour {
     [SerializeField] private Slider SliderBackgroundMusic;
     [SerializeField] private Slider SliderSoundEffects;
     [SerializeField] private AudioSource BackgroundMusic;
-    [SerializeField] private AudioSource SoundEffects;
+    [SerializeField] private AudioSource ClickSoundEffect;
+    [SerializeField] private AudioSource SelectSoundEffect;
+    [SerializeField] private AudioSource HitSoundEffect;
+    [SerializeField] private AudioSource AttackSoundEffect;
 
     private bool SoundEffectsFeedback = false;
 
@@ -34,11 +37,15 @@ public class AudioController : MonoBehaviour {
     }
 
     public void SoundEffectsController(float Value) {
-        SoundEffects.volume = Value;
+        ClickSoundEffect.volume = Value;
+        SelectSoundEffect.volume = Value;
+        HitSoundEffect.volume = Value;
+        AttackSoundEffect.volume = Value;
+
         SliderSoundEffects.value = Value;
 
         if (SoundEffectsFeedback) {
-            SoundEffects.Play();
+            HitSoundEffect.Play();
         }
 
         SaveAudioSettings();
@@ -46,14 +53,18 @@ public class AudioController : MonoBehaviour {
 
     public void SaveAudioSettings() {
         PlayerPrefs.SetFloat("BackgroundMusicVolume", BackgroundMusic.volume);
-        PlayerPrefs.SetFloat("SoundEffectsVolume", SoundEffects.volume);
+        PlayerPrefs.SetFloat("SoundEffectsVolume", ClickSoundEffect.volume);
     }
 
     public void LoadAudioSettings() {
         BackgroundMusic.volume = PlayerPrefs.GetFloat("BackgroundMusicVolume");
-        SoundEffects.volume = PlayerPrefs.GetFloat("SoundEffectsVolume");
+
+        ClickSoundEffect.volume = PlayerPrefs.GetFloat("SoundEffectsVolume");;
+        SelectSoundEffect.volume = PlayerPrefs.GetFloat("SoundEffectsVolume");;
+        HitSoundEffect.volume = PlayerPrefs.GetFloat("SoundEffectsVolume");;
+        AttackSoundEffect.volume = PlayerPrefs.GetFloat("SoundEffectsVolume");;
         
         SliderBackgroundMusic.value = BackgroundMusic.volume;
-        SliderSoundEffects.value = SoundEffects.volume; 
+        SliderSoundEffects.value = ClickSoundEffect.volume; 
     }
 }

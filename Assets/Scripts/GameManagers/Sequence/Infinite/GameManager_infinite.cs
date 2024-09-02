@@ -54,7 +54,7 @@ public class GameManagerInfinite : MonoBehaviour {
             Player1Animator.Play("Attack");
             Player2Animator.Play("Hit");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player1");
 
             UIManager.ShowPlayerHit();
 
@@ -78,7 +78,7 @@ public class GameManagerInfinite : MonoBehaviour {
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player2");
 
             UIManager.ShowEnemyHit();
 
@@ -107,6 +107,8 @@ public class GameManagerInfinite : MonoBehaviour {
 
         RestartGameBool = !RestartGameBool;
 
+        Time.timeScale = RestartGameBool ? 0f : 1f;
+
         UIManager.RestartGame();
 
         SelectEnemy();
@@ -124,6 +126,8 @@ public class GameManagerInfinite : MonoBehaviour {
         AudioController.PlayYouDiedMusic();
 
         RestartGameBool = !RestartGameBool;
+
+        Time.timeScale = RestartGameBool ? 0f : 1f;
 
         UIManager.ActivateRestartGameUI(StreakInt, RecordInt);
 

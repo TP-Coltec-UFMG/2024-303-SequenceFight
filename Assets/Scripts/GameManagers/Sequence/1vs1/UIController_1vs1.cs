@@ -39,6 +39,9 @@ public class UIController1vs1 : MonoBehaviour {
 
     [SerializeField] private GameObject RestartGameButton;
     [SerializeField] private GameObject NonLabelObject;
+
+    [SerializeField] private GameObject PauseMenuUI; 
+    [SerializeField] private GameObject PauseMenuFirstButton; 
     
     public void UpdateHealth(float Player1Health, float Player2Health) {
         Player1HealthUI.text = "" + Player1Health + "";
@@ -182,5 +185,17 @@ public class UIController1vs1 : MonoBehaviour {
         yield return new WaitForSeconds(HitDuration);
 
         Object.SetActive(false);
+    }
+
+    public void TogglePauseMenu(bool IsPaused) {
+        PauseMenuUI.SetActive(IsPaused);
+
+        if (IsPaused) {
+            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
+        } 
+        
+        else {
+            EventSystem.current.SetSelectedGameObject(NonLabelObject);
+        }
     }
 }

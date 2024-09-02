@@ -29,13 +29,11 @@ public class GameManagerBlind : MonoBehaviour {
             RecordInt = PlayerPrefs.GetInt("RecordBlind");
         }
 
-        PlayerPrefs.SetString("Rate", "..");
-
-        Speak("Bem vindo ao modo cego. O Recorde atual eh, " + RecordInt + " .. aperte 1 para ditado lento, 2 para ditado rapido, 3 para repetir e 4 para os detalhes.");
+        Speak("Bem vindo ao modo cego. Recorde atual " + RecordInt + " .. aperte 1 para repetir, 2 para os detalhes, 3 para ditado lento e 4 para ditado rapido.");
 
         SelectEnemy();
 
-        Speak("Secoencia atual . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
+        Speak("Secoencia . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
 
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
@@ -52,24 +50,28 @@ public class GameManagerBlind : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            PlayerPrefs.SetString("Rate", "..");
-            Speak("Ditado lento ativado. Aperte 3 para repetir a secoencia.");
-        }
+        if (IsPlayerAlive()) {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                StopSpeaking();
+                Speak("Secoencia . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            PlayerPrefs.SetString("Rate", ",,,");
-            Speak("Ditado rapido ativado. Aperte 3 para repetir a secoencia.");
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                StopSpeaking();
+                Speak("Vida atual " + Player1Health + ". Poder de ataque " + Player1Character.Damage + " . Inimigo com " + Player2Health + " de vida. E " + Player2Character.Damage + " de poder de ataque.");
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            StopSpeaking();
-            Speak("Secoencia atual . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) {
+                PlayerPrefs.SetString("Rate", "..");
+                StopSpeaking();
+                Speak("Ditado lento ativado.");
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4)) {
-            StopSpeaking();
-            Speak("Vida atual " + Player1Health + ". Voceh tem " + Player1Character.Damage + " de poder de ataque. Inimigo estah com " + Player2Health + " de vida. E possui " + Player2Character.Damage + " de poder de ataque.");
+            if (Input.GetKeyDown(KeyCode.Alpha4)) {
+                PlayerPrefs.SetString("Rate", ",,,");
+                StopSpeaking();
+                Speak("Ditado rapido ativado.");
+            }
         }
     }
 
@@ -82,9 +84,9 @@ public class GameManagerBlind : MonoBehaviour {
             Player1Animator.Play("Attack");
             Player2Animator.Play("Hit");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player1");
 
-            Speak("Secoencia Correta");
+            Speak("Correto");
 
             if (Player2Health <= 0) {
                 Speak("Inimigo derrotado.");
@@ -111,9 +113,9 @@ public class GameManagerBlind : MonoBehaviour {
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player2");
 
-            Speak("Secoencia incorreta");
+            Speak("Incorreto");
 
             if (Player1Health <= 0) {
                 Player1Animator.Play("Die");
@@ -124,7 +126,7 @@ public class GameManagerBlind : MonoBehaviour {
                     Speak("Novo Recorde " + StreakInt);
                 }
                 
-                ActivateRestartGameUI();
+                ActivateRestartGame();
             }
         }
     }
@@ -133,18 +135,18 @@ public class GameManagerBlind : MonoBehaviour {
         RestartGameBool = !RestartGameBool;
 
         StopSpeaking();
-        Speak("Recomessando o jogo");
+        Speak("Recomessando");
 
         SelectEnemy();
 
-        Speak("Secoencia atual . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
+        Speak("Secoencia . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
 
         Player1Health = Player1Character.Health;
 
         Player1Animator.Play("Idle");
     }
 
-    public void ActivateRestartGameUI() {
+    public void ActivateRestartGame() {
         RestartGameBool = !RestartGameBool;
 
         StreakInt = 0;
@@ -159,7 +161,7 @@ public class GameManagerBlind : MonoBehaviour {
         
         InstantiateEnemy();
 
-        Speak("Inimigo Atual .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida.");
+        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida e " + Player2Character.Damage + " de poder de ataque. Secoencia ");
 
         Player2Health = Player2Character.Health;
     }

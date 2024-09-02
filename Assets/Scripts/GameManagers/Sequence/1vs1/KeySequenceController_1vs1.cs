@@ -4,7 +4,7 @@ using System.IO;
 
 public class KeySequenceController1vs1 : MonoBehaviour {
     [SerializeField] private KeySequenceGenerator SequenceGenerator;
-    [SerializeField] private GameManager1vs1 Manager;
+    [SerializeField] public GameManager1vs1 Manager;
 
     public List<KeyCode> Player1Sequence = new List<KeyCode>();
     public List<KeyCode> Player2Sequence = new List<KeyCode>();
@@ -25,6 +25,8 @@ public class KeySequenceController1vs1 : MonoBehaviour {
     public Character Player1Character;
     public Character Player2Character;
 
+    private bool IsPaused;
+
     void Start() {
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1, SelectedCharacterP2);
@@ -42,6 +44,14 @@ public class KeySequenceController1vs1 : MonoBehaviour {
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            TogglePause();
+        }
+
+        if (IsPaused) {
+            return;
+        }
+
         if (Input.anyKeyDown) {
             foreach (KeyCode key in KeyCodesP1) {
                 if (Input.GetKeyDown(key)) {
@@ -145,5 +155,16 @@ public class KeySequenceController1vs1 : MonoBehaviour {
     private void UpdateCharacter(int SelectedCharacterP1, int SelectedCharacterP2) {
         Player1Character = CharacterDB.GetCharacter(SelectedCharacterP1);
         Player2Character = CharacterDB.GetCharacter(SelectedCharacterP2);
+    }
+
+    public void TogglePause() {
+        if (!Manager.RestartGameBool) {
+            IsPaused = !IsPaused;
+            Time.timeScale = IsPaused ? 0f : 1f;
+            
+            Manager.IsPaused = IsPaused;
+            Manager.UIManager.TogglePauseMenu(IsPaused);
+            Manager.AudioController.PauseMusic(IsPaused);
+        }
     }
 }

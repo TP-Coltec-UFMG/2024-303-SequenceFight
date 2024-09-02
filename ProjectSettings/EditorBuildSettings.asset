@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/ColorblindFilter/Demo/Demo.unity
     guid: d5b6b076f5babf44e9808d2d8323f091
+  - enabled: 1
+    path: Assets/Scenes/InfiniteWords.unity
+    guid: 0c77a19d99eff95459f3146c59418ca6
+  - enabled: 1
+    path: Assets/Scenes/BlindWords.unity
+    guid: ce70733f266d928418a7f6068e0f375b
   m_configObjects: {}

@@ -108,4 +108,12 @@ public class Menu : MonoBehaviour {
     public void Blind() {
         SceneManager.LoadScene("Blind");
     }
+    
+    public void InfiniteWords() {
+        SceneManager.LoadScene("InfiniteWords");
+    }
+
+    public void BlindWords() {
+        SceneManager.LoadScene("BlindWords");
+    }
 }

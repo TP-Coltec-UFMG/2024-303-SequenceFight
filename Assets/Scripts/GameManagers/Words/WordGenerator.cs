@@ -16,15 +16,16 @@ public class WordGenerator : MonoBehaviour {
     }
 
     public void Initiate(int SequenceLength){
-        string FilePath = "./Assets/Scripts/GameManagers/Words/WordLists/Length_";
-        FilePath = String.Concat(FilePath, SequenceLength,".txt");
+        string FileName = "Length_" + SequenceLength;
+        TextAsset TextFile = Resources.Load<TextAsset>("WordLists/" + FileName);
 
-        StreamReader Sr = new StreamReader(FilePath);
-
-        for (int i = 0; i < WordListLength; i++) {
-            WordList.Add(Sr.ReadLine());
+        if (TextFile != null) {
+            string[] Lines = TextFile.text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            WordList.AddRange(Lines);
+        } 
+        
+        else {
+            Debug.LogError("File not found: " + FileName);
         }
-
-        Sr.Close();
     }
 }   

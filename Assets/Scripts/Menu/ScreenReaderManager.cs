@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ScreenReaderManager : MonoBehaviour {
     private GameObject LastSelectedObject;
+    [SerializeField] public AudioSource ClickSound;
+    [SerializeField] public AudioSource SelectSound;
 
     private void Start() {
         if (!PlayerPrefs.HasKey("ScreenReader")) {
@@ -14,14 +16,12 @@ public class ScreenReaderManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (PlayerPrefs.GetInt("ScreenReader") == 1) {
-            GameObject CurrentSelectedObject = EventSystem.current.currentSelectedGameObject;
+        GameObject CurrentSelectedObject = EventSystem.current.currentSelectedGameObject;
 
-            if (CurrentSelectedObject != null && CurrentSelectedObject != LastSelectedObject) {
-                LastSelectedObject = CurrentSelectedObject;
+        if (CurrentSelectedObject != null && CurrentSelectedObject != LastSelectedObject) {
+            LastSelectedObject = CurrentSelectedObject;
 
-                OnObjectSelected(CurrentSelectedObject);
-            }
+            OnObjectSelected(CurrentSelectedObject);
         }
     }
 
@@ -30,9 +30,11 @@ public class ScreenReaderManager : MonoBehaviour {
 
         string TextToRead = GameObjectLabel.GetOnSelectionLabel();
 
-        if (!string.IsNullOrEmpty(TextToRead)) {
+        SelectSound.Play();
+
+        if (!string.IsNullOrEmpty(TextToRead) && PlayerPrefs.GetInt("ScreenReader") == 1) {
             UAP_AccessibilityManager.StopSpeaking();
-            UAP_AccessibilityManager.Say(TextToRead, true, true);
+            UAP_AccessibilityManager.Say(TextToRead, true, true);   
         }
 
         ConfigureClickListener(SelectedObject);
@@ -45,7 +47,7 @@ public class ScreenReaderManager : MonoBehaviour {
             SelectedButton.onClick.RemoveAllListeners();
 
             SelectedButton.onClick.AddListener(() => {
-                if (UAP_AccessibilityManager.IsSpeaking()) {
+                if (UAP_AccessibilityManager.IsSpeaking() && PlayerPrefs.GetInt("ScreenReader") == 1) {
                     UAP_AccessibilityManager.StopSpeaking();
                 }
                 
@@ -60,7 +62,10 @@ public class ScreenReaderManager : MonoBehaviour {
 
             SelectedToggle.onValueChanged.AddListener(isOn => {
                 if (isOn) {
-                    UAP_AccessibilityManager.StopSpeaking();
+                    if (PlayerPrefs.GetInt("ScreenReader") == 1) {
+                        UAP_AccessibilityManager.StopSpeaking();
+                    }
+                    
                     OnObjectClicked(SelectedObject);
                 }
             });
@@ -72,8 +77,10 @@ public class ScreenReaderManager : MonoBehaviour {
 
         string textToRead = GameObjectLabel.GetOnClickLabel();
 
-        if (!string.IsNullOrEmpty(textToRead)) {
-            UAP_AccessibilityManager.Say(textToRead, false, true);
+        if (!string.IsNullOrEmpty(textToRead) && PlayerPrefs.GetInt("ScreenReader") == 1) {
+            UAP_AccessibilityManager.Say(textToRead, false, true);    
         }
+
+        ClickSound.Play();
     }
 }

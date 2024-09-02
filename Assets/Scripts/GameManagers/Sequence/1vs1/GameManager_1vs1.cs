@@ -8,7 +8,7 @@ public class GameManager1vs1 : MonoBehaviour {
     private float Player1Health;
     private float Player2Health;
 
-    private bool RestartGameBool = false;
+    public bool RestartGameBool = false;
 
     private int SelectedCharacterP1;
     private int SelectedCharacterP2;
@@ -23,7 +23,7 @@ public class GameManager1vs1 : MonoBehaviour {
     public UIController1vs1 UIManager;
     public bool P1winBool = false;
     public bool P2winBool = false;
-    [SerializeField] private GameAudioController AudioController;
+    [SerializeField] public GameAudioController AudioController;
 
     public string ActiveAbilityP1;
     public string ActiveAbilityP2;
@@ -31,9 +31,10 @@ public class GameManager1vs1 : MonoBehaviour {
     public bool Player1Coletected = false;
     public bool Player2Coletected = false;
 
-    private float abilityCooldown = 5f; 
+    private float abilityCooldown = 3f; 
     private float abilityTimer;
     public string RandomAbility;
+    public bool IsPaused;
 
     void Start() {
         LoadCharacter();
@@ -53,7 +54,7 @@ public class GameManager1vs1 : MonoBehaviour {
     }
 
     void Update() {
-        if (!RestartGameBool) {
+        if (!RestartGameBool && !IsPaused) {
             abilityTimer -= Time.deltaTime;
 
             if (abilityTimer <= 0) {
@@ -165,7 +166,7 @@ public class GameManager1vs1 : MonoBehaviour {
             Player1Animator.Play("Attack");
             Player2Animator.Play("Hit");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player1");
 
             UIManager.ShowPlayerHit();
 
@@ -243,7 +244,7 @@ public class GameManager1vs1 : MonoBehaviour {
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
 
-            AudioController.PlayHitSoundEffect();
+            AudioController.PlayHitSoundEffect("Player2");
 
             UIManager.ShowPlayerHit();
 
