@@ -31,7 +31,7 @@ public class UIControllerWord : MonoBehaviour {
     public int UpdateRecord(int StreakInt, int RecordInt) {
         if (StreakInt >= RecordInt) {
             RecordInt = StreakInt;
-            PlayerPrefs.SetInt("RecordInfinite", StreakInt);
+            PlayerPrefs.SetInt("RecordWord", StreakInt);
         }
 
         StreakUI.text = "" + StreakInt + "";

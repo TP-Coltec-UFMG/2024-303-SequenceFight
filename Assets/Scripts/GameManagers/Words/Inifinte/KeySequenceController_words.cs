@@ -55,17 +55,6 @@ public class KeySequenceControllerWord : MonoBehaviour {
             return;
         }
 
-        E = Event.current;
-
-        if (Input.anyKeyDown && E != null && E.isKey) {
-            var Key = E.keyCode;
-
-            if ((Key >= KeyCode.A) && (Key <= KeyCode.Z)) {
-                Player1Sequence.Add((char)Key);
-                CheckSequence();
-            }
-        }
-
         TimeLeft -= Time.deltaTime;
         Manager.UIManager.UpdateTimer(TimeLeft);
 
@@ -121,7 +110,7 @@ public class KeySequenceControllerWord : MonoBehaviour {
     }
 
     void OnGUI() {
-        if (!IsPaused) {
+        if (!IsPaused && !Manager.RestartGameBool) {
             E = Event.current;
 
             if (E != null && E.isKey) {
@@ -130,17 +119,6 @@ public class KeySequenceControllerWord : MonoBehaviour {
                 if ((Key >= KeyCode.A) && (Key <= KeyCode.Z) && Input.GetKeyDown(Key)) {
                     Player1Sequence.Add((char)Key);
                     CheckSequence();
-                }
-            }
-
-            if (Input.anyKeyDown) {
-                for (KeyCode Key = KeyCode.A; Key > KeyCode.A; Key++) {
-                    if (Input.GetKeyDown(Key)) {
-                        Player1Sequence.Add((char)Key);
-                        CheckSequence();
-
-                        break;
-                    }
                 }
             }
         }

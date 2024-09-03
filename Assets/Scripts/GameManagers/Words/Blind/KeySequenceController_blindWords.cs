@@ -41,22 +41,6 @@ public class KeySequenceControllerBlindWord : MonoBehaviour {
         Manager.UpdateWord(CurrentWord);
     }
 
-    void Update() {
-        E = Event.current;
-
-        if (Input.anyKeyDown && E != null && E.isKey) {
-            var Key = E.keyCode;
-
-            if ((Key >= KeyCode.A) && (Key <= KeyCode.Z)) {
-                if (!Manager.RestartGameBool) {
-                    Player1Sequence.Add((char)Key);
-                }
-                
-                CheckSequence();
-            }
-        }
-    }
-
     void CheckSequence() {
         SequenceMatch = 1;
 
@@ -105,24 +89,15 @@ public class KeySequenceControllerBlindWord : MonoBehaviour {
     }
 
     void OnGUI() {
-        E = Event.current;
+        if (!Manager.RestartGameBool) {
+            E = Event.current;
 
-        if (E != null && E.isKey) {
-            KeyCode Key = E.keyCode;
+            if (E != null && E.isKey) {
+                KeyCode Key = E.keyCode;
 
-            if ((Key >= KeyCode.A) && (Key <= KeyCode.Z) && Input.GetKeyDown(Key)) {
-                Player1Sequence.Add((char)Key);
-                CheckSequence();
-            }
-        }
-
-        if (Input.anyKeyDown) {
-            for (KeyCode Key = KeyCode.A; Key > KeyCode.A; Key++) {
-                if (Input.GetKeyDown(Key)) {
+                if ((Key >= KeyCode.A) && (Key <= KeyCode.Z) && Input.GetKeyDown(Key)) {
                     Player1Sequence.Add((char)Key);
                     CheckSequence();
-
-                    break;
                 }
             }
         }
