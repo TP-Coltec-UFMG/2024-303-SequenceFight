@@ -1,7 +1,8 @@
 <h1 align="center">🐉 🧔 🧙 ⚔️ Sequence Fight ⚔️ 🧙 🧔 🐉</h1>
-Sequence Fight é um jogo turn based de luta 1 contra 1 com ferramentas de acessibilidade que permitem que diferentes pessoas possam se divertir enquanto jogam! O jogo é simples e a jogabilidade é baseada em uma sequência de teclas que devem ser pressionadas ou uma palavra que deve ser digitada para que o personagem realize um ataque, caso a sequência seja incorreta, o inimigo realiza um ataque. Cada personagem posui animações, vida e dano de ataque diferentes, mudando o estilo de jogo de cada um deles e perimitindo maior imersão nas batalhas!
+Sequence Fight é um jogo turn based de luta 1 contra 1 com ferramentas de acessibilidade que permitem que diferentes pessoas possam se divertir enquanto jogam! O jogo é simples e a jogabilidade é baseada em uma sequência de teclas que devem ser pressionadas ou uma palavra que deve ser digitada para que o personagem realize um ataque, caso a sequência seja incorreta, o inimigo realiza um ataque. Cada personagem posui animações, vida e dano de ataque diferentes, mudando o estilo de jogo de cada um deles e perimitindo maior imersão nas batalhas! Veja a gameplay https://youtu.be/6VdWPXmVFR4
 
-Veja a gameplay: https://youtu.be/6VdWPXmVFR4
+Acesse em https://mrsandes.github.io/BuildTest/ Aperte f11 para uma melhor experiência e f5 se não for possível movimentar o menu.
+Use WASD e Espaço para interagir 😉
 
 <h2 align="center">📌 Menu 📌</h2>
 
@@ -113,10 +114,6 @@ O jogo possui 5 ferramentas de acessibilidade, são elas: sistema de remapeament
 ![image](https://github.com/user-attachments/assets/732097d2-2521-463e-963f-f966a6a9e039)
 
 <h2 align="center">👊 E aí??? Pronto pra jogar!? 👊</h2>
-
-Acesse em https://mrsandes.github.io/BuildTest/
-Aperte f11 para uma melhor experiência e f5 se não for possível movimentar o menu.
-Use WASD e Espaço para interagir 😉
 
 Feito por:
 <ul>
