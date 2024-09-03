@@ -1,6 +1,8 @@
 <h1 align="center">🐉 🧔 🧙 ⚔️ Sequence Fight ⚔️ 🧙 🧔 🐉</h1>
 Sequence Fight é um jogo turn based de luta 1 contra 1 com ferramentas de acessibilidade que permitem que diferentes pessoas possam se divertir enquanto jogam! O jogo é simples e a jogabilidade é baseada em uma sequência de teclas que devem ser pressionadas ou uma palavra que deve ser digitada para que o personagem realize um ataque, caso a sequência seja incorreta, o inimigo realiza um ataque. Cada personagem posui animações, vida e dano de ataque diferentes, mudando o estilo de jogo de cada um deles e perimitindo maior imersão nas batalhas!
 
+Veja a gameplay: https://youtu.be/6VdWPXmVFR4
+
 <h2 align="center">📌 Menu 📌</h2>
 
 <h3 align="center">🤌 Menu principal 🤌</h3>
