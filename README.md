@@ -30,22 +30,22 @@ Use WASD e Espaço para interagir 😉
 
 <div style="display: flex; align-items: center;">
     <img src="https://github.com/user-attachments/assets/0723d3c2-9631-4a61-b259-d8880a137ec4" width="100" style="margin-right: 10px;"/>
-    <span>O humano possui 100 de vida, 15 de poder de ataque e sua sequência é 3</span>
+    <span>O humano possui 150 de vida, 20 de poder de ataque e sua sequência é 5</span>
 </div>
 
 <div style="display: flex; align-items: center;">
     <img src="https://github.com/user-attachments/assets/5f087167-444a-4068-a7e5-ecf7ea58d976" width="100" style="margin-right: 10px;"/>
-    <span>O mago possui 75 de vida, 40 de poder de ataque e sua sequência é 7</span>
+    <span>O mago possui 125 de vida, 50 de poder de ataque e sua sequência é 11</span>
 </div>
 
 <div style="display: flex; align-items: center;">
     <img src="https://github.com/user-attachments/assets/806e1143-5c3e-4003-a716-362015af884e" width="100" style="margin-right: 10px;"/>
-    <span>O guerreiro possui 150 de vida, 20 de poder de ataque e sua sequência é 5</span>
+    <span>O guerreiro possui 200 de vida, 40 de poder de ataque e sua sequência é 7</span>
 </div>
 
 <div style="display: flex; align-items: center;">
     <img src="https://github.com/user-attachments/assets/9e30d395-c0d4-4543-876a-d8e52c175347" width="100" style="margin-right: 10px;"/>
-    <span>O dragão possui 300 de vida, 100 de poder de ataque e sua sequência é 20</span>
+    <span>O dragão possui 250 de vida, 100 de poder de ataque e sua sequência é 20</span>
 </div>
 
 <h2 align="center">💥 Modos de jogo 💥</h2>
