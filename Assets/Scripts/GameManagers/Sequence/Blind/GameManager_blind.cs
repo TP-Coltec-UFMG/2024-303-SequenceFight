@@ -70,7 +70,7 @@ public class GameManagerBlind : MonoBehaviour {
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4)) {
-                PlayerPrefs.SetString("Rate", ",,,");
+                PlayerPrefs.SetString("Rate", " ");
                 StopSpeaking();
                 Speak("Ditado rapido ativado.");
             }
