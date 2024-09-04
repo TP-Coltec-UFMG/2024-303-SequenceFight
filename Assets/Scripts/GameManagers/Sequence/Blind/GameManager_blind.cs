@@ -35,7 +35,7 @@ public class GameManagerBlind : MonoBehaviour {
 
         SelectEnemy();
 
-        Speak("Secoencia . " + CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
+        Speak(CurrentSequence.Replace(" ", PlayerPrefs.GetString("Rate")));
 
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
@@ -60,7 +60,7 @@ public class GameManagerBlind : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Alpha2)) {
                 StopSpeaking();
-                Speak("Vida atual " + Player1Health + ". Poder de ataque " + Player1Character.Damage + " . Inimigo com " + Player2Health + " de vida. E " + Player2Character.Damage + " de poder de ataque.");
+                Speak("Vida atual " + Player1Health + ". Poder de ataque " + Player1Character.Damage + " . Inimigo com " + Player2Health + " de vida.");
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3)) {
@@ -108,7 +108,7 @@ public class GameManagerBlind : MonoBehaviour {
         if (!RestartGameBool) {
             StopSpeaking();
 
-            Player1Health -= Player2Character.Damage;
+            Player1Health -= 10f;
 
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
@@ -163,7 +163,7 @@ public class GameManagerBlind : MonoBehaviour {
         
         InstantiateEnemy();
 
-        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida e " + Player2Character.Damage + " de poder de ataque. Secoencia ");
+        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida. Secoencia ");
 
         Player2Health = Player2Character.Health;
     }

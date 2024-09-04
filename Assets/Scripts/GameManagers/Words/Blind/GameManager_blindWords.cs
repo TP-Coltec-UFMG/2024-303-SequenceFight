@@ -36,7 +36,7 @@ public class GameManagerBlindWord : MonoBehaviour {
 
         SelectEnemy();
 
-        Speak("Palavra . " + CurrentWord);
+        Speak(CurrentWord);
 
         LoadCharacter();
         UpdateCharacter(SelectedCharacterP1);
@@ -61,7 +61,7 @@ public class GameManagerBlindWord : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Alpha2)) {
                 StopSpeaking();
-                Speak("Vida atual " + Player1Health + ". Poder de ataque " + Player1Character.Damage + " . Inimigo com " + Player2Health + " de vida. E " + Player2Character.Damage + " de poder de ataque. Palavra");
+                Speak("Vida atual " + Player1Health + ". Poder de ataque " + Player1Character.Damage + " . Inimigo com " + Player2Health + " de vida. Palavra");
             }
         }
     }
@@ -97,7 +97,7 @@ public class GameManagerBlindWord : MonoBehaviour {
         if (!RestartGameBool) {
             StopSpeaking();
 
-            Player1Health -= Player2Character.Damage;
+            Player1Health -= 10f;
 
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
@@ -156,7 +156,7 @@ public class GameManagerBlindWord : MonoBehaviour {
         
         InstantiateEnemy();
 
-        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida e " + Player2Character.Damage + " de poder de ataque. Palavra");
+        Speak("Inimigo .. " + Player2Character.CharacterName + ", com " + Player2Character.Health + " de vida. Palavra");
 
         Player2Health = Player2Character.Health;
     }

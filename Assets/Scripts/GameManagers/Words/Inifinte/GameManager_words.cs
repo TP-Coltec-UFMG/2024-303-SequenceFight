@@ -75,7 +75,7 @@ public class GameManagerWord : MonoBehaviour {
 
     public void Player2Attack() {
         if (!RestartGameBool) {
-            Player1Health -= Player2Character.Damage;
+            Player1Health -= 10f;
 
             Player1Animator.Play("Hit");
             Player2Animator.Play("Attack");
