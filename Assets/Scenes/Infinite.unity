@@ -279,7 +279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -634, y: -206}
+  m_AnchoredPosition: {x: -140, y: 270}
   m_SizeDelta: {x: 3291.7566, y: 2509}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54619533
@@ -2543,7 +2543,7 @@ MonoBehaviour:
   TimerUI: {fileID: 582279341}
   PlayerHit: {fileID: 864390742}
   EnemyHit: {fileID: 817021559}
-  HitDuration: 0.25
+  HitDuration: 0.5
   GameUI: {fileID: 662935268}
   NewRecordUI: {fileID: 199152062}
   RestartGameUI: {fileID: 95258867}
@@ -2955,7 +2955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 647, y: -197.49998}
+  m_AnchoredPosition: {x: 140, y: 270}
   m_SizeDelta: {x: 3291.7566, y: 2509}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1289433935

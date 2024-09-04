@@ -260,24 +260,48 @@ public class GameManager1vs1 : MonoBehaviour {
         }
     }
 
-    public void UpdateSequenceP1(KeyCode[] sequence) {
-        string sequenceString = " ";
+    public void UpdateSequenceP1(KeyCode[] Sequence, int Index, int Length) {
+        string SequenceString = " ";
 
-        foreach (KeyCode key in sequence) {
-            sequenceString += key.ToString() + " ";
+        if (Index != -1) {
+            for (int i = 0; i < Index + 1; i++) {
+                SequenceString += "   ";
+            }
+
+            for (int i = Index + 1; i < Length; i++) {
+                SequenceString += Sequence[i].ToString() + " ";
+            }
         }
 
-        UIManager.UpdateSequenceP1(sequenceString);
+        else {
+            foreach (KeyCode key in Sequence) {
+                SequenceString += key.ToString() + " ";
+            }
+        }
+
+        UIManager.UpdateSequenceP1(SequenceString);
     }
 
-    public void UpdateSequenceP2(KeyCode[] sequence) {
-        string sequenceString = " ";
+    public void UpdateSequenceP2(KeyCode[] Sequence, int Index, int Length) {
+        string SequenceString = " ";
 
-        foreach (KeyCode key in sequence) {
-            sequenceString += key.ToString() + " ";
+        if (Index != -1) {
+            for (int i = 0; i < Index + 1; i++) {
+                SequenceString += "   ";
+            }
+
+            for (int i = Index + 1; i < Length; i++) {
+                SequenceString += Sequence[i].ToString() + " ";
+            }
         }
 
-        UIManager.UpdateSequenceP2(sequenceString);
+        else {
+            foreach (KeyCode key in Sequence) {
+                SequenceString += key.ToString() + " ";
+            }
+        }
+
+        UIManager.UpdateSequenceP2(SequenceString);
     }
 
     public void RestartGame() {

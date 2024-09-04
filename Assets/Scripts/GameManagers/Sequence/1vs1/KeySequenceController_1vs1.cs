@@ -39,8 +39,8 @@ public class KeySequenceController1vs1 : MonoBehaviour {
         CurrentSequenceP1 = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
         CurrentSequenceP2 = SequenceGenerator.GenerateSequence(KeyCodesP2, Player2Character.SequenceLength);
 
-        Manager.UpdateSequenceP1(CurrentSequenceP1);
-        Manager.UpdateSequenceP2(CurrentSequenceP2);
+        Manager.UpdateSequenceP1(CurrentSequenceP1, -1, -1);
+        Manager.UpdateSequenceP2(CurrentSequenceP2, -1, -1);
     }
 
     void Update() {
@@ -83,6 +83,8 @@ public class KeySequenceController1vs1 : MonoBehaviour {
 
                 else {
                     SequenceMatchP1++;
+
+                    Manager.UpdateSequenceP1(CurrentSequenceP1, i, CurrentSequenceP1.Length);
                 }
             }
 
@@ -93,14 +95,14 @@ public class KeySequenceController1vs1 : MonoBehaviour {
             if (SequenceMatchP1 == 0) {
                 Player1Sequence.Clear();
                 CurrentSequenceP1 = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-                Manager.UpdateSequenceP1(CurrentSequenceP1);
+                Manager.UpdateSequenceP1(CurrentSequenceP1, -1, -1);
             }
         }
 
         if (Player1Sequence.Count == CurrentSequenceP1.Length) {
             Player1Sequence.Clear();
             CurrentSequenceP1 = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-            Manager.UpdateSequenceP1(CurrentSequenceP1);
+            Manager.UpdateSequenceP1(CurrentSequenceP1, -1, -1);
         }
     }
 
@@ -116,6 +118,8 @@ public class KeySequenceController1vs1 : MonoBehaviour {
 
                 else {
                     SequenceMatchP2++;
+
+                    Manager.UpdateSequenceP2(CurrentSequenceP2, i, CurrentSequenceP2.Length);
                 }
             }
 
@@ -126,14 +130,14 @@ public class KeySequenceController1vs1 : MonoBehaviour {
             if (SequenceMatchP2 == 0) {
                 Player2Sequence.Clear();
                 CurrentSequenceP2 = SequenceGenerator.GenerateSequence(KeyCodesP2, Player2Character.SequenceLength);
-                Manager.UpdateSequenceP2(CurrentSequenceP2);
+                Manager.UpdateSequenceP2(CurrentSequenceP2, -1, -1);
             }
         }
 
         if (Player2Sequence.Count == CurrentSequenceP2.Length) {
             Player2Sequence.Clear();
             CurrentSequenceP2 = SequenceGenerator.GenerateSequence(KeyCodesP2, Player2Character.SequenceLength);
-            Manager.UpdateSequenceP2(CurrentSequenceP2);
+            Manager.UpdateSequenceP2(CurrentSequenceP2, -1, -1);
         }
     }
 

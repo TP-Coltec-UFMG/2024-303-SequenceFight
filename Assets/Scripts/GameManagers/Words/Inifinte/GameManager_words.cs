@@ -94,14 +94,26 @@ public class GameManagerWord : MonoBehaviour {
         }
     }
 
-    public void UpdateWord(string Sequence){
+    public void UpdateWord(string Sequence, int Index, int Length) {
         string SequenceString = " ";
 
-        foreach (char key in Sequence) {
-            SequenceString += key.ToString() + " ";
+        if (Index != -1) {
+            for (int i = 0; i < Index + 1; i++) {
+                SequenceString += "   ";
+            }
+
+            for (int i = Index + 1; i < Length; i++) {
+                SequenceString += Sequence[i].ToString() + " ";
+            }
         }
 
-        UIManager.UpdateSequence(SequenceString);
+        else {
+            foreach (KeyCode key in Sequence) {
+                SequenceString += key.ToString() + " ";
+            }
+        }
+
+        UIManager.UpdateSequence(SequenceString.ToLower());
     }
 
     public void RestartGame() {

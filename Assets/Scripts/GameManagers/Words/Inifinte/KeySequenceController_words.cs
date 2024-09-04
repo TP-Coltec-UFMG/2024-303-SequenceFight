@@ -41,7 +41,7 @@ public class KeySequenceControllerWord : MonoBehaviour {
 
         CurrentSequence = WordGenerator.GenerateWord();
 
-        Manager.UpdateWord(CurrentSequence);
+        Manager.UpdateWord(CurrentSequence, -1, -1);
 
         ResetTimeLimit();
     }
@@ -66,7 +66,7 @@ public class KeySequenceControllerWord : MonoBehaviour {
             Player1Sequence.Clear();
 
             CurrentSequence = WordGenerator.GenerateWord();
-            Manager.UpdateWord(CurrentSequence);
+            Manager.UpdateWord(CurrentSequence, -1, -1);
         }
     }
 
@@ -82,6 +82,8 @@ public class KeySequenceControllerWord : MonoBehaviour {
 
                 else {
                     SequenceMatch++;
+
+                    Manager.UpdateWord(CurrentSequence, i, CurrentSequence.Length);
                 }
             }
 
@@ -97,7 +99,7 @@ public class KeySequenceControllerWord : MonoBehaviour {
                 Player1Sequence.Clear();
 
                 CurrentSequence = WordGenerator.GenerateWord();
-                Manager.UpdateWord(CurrentSequence);
+                Manager.UpdateWord(CurrentSequence, -1, -1);
             }
         }
 
@@ -105,7 +107,7 @@ public class KeySequenceControllerWord : MonoBehaviour {
             Player1Sequence.Clear();
 
             CurrentSequence = WordGenerator.GenerateWord();
-            Manager.UpdateWord(CurrentSequence);
+            Manager.UpdateWord(CurrentSequence, -1, -1);
         }
     }
 

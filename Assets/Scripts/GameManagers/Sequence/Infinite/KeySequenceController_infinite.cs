@@ -23,7 +23,7 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
         LoadKeyCodes();
 
         CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-        Manager.UpdateSequence(CurrentSequence);
+        Manager.UpdateSequence(CurrentSequence, -1, -1);
 
         ResetTimeLimit();
     }
@@ -61,7 +61,7 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
             Player1Sequence.Clear();
 
             CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-            Manager.UpdateSequence(CurrentSequence);
+            Manager.UpdateSequence(CurrentSequence, -1, -1);
         }
     }
 
@@ -77,6 +77,8 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
                 
                 else {
                     SequenceMatch++;
+
+                    Manager.UpdateSequence(CurrentSequence, i, CurrentSequence.Length);
                 }
             }
 
@@ -93,7 +95,7 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
                 Player1Sequence.Clear();
 
                 CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-                Manager.UpdateSequence(CurrentSequence);
+                Manager.UpdateSequence(CurrentSequence, -1, -1);
             }
         }
 
@@ -101,7 +103,7 @@ public class KeySequenceControllerInfinite : MonoBehaviour {
             Player1Sequence.Clear();
 
             CurrentSequence = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
-            Manager.UpdateSequence(CurrentSequence);
+            Manager.UpdateSequence(CurrentSequence, -1, -1);
         }
     }
 
