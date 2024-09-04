@@ -44,6 +44,11 @@ public class KeySequenceController1vs1 : MonoBehaviour {
     }
 
     void Update() {
+        if (Manager.RestartGameBool) {
+            Manager.UpdateSequenceP1(CurrentSequenceP1, -1, -1);
+            Manager.UpdateSequenceP2(CurrentSequenceP2, -1, -1);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape)) {
             TogglePause();
         }
