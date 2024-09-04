@@ -45,6 +45,9 @@ public class KeySequenceController1vs1 : MonoBehaviour {
 
     void Update() {
         if (Manager.RestartGameBool) {
+            CurrentSequenceP1 = SequenceGenerator.GenerateSequence(KeyCodesP1, Player1Character.SequenceLength);
+            CurrentSequenceP2 = SequenceGenerator.GenerateSequence(KeyCodesP2, Player2Character.SequenceLength);
+            
             Manager.UpdateSequenceP1(CurrentSequenceP1, -1, -1);
             Manager.UpdateSequenceP2(CurrentSequenceP2, -1, -1);
         }
